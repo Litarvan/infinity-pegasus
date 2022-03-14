@@ -8,6 +8,7 @@ export default defineConfig({
     })],
     server: {
         hmr: {
+            // Needed for `dev` to be used from the extension
             protocol: 'ws',
             host: 'localhost'
         }
