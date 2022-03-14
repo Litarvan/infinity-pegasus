@@ -1,6 +1,6 @@
 {
   "name": "infinity-pegasus",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -13,10 +13,11 @@
   },
   "devDependencies": {
     "@sveltejs/vite-plugin-svelte": "^1.0.0-next.11",
+    "@types/chrome": "^0.0.179",
     "@types/webextension-polyfill": "^0.8.2",
-    "svelte": "^3.37.0",
-    "vite": "^2.6.4",
     "sass": "^1.43.4",
-    "svelte-preprocess": "^4.9.8"
+    "svelte": "^3.37.0",
+    "svelte-preprocess": "^4.9.8",
+    "vite": "^2.6.4"
   }
 }

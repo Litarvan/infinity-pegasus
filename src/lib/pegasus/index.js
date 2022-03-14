@@ -132,6 +132,11 @@ function getMatch(pattern, group, modifier)
         group = null;
     }
 
-    const match = pegasus.match(pattern);
+    const match = getOriginalContent().match(pattern);
     return match && (modifier || (s => s))(match[group || 0]);
+}
+
+function getOriginalContent()
+{
+    return window.pegasus || document.querySelector('#pegasus-original-content').innerText;
 }
