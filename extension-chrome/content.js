@@ -1,7 +1,7 @@
 // This method actually sucks, original page is first loaded and displayed before being replaced by ours.
 // Since Chrome never implemented webRequest.filterResponseData (that we use on firefox), there is sadly no better way.
 
-const DEBUG = true;
+const DEBUG = false;
 
 const INFINITY_PEGASUS_URL = DEBUG ? 'http://localhost:5000/' : 'https://api.pegasus.infinity.study/';
 const PDF_JS_VERSION = '2.11.338';

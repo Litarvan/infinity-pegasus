@@ -1,10 +1,12 @@
-const DEBUG = true;
+const DEBUG = false;
 
 const PEGASUS_HOST = 'inge-etud.epita.net';
 const PEGASUS_URL = `https://${PEGASUS_HOST}/`;
 const PEGASUS_FILTER = `*://${PEGASUS_HOST}/*`;
 const PEGASUS_ROOT = PEGASUS_URL + 'pegasus/';
 const PEGASUS_PAGE = PEGASUS_ROOT + 'index.php';
+
+const PDF_JS_VERSION = '2.11.338';
 
 // We have no choice but to embed the html, since we can't use `fetch` here (well, I didn't manage to at least)
 const INFINITY_PEGASUS_URL = DEBUG ? 'http://localhost:3000/' : 'https://api.pegasus.infinity.study/';
@@ -33,8 +35,6 @@ const INFINITY_PEGASUS_HTML = `<!DOCTYPE html>
     ${DEBUG ? '<script type="module" src="/src/main.js"></script>' : ''}
   </body>
 </html>`;
-
-const PDF_JS_VERSION = '2.11.338';
 
 const ENABLED_ICON = 'enabled.svg';
 const DISABLED_ICON = 'disabled.svg';
