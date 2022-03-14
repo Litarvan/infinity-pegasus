@@ -1,0 +1,20 @@
+@import './styles/components';
+@import './styles/fonts';
+@import './styles/reset';
+@import './styles/vars';
+
+:root {
+    /*
+     * Litarvan's pro tip:
+     * How to instantly make your text look beautiful
+     */
+    font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    
+    font-family: $font-circular;
+}
+
+#app {
+    height: 100vh;
+}

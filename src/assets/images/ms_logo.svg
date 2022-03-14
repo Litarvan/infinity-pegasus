@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="32px" height="32px" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Microsoft_logo</title>
+    <g id="Main" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Login" transform="translate(-957.000000, -487.000000)" fill="#FFFFFF" fill-rule="nonzero">
+            <g id="Content" transform="translate(840.000000, 0.000000)">
+                <g id="Sign-in-button-(+-icon)" transform="translate(90.000000, 466.000000)">
+                    <g id="Microsoft_logo" transform="translate(27.000000, 21.000000)">
+                        <polygon id="Path" points="0 0 14.5454545 0 14.5454545 14.5454545 0 14.5454545"></polygon>
+                        <polygon id="Path" points="17.4545455 0 32 0 32 14.5454545 17.4545455 14.5454545"></polygon>
+                        <polygon id="Path" points="0 17.4545455 14.5454545 17.4545455 14.5454545 32 0 32"></polygon>
+                        <polygon id="Path" points="17.4545455 17.4545455 32 17.4545455 32 32 17.4545455 32"></polygon>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

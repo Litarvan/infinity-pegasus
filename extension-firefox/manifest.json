@@ -1,0 +1,23 @@
+{
+  "manifest_version": 2,
+  "name": "Infinity Pegasus",
+  "version": "1.0.0",
+  "description": "Make Pegasus great again!",
+  "homepage_url": "https://github.com/Litarvan/infinity-pegasus",
+  "icons": {
+    "128": "icon_128.png"
+  },
+  "browser_action": {
+    "default_title": "Infinity Pegasus",
+    "default_icon": "enabled.svg"
+  },
+  "permissions": [
+    "storage",
+    "webRequest",
+    "webRequestBlocking",
+    "*://inge-etud.epita.net/*"
+  ],
+  "background": {
+    "scripts": ["background.js"]
+  }
+}

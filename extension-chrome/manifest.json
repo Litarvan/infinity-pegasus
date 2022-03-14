@@ -1,0 +1,35 @@
+{
+  "update_url": "https://clients2.google.com/service/update2/crx",
+  "manifest_version": 2,
+  "name": "Infinity Pegasus",
+  "version": "1.0.0",
+  "description": "Make Pegasus great again!",
+  "homepage_url": "https://github.com/Litarvan/infinity-pegasus",
+  "icons": {
+    "128": "icon_128.png"
+  },
+  "browser_action": {
+    "default_title": "Infinity Pegasus",
+    "default_icon": {
+      "48": "enabled_48.png",
+      "128": "enabled_128.png"
+    }
+  },
+  "permissions": [
+    "storage",
+    "*://inge-etud.epita.net/*"
+  ],
+  "background": {
+    "scripts": [
+      "browser-polyfill.min.js",
+      "background.js"
+    ]
+  },
+  "content_scripts": [{
+    "matches": ["*://inge-etud.epita.net/*"],
+    "js": [
+      "browser-polyfill.min.js",
+      "content.js"
+    ]
+  }]
+}

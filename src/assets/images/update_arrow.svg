@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="40px" height="21px" viewBox="0 0 40 21" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Group 2</title>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round">
+        <g id="Home-page" transform="translate(-1178.000000, -295.000000)" stroke="#A5A9B5" stroke-width="3">
+            <g id="Content" transform="translate(440.000000, 0.000000)">
+                <g id="Header" transform="translate(66.000000, 66.000000)">
+                    <g id="Group" transform="translate(0.000000, 126.000000)">
+                        <g id="Group-2" transform="translate(674.289514, 104.605223)">
+                            <line x1="0" y1="8.89477667" x2="34.7695789" y2="8.89477667" id="Path-3"></line>
+                            <polyline id="Path-4" points="25.8748022 17.7895533 34.7695789 8.89477667 25.8748022 0"></polyline>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
