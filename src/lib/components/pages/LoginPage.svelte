@@ -33,7 +33,7 @@
             <span>Se connecter avec Microsoft</span>
         </a>
         <p id="terms" class="subtext">
-            En cliquant sur le bouton ci-dessus vous acceptez les <a class="link">ALBIN PAROUUUU</a> du
+            En cliquant sur le bouton ci-dessus vous acceptez les <a class="link">conditions d'utilisation</a> du
             service
         </p>
     </div>

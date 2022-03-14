@@ -30,12 +30,23 @@ export async function getMarks()
     pdfjs.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.11.338/pdf.worker.min.js';
 
     const doc = await pdfjs.getDocument({ url: URL.createObjectURL(blob) }).promise;
-    const page = await doc.getPage(1);
+    const result = [];
+
+    for (let i = 1; i <= doc.numPages; i++)
+    {
+        await parsePage(await doc.getPage(i), result);
+    }
+
+    return result;
+}
+
+async function parsePage(page, result)
+{
     const content = await page.getTextContent();
 
     const texts = content.items.filter(i => !i.hasEOL).map(i => i.str);
+    console.log(texts);
 
-    const result = [];
     let i = 0;
 
     while (i < texts.length)
@@ -61,8 +72,6 @@ export async function getMarks()
             result.push({ id, name, credits: parseFloat(credits), subjects })
         }
     }
-
-    return result;
 }
 
 function parseSubject(texts, i)
@@ -71,7 +80,7 @@ function parseSubject(texts, i)
     const id = texts[i++];
     const marks = [];
 
-    while (i < texts.length && (texts[i].match(MARK_REGEX) || texts[i + 1] === 'CONTROLE'))
+    while (i < texts.length && (texts[i].match(MARK_REGEX) || isMarkCode(texts[i + 1])))
     {
         const mark = {};
         if (texts[i].match(MARK_REGEX))
@@ -83,11 +92,15 @@ function parseSubject(texts, i)
             mark.value = parseMark(texts[i++]);
         }
 
-
-        mark.name = texts[i++];
+        const markName = texts[i++];
+        if (isMarkCode(markName)) {
+            mark.name = 'Note';
+        } else {
+            mark.name = markName;
+            i++;
+        }
 
         marks.push(mark);
-        i++; // 'CONTROLE'
     }
 
     return [{ name, id, marks }, i];
@@ -96,6 +109,11 @@ function parseSubject(texts, i)
 function parseMark(mark)
 {
     return parseFloat(mark.replace(',', '.'));
+}
+
+function isMarkCode(code)
+{
+    return code.match(/^[A-Z]+$/) && code.length > 5;
 }
 
 async function fetchMarksPDF()

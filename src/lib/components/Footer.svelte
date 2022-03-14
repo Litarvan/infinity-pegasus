@@ -18,7 +18,7 @@
     </div>
     <p class="subtext">
         Copyright © 2021 Adrien ‘Litarvan’ Navratil<br />
-        Sous <Link to="{app.repository}/blob/master/LICENSE" class="link">license MIT</Link>
+        Sous <Link to="{app.repository}/blob/master/LICENSE">license MIT</Link>
     </p>
 </div>
 
