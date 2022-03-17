@@ -4,7 +4,7 @@
     import LogoutPage from './lib/components/pages/LogoutPage.svelte';
     import MainPage from './lib/components/pages/MainPage.svelte';
 
-    import { getLogoutURL, getName, isLogged } from './lib/pegasus';
+    import { getLogoutURL, getName, isLogged } from './lib/pegasus/auth';
     import { justLoggedOut } from './lib/stores';
 
     import Background from './lib/components/Background.svelte';
@@ -32,7 +32,7 @@
 
         {#if name}
             <a id="logout" on:click={onLogout} href={getLogoutURL()} in:fade={{ delay: 200 }} out:fade={{ duration: 175 }}>
-                Se déconneter
+                Se déconnecter
             </a>
         {/if}
     </div>

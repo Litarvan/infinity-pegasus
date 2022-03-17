@@ -3,6 +3,7 @@
     import { quadIn, quadOut } from 'svelte/easing';
 
     import { title } from '../../../app';
+    import { PEGASUS_AUTH_URL } from '../../pegasus/index.js';
 
     import swapper from '../../ui/swapper';
 
@@ -12,13 +13,11 @@
 
     const { state, toggle, outro } = swapper();
 
-    const loginURL = 'https://inge-etud.epita.net/pegasus/o365Auth.php';
-
     async function doLogin()
     {
         toggle();
 
-        window.location.href = loginURL;
+        window.location.href = PEGASUS_AUTH_URL;
     }
 </script>
 
@@ -28,7 +27,7 @@
 
 {#if $state === 'A'}
     <div id="login" transition:fade={{ duration: 150, easing: quadOut }} on:outroend={outro}>
-        <a id="login-button" href={loginURL} class="clickable" on:click|preventDefault={doLogin}>
+        <a id="login-button" href={PEGASUS_AUTH_URL} class="clickable" on:click|preventDefault={doLogin}>
             <div id="ms-logo">{@html msLogo}</div>
             <span>Se connecter avec Microsoft</span>
         </a>

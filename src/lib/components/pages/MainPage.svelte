@@ -4,7 +4,7 @@
     import { quadIn, quadOut } from 'svelte/easing';
 
     import { title } from '../../../app';
-    import { getMarks } from '../../pegasus';
+    import { getMarks } from '../../pegasus/marks';
     import swapper from '../../ui/swapper';
 
     import Spinner from '../Spinner.svelte';

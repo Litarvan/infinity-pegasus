@@ -1,160 +1,27 @@
-// TODO: Better regexes
+const pegasusContent = window.pegasus || document.querySelector('#pegasus-original-content').innerText;
 
-const MODULE_REGEX = /((.*) - )?(.*) \[ *(.*) ECTS]/;
-const MARK_REGEX = /\d+,\d\d/g;
+const PEGASUS_ROOT = `https://inge-etud.epita.net/pegasus`;
+export const PEGASUS_AUTH_URL = `${PEGASUS_ROOT}/o365Auth.php`;
 
-export function isLogged()
-{
-    return !!getLogoutURL();
-}
-
-export function getName()
-{
-    return getMatch(
-        /<td class="text hidden-phone " ?>([^<]*)<\/td>/,
-        1,
-        n => n.replace('&nbsp;', ' ')
-    );
-}
-
-export function getLogoutURL()
-{
-    return getMatch(/index\.php\?com=login&job=disconnect-user&token=[^"]*/);
-}
-
-export async function getMarks()
-{
-    const blob = await fetchMarksPDF();
-
-    const pdfjs = window['pdfjs-dist/build/pdf'];
-    pdfjs.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.11.338/pdf.worker.min.js';
-
-    const doc = await pdfjs.getDocument({ url: URL.createObjectURL(blob) }).promise;
-    const result = [];
-
-    for (let i = 1; i <= doc.numPages; i++)
-    {
-        await parsePage(await doc.getPage(i), result);
-    }
-
-    return result;
-}
-
-async function parsePage(page, result)
-{
-    const content = await page.getTextContent();
-
-    const texts = content.items.filter(i => !i.hasEOL).map(i => i.str);
-    console.log(texts);
-
-    let i = 0;
-
-    while (i < texts.length)
-    {
-        while (i < texts.length && !texts[i].match(MODULE_REGEX))
-        {
-            i++;
-        }
-
-        while (i < texts.length && texts[i].match(MODULE_REGEX))
-        {
-            const [,, id, name, credits] = texts[i++].match(MODULE_REGEX);
-            const subjects = [];
-
-            while (texts[i] !== 'Niveau')
-            {
-                const [subject, ni] = parseSubject(texts, i);
-
-                subjects.push(subject);
-                i = ni;
-            }
-
-            result.push({ id, name, credits: parseFloat(credits), subjects })
-        }
-    }
-}
-
-function parseSubject(texts, i)
-{
-    const name = texts[i++];
-    const id = texts[i++];
-    const marks = [];
-
-    while (i < texts.length && (texts[i].match(MARK_REGEX) || isMarkCode(texts[i + 1])))
-    {
-        const mark = {};
-        if (texts[i].match(MARK_REGEX))
-        {
-            mark.average = parseMark(texts[i++]);
-        }
-        if (texts[i].match(MARK_REGEX))
-        {
-            mark.value = parseMark(texts[i++]);
-        }
-
-        const markName = texts[i++];
-        if (isMarkCode(markName)) {
-            mark.name = 'Note';
-        } else {
-            mark.name = markName;
-            i++;
-        }
-
-        marks.push(mark);
-    }
-
-    return [{ name, id, marks }, i];
-}
-
-function parseMark(mark)
-{
-    return parseFloat(mark.replace(',', '.'));
-}
-
-function isMarkCode(code)
-{
-    return code.match(/^[A-Z]+$/) && code.length > 5;
-}
-
-async function fetchMarksPDF()
-{
-    // TODO: Save if those were run
-    await fetch('https://inge-etud.epita.net/pegasus/index.php?com=editions&job=load-editions');
-    await fetch('https://inge-etud.epita.net/pegasus/index.php?com=editions&job=load-filter', {
-        method: 'POST',
-        body: new URLSearchParams({
-            filtername: "flt-bulletin-de-notes-ing",
-            uri: "/reports/REPORT_UNIT_EPI/EPI_bulletin_de_notes_semestre_ING:0",
-            reporttitle: "Relevé+de+notes",
-            format: "PDF",
-            reporttype: "type_1"
-        })
-    });
-
-    return fetch('https://inge-etud.epita.net/pegasus/index.php?com=report&job=execute-report', {
-        method: 'POST',
-        body: new URLSearchParams({
-            PARAM_annee: "2021",
-            PARAM_produit:  "SI5                 21",
-            PARAM_etudiant: "NAVRATIL            ADRIEN",
-            format: "PDF",
-            uri: "/reports/REPORT_UNIT_EPI/EPI_bulletin_de_notes_semestre_ING:0"
-        })
-    }).then(r => r.blob());
-}
-
-function getMatch(pattern, group, modifier)
+export function getMatch(pattern, group, modifier)
 {
     if (typeof group == 'function') {
         modifier = group;
         group = null;
     }
 
-    const match = getOriginalContent().match(pattern);
+    const match = pegasusContent.match(pattern);
     return match && (modifier || (s => s))(match[group || 0]);
 }
 
-function getOriginalContent()
+export async function fetchHtml(com, job, params = {})
 {
-    return window.pegasus || document.querySelector('#pegasus-original-content').innerText;
+    const text = await fetch(`${PEGASUS_ROOT}/index.php?com=${com}&job=${job}`, {
+        method: 'POST',
+        body: new URLSearchParams(params)
+    })
+        .then(r => r.arrayBuffer())
+        .then(r => new TextDecoder('ISO-8859-15').decode(r));
+
+    return new DOMParser().parseFromString(text, 'text/html');
 }
