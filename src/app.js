@@ -16,4 +16,5 @@ export function title(page) {
 // TODO: Modal pour les conditions d'utilisation.
 // TODO: Coefficients
 // TODO: Update le footer
-// TODO: Vite fait improve le design (mettre en grand si ya qu'une note ?)
+// TODO: Vite fait improve le design (mettre en grand si ya qu'une note ?) (tout réduire ?)
+// TODO: Indiquer qu'on peut activer/désactiver l'extension via l'icône en haut à droite

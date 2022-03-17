@@ -16,9 +16,17 @@
     let marks;
 
     onMount(() => {
+        console.log('[MainPage.svelte] Main page mounted loading marks...');
+
         getMarks().then(m => {
+            console.log('[MainPage.svelte] Marks received:');
+            console.log(m);
+
             marks = m;
             toggle();
+        }).catch(e => {
+            console.error('[MainPage.svelte] Error while parsing marks :');
+            console.error(e);
         });
     });
 

@@ -5,7 +5,10 @@ const MARK_REGEX = /\d+,\d\d/g;
 
 export async function getMarks()
 {
+    console.log('[Marks.JS] Fetching marks PDF...');
     const blob = await fetchMarksPDF();
+
+    console.log('[Marks.JS] Parsing marks PDF');
 
     const pdfjs = window['pdfjs-dist/build/pdf'];
     pdfjs.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.11.338/pdf.worker.min.js';
@@ -14,8 +17,11 @@ export async function getMarks()
     const result = [];
 
     for (let i = 1; i <= doc.numPages; i++) {
+        console.log(`[Marks.JS] Parsing PDF page #${i}`);
         await parsePage(await doc.getPage(i), result);
     }
+
+    console.log('[Marks.JS] Finished parsing marks');
 
     return result;
 }
