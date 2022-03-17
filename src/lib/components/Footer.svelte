@@ -1,5 +1,5 @@
 <script>
-    import { app } from '../../app';
+    import { app } from '/app';
 
     import Link from './Link.svelte';
 
@@ -23,7 +23,7 @@
 </div>
 
 <style lang="scss">
-    @import 'src/styles/vars';
+    @import 'vars';
 
     #footer {
         flex-direction: column;

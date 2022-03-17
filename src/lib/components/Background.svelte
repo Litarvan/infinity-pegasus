@@ -1,10 +1,10 @@
 <script>
     import { onMount } from 'svelte';
 
-    import NoisyVerticalGradient from '../ui/background';
+    import NoisyVerticalGradient from '/lib/ui/background';
 
-    import topTriangle from '../../assets/images/top_triangle.svg?raw';
-    import bottomTriangle from '../../assets/images/bottom_triangle.svg?raw';
+    import topTriangle from '/assets/images/top_triangle.svg?raw';
+    import bottomTriangle from '/assets/images/bottom_triangle.svg?raw';
 
     let background;
 
@@ -20,7 +20,7 @@
 </div>
 
 <style lang="scss">
-    @import 'src/styles/vars';
+    @import 'vars';
 
     #background {
         position: relative;

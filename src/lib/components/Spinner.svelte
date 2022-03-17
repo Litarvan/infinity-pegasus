@@ -1,5 +1,5 @@
 <script>
-    import spinner from '../../assets/images/spinner.svg?raw';
+    import spinner from '/assets/images/spinner.svg?raw';
 </script>
 
 <div class="spinner">

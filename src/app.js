@@ -10,7 +10,7 @@ export function title(page) {
 
 // TODO: Fix les imports
 // TODO: Choix semestre
-// TODO: Interface téléchargement des fichiers
+// TODO: Téléchargement bulletin
 // TODO: Moyenne du module ?
 // TODO: Intégrer "dernières mises à jour"
 // TODO: Modal pour les conditions d'utilisation.

@@ -2,14 +2,14 @@
     import { fade } from 'svelte/transition';
     import { quadIn, quadOut } from 'svelte/easing';
 
-    import { title } from '../../../app';
-    import { PEGASUS_AUTH_URL } from '../../pegasus/index.js';
+    import { title } from '/app';
+    import { PEGASUS_AUTH_URL } from '/lib/pegasus/index.js';
 
-    import swapper from '../../ui/swapper';
+    import swapper from '/lib/ui/swapper';
 
     import Spinner from '../Spinner.svelte';
 
-    import msLogo from '../../../assets/images/ms_logo.svg?raw';
+    import msLogo from '/assets/images/ms_logo.svg?raw';
 
     const { state, toggle, outro } = swapper();
 
@@ -32,7 +32,7 @@
             <span>Se connecter avec Microsoft</span>
         </a>
         <p id="terms" class="subtext">
-            En cliquant sur le bouton ci-dessus vous acceptez les <a class="link">conditions d'utilisation</a> du
+            En cliquant sur le bouton ci-dessus vous acceptez les <a class="link" href="#">conditions d'utilisation</a> du
             service
         </p>
     </div>
@@ -44,7 +44,7 @@
 {/if}
 
 <style lang="scss">
-    @import 'src/styles/vars';
+    @import 'vars';
 
     #login {
         flex-direction: column;

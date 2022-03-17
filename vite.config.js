@@ -4,7 +4,17 @@ import sveltePreprocess from 'svelte-preprocess';
 
 export default defineConfig({
     plugins: [svelte({
-        preprocess: sveltePreprocess()
+        preprocess: sveltePreprocess({
+            replace: [
+                [/import '\//g, "import '/src/"],
+                [/from '\//g, "from '/src/"]
+            ],
+            sourceMap: true,
+            scss: {
+                renderSync: true,
+                includePaths: ['src/styles']
+            }
+        })
     })],
     server: {
         hmr: {

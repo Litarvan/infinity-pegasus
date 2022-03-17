@@ -1,6 +1,6 @@
 <script>
-    import { title } from '../../../app';
-    import { justLoggedOut } from '../../stores';
+    import { title } from '/app';
+    import { justLoggedOut } from '/lib/stores';
 
     function goToLogin()
     {
@@ -18,7 +18,7 @@
 </div>
 
 <style lang="scss">
-    @import 'src/styles/vars';
+    @import 'vars';
 
     #logout {
         align-items: center;

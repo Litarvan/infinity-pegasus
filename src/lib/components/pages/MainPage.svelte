@@ -3,14 +3,14 @@
     import { fade } from 'svelte/transition';
     import { quadIn, quadOut } from 'svelte/easing';
 
-    import { title } from '../../../app';
-    import { getMarks } from '../../pegasus/marks';
-    import swapper from '../../ui/swapper';
+    import { title } from '/app';
+    import { getMarks } from '/lib/pegasus/marks';
+    import swapper from '/lib/ui/swapper';
 
     import Spinner from '../Spinner.svelte';
 
-    import UpdateArrow from '../../../assets/images/update_arrow.svg';
-    import IncreaseArrow from '../../../assets/images/increase_arrow.svg';
+    import UpdateArrow from '/assets/images/update_arrow.svg';
+    import IncreaseArrow from '/assets/images/increase_arrow.svg';
 
     const { state, toggle, outro } = swapper();
     let marks;
