@@ -8,10 +8,9 @@ export function title(page) {
     return `${app.name} — ${page}`;
 }
 
-// TODO: Enlever les strings hardcodés des requêtes
 // TODO: Fix les imports
 // TODO: Choix semestre
-// TODO: Téléchargement des fichiers
+// TODO: Interface téléchargement des fichiers
 // TODO: Moyenne du module ?
 // TODO: Intégrer "dernières mises à jour"
 // TODO: Modal pour les conditions d'utilisation.

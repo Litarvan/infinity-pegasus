@@ -38,7 +38,7 @@ export async function getDocuments()
 async function getFilters(document)
 {
     if (document.__filters) {
-        return documents.__filters;
+        return document.__filters;
     }
 
     const filters = [];
