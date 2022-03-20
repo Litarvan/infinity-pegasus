@@ -26,6 +26,16 @@ export async function getMarks()
     return result;
 }
 
+async function fetchMarksPDF()
+{
+    const marks = (await getDocuments()).find(d => d.name === 'Relevé de notes');
+    const filters = await marks.fetchFilters();
+
+    // TODO: Select!
+
+    return marks.fetchBlob(Object.fromEntries(filters.map(f => [f.id, (f.values.find(v => v.name === '2021' || v.name.includes('STAGE')) || f.values[0]).value])));
+}
+
 async function parsePage(page, result)
 {
     const content = await page.getTextContent();
@@ -91,14 +101,4 @@ function parseMark(mark)
 function isMarkCode(code)
 {
     return code.match(/^[A-Z]+$/) && code.length > 5;
-}
-
-async function fetchMarksPDF()
-{
-    const marks = (await getDocuments()).find(d => d.name === 'Relevé de notes');
-    const filters = await marks.fetchFilters();
-
-    // TODO: Select!
-
-    return marks.fetchBlob(Object.fromEntries(filters.map(f => [f.id, f.values[0].value])));
 }
