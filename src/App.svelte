@@ -49,6 +49,8 @@
 </div>
 
 <style lang="scss">
+    @import 'vars';
+
     #content {
         flex-direction: column;
         justify-content: space-between;
@@ -59,7 +61,7 @@
         width: 575px;
         padding: 35px 0;
 
-        background-color: white;
+        background-color: $color-background;
 
         &.wide {
             width: 1200px;

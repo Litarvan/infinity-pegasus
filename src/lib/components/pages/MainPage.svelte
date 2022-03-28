@@ -4,8 +4,9 @@
     import { quadIn, quadOut } from 'svelte/easing';
 
     import { title } from '/app';
-    import { getMarks } from '/lib/pegasus/marks';
+    import { getMarks, getMarksFilters } from '/lib/pegasus/marks';
     import swapper from '/lib/ui/swapper';
+    import ComboBox from '../ComboBox.svelte';
 
     import Spinner from '../Spinner.svelte';
 
@@ -14,26 +15,41 @@
 
     const { state, toggle, outro } = swapper();
     let marks;
+    let filters;
+    let filtersValues;
 
-    onMount(() => {
-        console.log('[MainPage.svelte] Main page mounted loading marks...');
+    onMount(() => load().catch(e => {
+        console.error('[MainPage.svelte] Error while loading marks');
+        console.error(e);
+    }));
 
-        getMarks().then(m => {
-            console.log('[MainPage.svelte] Marks received:');
-            console.log(m);
+    async function load()
+    {
+        filters = await getMarksFilters();
+        filtersValues = Object.fromEntries(filters.map(f => [f.id, (f.values.find(v => v.name === '2021' || v.name.includes('STAGE')) || f.values[0]).value])); // TODO: ...;
 
-            marks = m;
-            toggle();
-        }).catch(e => {
-            console.error('[MainPage.svelte] Error while parsing marks :');
+        marks = await getMarks(filtersValues);
+
+        toggle();
+    }
+
+    function updateFilter(name, value)
+    {
+        // TODO: Save
+        // TODO: Clean filters transfer
+        // TODO: Loading
+        filtersValues[name] = value;
+
+        // TODO: Generify
+        getMarks(filtersValues).then(m => marks = m).catch(e => {
+            console.error('[MainPage.svelte] Error while loading marks');
             console.error(e);
         });
-    });
+    }
 
     function format(value)
     {
-        if (!value)
-        {
+        if (!value) {
             return '--,--';
         }
 
@@ -70,6 +86,12 @@
     {/if}
     {#if $state === 'B'}
         <div class="content" transition:fade={{ duration: 150, easing: quadIn }}>
+            <div class="filters">
+                {#each filters as { name, id, values }}
+                    <ComboBox {name} {values} on:update={e => updateFilter(id, e.detail.value)} />
+                {/each}
+            </div>
+
             <div class="header">
                 Dernières mises à jour
                 <hr />
@@ -126,6 +148,8 @@
 </div>
 
 <style lang="scss">
+    @import 'vars';
+
     #main {
         flex-direction: column;
         flex-grow: 1;
@@ -161,18 +185,30 @@
     .header {
         flex-direction: column;
 
+        position: relative;
+        z-index: -1;
+
         font-weight: bold;
         font-size: 32px;
 
         hr {
             width: 100%;
             border-bottom: 0;
-            border-color: white;
+            border-color: $color-background;
         }
+    }
+
+    .filters {
+        justify-content: space-between;
+
+        width: 100%;
+
+        margin-bottom: 45px;
     }
 
     .updates {
         flex-direction: column;
+
         width: 100%;
 
         .update {

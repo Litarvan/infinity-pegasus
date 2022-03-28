@@ -1,22 +1,24 @@
+@import './mixins';
 @import './vars';
 
-button, a {
+button, a, .clickable {
     cursor: pointer;
-    transition: opacity .15s;
-    
-    &:not(.opaque):hover {
-        opacity: .85;
+
+    user-select: none;
+
+    &:not(.opaque) {
+        @include clickable(opacity, .85, .65);
     }
 }
 
 .subtext {
     color: $color-subtext;
-    
+
     font-size: 16px;
     line-height: 22px;
-    
+
     text-align: center;
-    
+
     .link {
         color: $color-subtext-link;
     }
@@ -25,26 +27,19 @@ button, a {
 .card {
     border-radius: 6px;
     box-shadow: rgba(0, 0, 0, .15) 0 2px 8px;
-    
+
     transition: all .2s;
-    
+
     &.clickable:hover {
-        cursor: pointer;
         box-shadow: rgba(0, 0, 0, .25) 0 2px 9px;
-        
         transform: translateY(-1px);
     }
 }
 
 .variable {
-    /*
-     * Until https://github.com/sveltejs/kit/issues/1214 is fixed, updating $layout.svelte during development
-     * prevents the transitions. Restart the dev server to fix it.
-     */
-    
     $transition-duration: .6s;
     $transition-function: cubic-bezier(0.65, 0, 0.35, 1);
-    
+
     transition: width $transition-duration $transition-function,
                 margin $transition-duration $transition-function;
 }

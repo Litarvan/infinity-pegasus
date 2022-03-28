@@ -1,0 +1,11 @@
+@mixin clickable($property, $hover, $active) {
+  transition: $property .15s;
+
+  &:hover {
+    #{$property}: $hover;
+  }
+
+  &:active {
+    #{$property}: $active;
+  }
+}

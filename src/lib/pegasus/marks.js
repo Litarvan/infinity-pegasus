@@ -2,13 +2,22 @@ import { getDocuments } from './documents';
 
 const MODULE_REGEX = /((.*) - )?(.*) \[ *(.*) ECTS]/;
 const MARK_REGEX = /\d+,\d\d/g;
+const MARKS_DOCUMENT = 'Relevé de notes';
 
-export async function getMarks()
+async function getMarksDocument()
 {
-    console.log('[Marks.JS] Fetching marks PDF...');
-    const blob = await fetchMarksPDF();
+    const documents = await getDocuments();
+    return documents.find(d => d.name === MARKS_DOCUMENT);
+}
 
-    console.log('[Marks.JS] Parsing marks PDF');
+export async function getMarksFilters()
+{
+    return getMarksDocument().then(d => d.fetchFilters());
+}
+
+export async function getMarks(filters)
+{
+    const blob = await fetchMarksPDF(filters);
 
     const pdfjs = window['pdfjs-dist/build/pdf'];
     pdfjs.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.11.338/pdf.worker.min.js';
@@ -17,23 +26,16 @@ export async function getMarks()
     const result = [];
 
     for (let i = 1; i <= doc.numPages; i++) {
-        console.log(`[Marks.JS] Parsing PDF page #${i}`);
         await parsePage(await doc.getPage(i), result);
     }
-
-    console.log('[Marks.JS] Finished parsing marks');
 
     return result;
 }
 
-async function fetchMarksPDF()
+async function fetchMarksPDF(filters)
 {
-    const marks = (await getDocuments()).find(d => d.name === 'Relevé de notes');
-    const filters = await marks.fetchFilters();
-
-    // TODO: Select!
-
-    return marks.fetchBlob(Object.fromEntries(filters.map(f => [f.id, (f.values.find(v => v.name === '2021' || v.name.includes('STAGE')) || f.values[0]).value])));
+    const marks = await getMarksDocument();
+    return marks.fetchBlob(filters);
 }
 
 async function parsePage(page, result)

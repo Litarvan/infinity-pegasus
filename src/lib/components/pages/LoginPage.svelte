@@ -27,7 +27,7 @@
 
 {#if $state === 'A'}
     <div id="login" transition:fade={{ duration: 150, easing: quadOut }} on:outroend={outro}>
-        <a id="login-button" href={PEGASUS_AUTH_URL} class="clickable" on:click|preventDefault={doLogin}>
+        <a id="login-button" href={PEGASUS_AUTH_URL} on:click|preventDefault={doLogin}>
             <div id="ms-logo">{@html msLogo}</div>
             <span>Se connecter avec Microsoft</span>
         </a>
