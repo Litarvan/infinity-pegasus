@@ -1,5 +1,7 @@
 <script>
     import { createEventDispatcher } from 'svelte';
+    import { fade } from 'svelte/transition';
+    import { quadInOut } from 'svelte/easing';
 
     import ComboBoxArrow from '/assets/images/combo_box_arrow.svg?raw';
 
@@ -39,13 +41,15 @@
         {selected}
         {@html ComboBoxArrow}
     </div>
-    <div class="choices card" class:visible={opened}>
-        {#each values as choice}
-            <div class="choice clickable opaque" on:click={() => select(choice)}>
-                {choice.name}
-            </div>
-        {/each}
-    </div>
+    {#if opened}
+        <div class="choices card" class:visible={opened} transition:fade={{ duration: 125, easing: quadInOut }}>
+            {#each values as choice}
+                <div class="choice clickable opaque" on:click={() => select(choice)}>
+                    {choice.name}
+                </div>
+            {/each}
+        </div>
+    {/if}
 </div>
 
 <style lang="scss">
@@ -58,7 +62,6 @@
     $name-margin: 8px;
     $box-height: 40px;
     $border-radius: 6px;
-    $transition-duration: .125s;
     $horizontal-padding: 12px;
 
     .combo-box {
@@ -93,7 +96,7 @@
             height: 10px;
             margin-top: 2px;
 
-            transition: transform $transition-duration;
+            transition: transform .125s;
         }
 
         &.opened :global(svg) {
@@ -112,13 +115,6 @@
         background-color: $color-background;
 
         border-radius: $border-radius;
-
-        opacity: 0;
-        transition: opacity $transition-duration;
-
-        &.visible {
-            opacity: 1;
-        }
 
         .choice {
             padding: 8px $horizontal-padding;
