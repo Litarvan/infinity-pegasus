@@ -17,6 +17,7 @@ export async function getMarksFilters()
 
 export async function getMarks(filters, wasSus)
 {
+    console.log('Filters: ', filters);
     const blob = await fetchMarksPDF(filters);
 
     const pdfjs = window['pdfjs-dist/build/pdf'];
@@ -59,6 +60,8 @@ async function parsePage(page, result)
 {
     const content = await page.getTextContent();
     const texts = content.items.filter(i => !i.hasEOL).map(i => i.str);
+
+    console.log('Texts: ', texts);
 
     let i = 0;
 
