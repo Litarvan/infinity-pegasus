@@ -12,7 +12,7 @@ export default function () {
         }
 
         swapping = true;
-        next = next === 'A' ? 'B' : null;
+        next = next === 'A' ? 'B' : 'A';
 
         state.set(null);
     }
@@ -26,5 +26,5 @@ export default function () {
         state,
         toggle,
         outro
-    }
+    };
 }

@@ -26,22 +26,29 @@
     async function load()
     {
         filters = await getMarksFilters();
-        filtersValues = Object.fromEntries(filters.map(f => [f.id, (f.values.find(v => v.name === '2021' || v.name.includes('STAGE')) || f.values[0]).value])); // TODO: ...;
+        filtersValues = {
+            ...Object.fromEntries(filters.map(f => [f.id, (f.values.find(v => v.name === '2021' || v.name.includes('STAGE')) || f.values[0]).value])), // TODO ...
+            ...JSON.parse(localStorage.filters || '{}')
+        };
 
         marks = await getMarks(filtersValues);
 
         toggle();
     }
 
-    function updateFilter(name, value)
+    function updateFilter(id, value)
     {
-        // TODO: Save
         // TODO: Clean filters transfer
-        // TODO: Loading
-        filtersValues[name] = value;
+        filtersValues[id] = value;
+        localStorage.filters = JSON.stringify(filtersValues);
+
+        toggle();
 
         // TODO: Generify
-        getMarks(filtersValues).then(m => marks = m).catch(e => {
+        getMarks(filtersValues).then(m => {
+            marks = m;
+            toggle();
+        }).catch(e => {
             console.error('[MainPage.svelte] Error while loading marks');
             console.error(e);
         });
@@ -85,10 +92,10 @@
         </div>
     {/if}
     {#if $state === 'B'}
-        <div class="content" transition:fade={{ duration: 150, easing: quadIn }}>
+        <div class="content" transition:fade={{ duration: 150, easing: quadIn }} on:outroend={outro}>
             <div class="filters">
                 {#each filters as { name, id, values }}
-                    <ComboBox {name} {values} on:update={e => updateFilter(id, e.detail.value)} />
+                    <ComboBox {name} {values} value={filtersValues[id]} on:update={e => updateFilter(id, e.detail.value)} />
                 {/each}
             </div>
 

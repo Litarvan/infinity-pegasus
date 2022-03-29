@@ -5,9 +5,9 @@
 
     export let name;
     export let values;
+    export let value;
 
     let box;
-    let value = values[0].value;
     let opened = false;
 
     const dispatch = createEventDispatcher();
