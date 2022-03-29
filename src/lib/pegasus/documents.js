@@ -56,7 +56,7 @@ async function getFilters(document)
             values: [...select.querySelectorAll('option')].map(({ value, innerText }) => ({
                 name: innerText.replaceAll(/([( ]) /g, '$1'),
                 value
-            }))
+            })).reverse()
         });
     }
 

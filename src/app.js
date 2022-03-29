@@ -8,10 +8,9 @@ export function title(page) {
     return `${app.name} — ${page}`;
 }
 
-// TODO: Téléchargement bulletin
+// TODO: Téléchargement du bulletin
 // TODO: Moyenne du module ?
-// TODO: Intégrer "dernières mises à jour"
-// TODO: Modal pour les conditions d'utilisation.
+// TODO: Modal pour les conditions d'utilisation
 // TODO: Coefficients
 // TODO: Update le footer
 // TODO: Vite fait improve le design (mettre en grand si ya qu'une note ?) (tout réduire ?)

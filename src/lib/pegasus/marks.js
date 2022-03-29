@@ -1,6 +1,6 @@
 import { getDocuments } from './documents';
 
-const MODULE_REGEX = /((.*) - )?(.*) \[ *(.*) ECTS]/;
+const MODULE_REGEX = /(((.*) - )|(\[(.*)] ))?(.*) \[ *(.*) ECTS]/;
 const MARK_REGEX = /\d+,\d\d/g;
 const MARKS_DOCUMENT = 'Relevé de notes';
 
@@ -15,7 +15,7 @@ export async function getMarksFilters()
     return getMarksDocument().then(d => d.fetchFilters());
 }
 
-export async function getMarks(filters)
+export async function getMarks(filters, wasSus)
 {
     const blob = await fetchMarksPDF(filters);
 
@@ -27,6 +27,23 @@ export async function getMarks(filters)
 
     for (let i = 1; i <= doc.numPages; i++) {
         await parsePage(await doc.getPage(i), result);
+    }
+
+    // Sometimes, Pegasus produces a PDF with no marks (except for averages), if this happens, we'll try again (only once).
+    let hasAnyMark = false;
+    main:
+    for (const module of result) {
+        for (const subject of module.subjects) {
+            for (const mark of subject.marks) {
+                if (mark.value !== undefined) {
+                    hasAnyMark = true;
+                    break main;
+                }
+            }
+        }
+    }
+    if (!hasAnyMark && !wasSus) {
+        return getMarks(filters, true);
     }
 
     return result;
@@ -51,7 +68,7 @@ async function parsePage(page, result)
         }
 
         while (i < texts.length && texts[i].match(MODULE_REGEX)) {
-            const [,, id, name, credits] = texts[i++].match(MODULE_REGEX);
+            const [,,, id,, idBrackets, name, credits] = texts[i++].match(MODULE_REGEX);
             const subjects = [];
 
             while (texts[i] !== 'Niveau') {
@@ -61,7 +78,7 @@ async function parsePage(page, result)
                 i = ni;
             }
 
-            result.push({ id, name, credits: parseFloat(credits), subjects })
+            result.push({ id: id || idBrackets, name, credits: parseFloat(credits), subjects })
         }
     }
 }
@@ -72,8 +89,9 @@ function parseSubject(texts, i)
     const id = texts[i++];
     const marks = [];
 
+    let nextMarkId = 0;
     while (i < texts.length && (texts[i].match(MARK_REGEX) || isMarkCode(texts[i + 1]))) {
-        const mark = {};
+        const mark = { id: nextMarkId++ };
         if (texts[i].match(MARK_REGEX)) {
             mark.average = parseMark(texts[i++]);
         }

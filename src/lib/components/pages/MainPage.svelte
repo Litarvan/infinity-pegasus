@@ -5,18 +5,23 @@
 
     import { title } from '/app';
     import { getMarks, getMarksFilters } from '/lib/pegasus/marks';
+    import { getUpdates } from '/lib/pegasus/updates';
     import swapper from '/lib/ui/swapper';
-    import ComboBox from '../ComboBox.svelte';
 
+    import ComboBox from '../ComboBox.svelte';
     import Spinner from '../Spinner.svelte';
 
     import UpdateArrow from '/assets/images/update_arrow.svg';
     import IncreaseArrow from '/assets/images/increase_arrow.svg';
+    import DecreaseArrow from '/assets/images/decrease_arrow.svg';
+    import Plus from '/assets/images/plus.svg';
+    import Minus from '/assets/images/minus.svg';
 
     const { state, toggle, outro } = swapper();
     let marks;
     let filters;
     let filtersValues;
+    let updates;
 
     onMount(() => load().catch(e => {
         console.error('[MainPage.svelte] Error while loading marks');
@@ -31,7 +36,13 @@
             ...JSON.parse(localStorage.filters || '{}')
         };
 
+        await updateMarks();
+    }
+
+    async function updateMarks()
+    {
         marks = await getMarks(filtersValues);
+        updates = await getUpdates(filtersValues, marks);
 
         toggle();
     }
@@ -44,14 +55,23 @@
 
         toggle();
 
-        // TODO: Generify
-        getMarks(filtersValues).then(m => {
-            marks = m;
-            toggle();
-        }).catch(e => {
-            console.error('[MainPage.svelte] Error while loading marks');
+        updateMarks().catch(e => {
+            console.error('[MainPage.svelte] Error while updating marks');
             console.error(e);
         });
+    }
+
+    function getSignForUpdate(type, value, old)
+    {
+        switch (type) {
+            case 'average-update':
+            case 'update':
+                return value > old ? IncreaseArrow : DecreaseArrow;
+            case 'add':
+                return Plus;
+            case 'remove':
+                return Minus;
+        }
     }
 
     function format(value)
@@ -104,18 +124,27 @@
                 <hr />
             </div>
 
+            {#if updates.length === 0}
+                <div class="no-updates">Aucune mise à jour détectée depuis la dernière fois.</div>
+            {/if}
+
             <div class="updates">
-                <div class="update">
-                    <div class="point"></div>
-                    <div class="id">FOLO</div>
-                    <div class="name">Formalisation logique CC2 ·&nbsp;<span class="target">Moyenne</span></div>
-                    <div class="mark">
-                        <div class="from">7,39</div>
-                        <img class="update-arrow" src={UpdateArrow} alt="To" />
-                        <div class="to">9,99</div>
-                        <img class="increase-arrow" src={IncreaseArrow} alt="Increase" />
+                {#each updates as { type, subject, name, value, old }}
+                    <div class="update">
+                        <div class="point"></div>
+                        <div class="id">{subject}</div>
+                        <div class="name">{name} ·&nbsp;<span class="target">{#if type.includes('average')}Moyenne{:else}Note{/if}</span></div>
+                        <div class="mark">
+                            <div class="point"></div>
+                            {#if value && old}
+                                <div class="from">{format(old)}</div>
+                                <img class="update-arrow" src={UpdateArrow} alt="To" />
+                            {/if}
+                            <div class="to">{format(value || old)}</div>
+                            <img class="type-sign" src={getSignForUpdate(type, value, old)} alt="Sign" />
+                        </div>
                     </div>
-                </div>
+                {/each}
             </div>
 
             {#each marks as module}
@@ -213,16 +242,24 @@
         margin-bottom: 50px;
     }
 
+    .no-updates {
+        margin-bottom: 20px;
+
+        font-size: 18px;
+    }
+
     .updates {
         flex-direction: column;
 
         width: 100%;
 
+        margin-bottom: 15px;
+
         .update {
             align-items: center;
 
-            margin-bottom: 35px;
-            padding-left: 40px;
+            margin-bottom: 10px;
+            padding-left: 35px;
 
             font-size: 28px;
 
@@ -242,17 +279,27 @@
 
             .name {
                 font-size: 18px;
+                margin-right: 10px;
 
                 .target {
                     font-weight: 500;
                 }
-
-                margin-right: 20px;
             }
 
             .mark {
                 align-items: center;
+
+                margin-bottom: 1px;
+
                 font-weight: 500;
+
+                .point {
+                    width: 6px;
+                    height: 6px;
+
+                    margin-left: 2px;
+                    margin-right: 12px;
+                }
 
                 .from {
                     color: #A5A9B5;
@@ -264,8 +311,11 @@
                     margin: 0 10px;
                 }
 
-                .increase-arrow {
-                    margin-left: 5px;
+                .type-sign {
+                    width: 30px;
+
+                    margin-left: 12px;
+                    margin-bottom: 2px;
                 }
             }
         }
