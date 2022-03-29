@@ -8,7 +8,6 @@ export function title(page) {
     return `${app.name} — ${page}`;
 }
 
-// TODO: Choix semestre
 // TODO: Téléchargement bulletin
 // TODO: Moyenne du module ?
 // TODO: Intégrer "dernières mises à jour"
