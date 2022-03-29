@@ -1,5 +1,4 @@
 // TODO: We could maybe merge this with firefox background.js
-// TODO: In 2023, manifests v2 will be deprecated, thus enforcing scripts to be statically included.
 
 const PEGASUS_FILTER = '*://inge-etud.epita.net/*';
 
@@ -33,8 +32,7 @@ async function onBrowserActionClicked(tab)
     await setDisabled(!disabled);
 
     const tabs = await chrome.tabs.query({ url: PEGASUS_FILTER });
-    for (const t of tabs)
-    {
+    for (const t of tabs) {
         await chrome.tabs.reload(t.id);
     }
 }
