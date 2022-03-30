@@ -4,8 +4,7 @@
     import Link from './Link.svelte';
 
     const links = [
-        { label: 'Sources (GitHub)', to: app.repository },
-        { label: 'À Propos', to: '/about' }
+        { label: 'Sources (GitHub)', to: app.repository }
     ];
 </script>
 
@@ -17,7 +16,7 @@
         {/each}
     </div>
     <p class="subtext">
-        Copyright © 2021 Adrien ‘Litarvan’ Navratil<br />
+        Copyright © 2021-2022 Adrien ‘Litarvan’ Navratil<br />
         Sous <Link to="{app.repository}/blob/master/LICENSE">license MIT</Link>
     </p>
 </div>

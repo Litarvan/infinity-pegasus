@@ -191,8 +191,6 @@
         flex-grow: 1;
         justify-content: center;
         width: 100%;
-
-        overflow-y: auto;
     }
 
     .loading {
