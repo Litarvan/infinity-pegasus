@@ -35,6 +35,14 @@ export async function getDocuments()
     return documents = result;
 }
 
+export async function downloadDocument(doc, filters)
+{
+    const documents = await getDocuments();
+    const blob = await getBlob(documents.find(d => d.name === doc), filters);
+
+    open(URL.createObjectURL(blob), '_blank');
+}
+
 async function getFilters(document)
 {
     if (document.__filters) {

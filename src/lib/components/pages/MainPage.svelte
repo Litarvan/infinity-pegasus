@@ -6,6 +6,7 @@
     import { title } from '/app';
     import { getMarks, getMarksFilters } from '/lib/pegasus/marks';
     import { getUpdates } from '/lib/pegasus/updates';
+    import { downloadDocument } from '/lib/pegasus/documents';
     import swapper from '/lib/ui/swapper';
 
     import ComboBox from '../ComboBox.svelte';
@@ -14,14 +15,21 @@
     import UpdateArrow from '/assets/images/update_arrow.svg';
     import IncreaseArrow from '/assets/images/increase_arrow.svg';
     import DecreaseArrow from '/assets/images/decrease_arrow.svg';
+    import ExternalArrow from '/assets/images/external_arrow.svg';
     import Plus from '/assets/images/plus.svg';
     import Minus from '/assets/images/minus.svg';
 
     const { state, toggle, outro } = swapper();
+    const documents = [
+        'Relevé de notes',
+        'Bulletin de notes'
+    ];
+
     let marks;
     let filters;
     let filtersValues;
     let updates;
+    let downloading = false;
 
     onMount(() => load().catch(e => {
         console.error('[MainPage.svelte] Error while loading marks');
@@ -61,6 +69,15 @@
         });
     }
 
+    function format(value)
+    {
+        if (!value) {
+            return '--,--';
+        }
+
+        return value.toFixed(2).replace('.', ',');
+    }
+
     function getSignForUpdate(type, value, old)
     {
         switch (type) {
@@ -74,13 +91,20 @@
         }
     }
 
-    function format(value)
+    function download(doc)
     {
-        if (!value) {
-            return '--,--';
+        if (downloading) {
+            return;
         }
 
-        return value.toFixed(2).replace('.', ',');
+        downloading = true;
+
+        downloadDocument(doc, filtersValues).catch(e => {
+            console.error('[MainPage.svelte] Error while downloading document');
+            console.error(e);
+        }).finally(() => {
+            downloading = false;
+        });
     }
 
     function getAverage(subject)
@@ -143,6 +167,20 @@
                             <div class="to">{format(value || old)}</div>
                             <img class="type-sign" src={getSignForUpdate(type, value, old)} alt="Sign" />
                         </div>
+                    </div>
+                {/each}
+            </div>
+
+            <div class="header">
+                Documents
+                <hr />
+            </div>
+            <div class="documents" class:downloading>
+                {#each documents as doc}
+                    <div class="document" class:clickable={!downloading} on:click={() => download(doc)}>
+                        <div class="point"></div>
+                        <div class="name">{doc}</div>
+                        <img class="arrow" src={ExternalArrow} alt={doc} />
                     </div>
                 {/each}
             </div>
@@ -261,15 +299,6 @@
 
             font-size: 28px;
 
-            .point {
-                width: 10px;
-                height: 10px;
-
-                background-color: #D5D9DC;
-
-                border-radius: 50%;
-            }
-
             .id {
                 font-weight: bold;
                 margin: 0 15px;
@@ -315,6 +344,44 @@
                     margin-left: 12px;
                     margin-bottom: 2px;
                 }
+            }
+        }
+    }
+
+    .documents {
+        flex-direction: column;
+
+        margin-bottom: 20px;
+        padding-top: 5px;
+
+        transition: opacity .15s;
+
+        &.downloading {
+            opacity: .5;
+        }
+
+        .document {
+            align-items: center;
+
+            margin-bottom: 12px;
+            padding-left: 35px;
+
+            font-size: 21px;
+
+            .point {
+                width: 8px;
+                height: 8px;
+            }
+
+            .name {
+                margin-left: 12px;
+            }
+
+            .arrow {
+                height: 20px;
+
+                margin-left: 10px;
+                margin-bottom: 1px;
             }
         }
     }

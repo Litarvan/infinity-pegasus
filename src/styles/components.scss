@@ -7,7 +7,7 @@ button, a, .clickable {
     user-select: none;
 
     &:not(.opaque) {
-        @include clickable(opacity, .85, .65);
+        @include clickable(opacity, .8, .6);
     }
 }
 
@@ -42,4 +42,13 @@ button, a, .clickable {
 
     transition: width $transition-duration $transition-function,
                 margin $transition-duration $transition-function;
+}
+
+.point {
+    width: 10px;
+    height: 10px;
+
+    background-color: #D5D9DC;
+
+    border-radius: 50%;
 }
