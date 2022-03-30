@@ -1,5 +1,8 @@
 import { fetchHtml } from './index.js';
 
+export const MARKS_DOCUMENT = 'Relevé de notes';
+export const REPORT_DOCUMENT = 'Bulletin de notes';
+
 let documents;
 
 export async function getDocuments()

@@ -6,7 +6,7 @@
     import { title } from '/app';
     import { getMarks, getMarksFilters } from '/lib/pegasus/marks';
     import { getUpdates } from '/lib/pegasus/updates';
-    import { downloadDocument } from '/lib/pegasus/documents';
+    import { downloadDocument, MARKS_DOCUMENT, REPORT_DOCUMENT } from '/lib/pegasus/documents';
     import swapper from '/lib/ui/swapper';
 
     import ComboBox from '../ComboBox.svelte';
@@ -21,8 +21,8 @@
 
     const { state, toggle, outro } = swapper();
     const documents = [
-        'Relevé de notes',
-        'Bulletin de notes'
+        MARKS_DOCUMENT,
+        REPORT_DOCUMENT
     ];
 
     let marks;
@@ -367,6 +367,8 @@
             padding-left: 35px;
 
             font-size: 21px;
+
+            user-select: none;
 
             .point {
                 width: 8px;

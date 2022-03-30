@@ -1,8 +1,7 @@
-import { getDocuments } from './documents';
+import { getDocuments, MARKS_DOCUMENT } from './documents';
 
 const MODULE_REGEX = /(((.*) - )|(\[(.*)] ))?(.*) \[ *(.*) ECTS]/;
 const MARK_REGEX = /\d+,\d\d/g;
-const MARKS_DOCUMENT = 'Relevé de notes';
 
 async function getMarksDocument()
 {
