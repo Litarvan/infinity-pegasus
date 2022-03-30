@@ -8,7 +8,6 @@ export function title(page) {
     return `${app.name} — ${page}`;
 }
 
-// TODO: Téléchargement du bulletin
 // TODO: Moyenne du module ?
 // TODO: Modal pour les conditions d'utilisation
 // TODO: Coefficients
