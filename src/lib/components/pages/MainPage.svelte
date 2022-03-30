@@ -71,7 +71,7 @@
 
     function format(value)
     {
-        if (!value) {
+        if (value !== 0 && !value) {
             return '--,--';
         }
 
