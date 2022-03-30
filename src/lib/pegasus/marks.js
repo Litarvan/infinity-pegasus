@@ -17,7 +17,6 @@ export async function getMarksFilters()
 
 export async function getMarks(filters, wasSus)
 {
-    console.log('Filters: ', filters);
     const blob = await fetchMarksPDF(filters);
 
     const pdfjs = window['pdfjs-dist/build/pdf'];
@@ -61,8 +60,6 @@ async function parsePage(page, result)
     const content = await page.getTextContent();
     const texts = content.items.filter(i => !i.hasEOL).map(i => i.str);
 
-    console.log('Texts: ', texts);
-
     let i = 0;
 
     while (i < texts.length) {
@@ -74,7 +71,7 @@ async function parsePage(page, result)
             const [,,, id,, idBrackets, name, credits] = texts[i++].match(MODULE_REGEX);
             const subjects = [];
 
-            while (texts[i] !== 'Niveau') {
+            while (i < texts.length && texts[i] !== 'Niveau') {
                 const [subject, ni] = parseSubject(texts, i);
 
                 subjects.push(subject);
@@ -93,7 +90,7 @@ function parseSubject(texts, i)
     const marks = [];
 
     let nextMarkId = 0;
-    while (i < texts.length && (texts[i].match(MARK_REGEX) || isMarkCode(texts[i + 1]))) {
+    while (i < texts.length && (texts[i].match(MARK_REGEX) || (i + 1 < texts.length && isMarkCode(texts[i + 1])))) {
         const mark = { id: nextMarkId++ };
         if (texts[i].match(MARK_REGEX)) {
             mark.average = parseMark(texts[i++]);
@@ -103,7 +100,9 @@ function parseSubject(texts, i)
         }
 
         const markName = texts[i++];
-        if (isMarkCode(markName)) {
+
+        // This is turbo-sus, but it's the only way to handle mark names being formatted like mark codes.
+        if (isMarkCode(markName) && (texts[i + 2].match(MARK_REGEX) || (!texts[i + 3].match(MARK_REGEX) && !isMarkCode(texts[i + 3]) && texts[i + 3] !== 'Note'))) {
             mark.name = 'Note';
         } else {
             mark.name = markName;
