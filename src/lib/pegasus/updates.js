@@ -14,21 +14,8 @@ export function getUpdates(filters, marks)
         return [];
     }
 
-    let hasAnyMark = false;
-    main:
-    for (const module of marks) {
-        for (const subject of module.subjects) {
-            for (const mark of subject.marks) {
-                if (mark.value !== undefined) {
-                    hasAnyMark = true;
-                    break main;
-                }
-            }
-        }
-    }
-
-    // Just in case the bug where Pegasus returns no marks happens twice (happened to me once)
-    if (!hasAnyMark) {
+    // Just in case the bug where Pegasus returns marks with no values happens (pretty frequent actually)
+    if (marks.every(m => m.subjects.every(s => s.marks.every(m => m.value === undefined)))) {
         return [];
     }
 

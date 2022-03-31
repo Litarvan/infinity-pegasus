@@ -21,7 +21,7 @@ export async function getMarksFilters()
     return [year, semester];
 }
 
-export async function getMarks(filters, wasSus)
+export async function getMarks(filters)
 {
     const blob = await fetchMarksPDF(filters);
 
@@ -35,24 +35,6 @@ export async function getMarks(filters, wasSus)
 
     for (let i = 1; i <= doc.numPages; i++) {
         await parsePage(await doc.getPage(i), result);
-    }
-
-    // Sometimes, Pegasus produces a PDF with no marks (except for averages), if this happens, we'll try again (only once).
-    let hasAnyMark = false;
-    main:
-    for (const module of result) {
-        for (const subject of module.subjects) {
-            for (const mark of subject.marks) {
-                if (mark.value !== undefined) {
-                    hasAnyMark = true;
-                    break main;
-                }
-            }
-        }
-    }
-    if (!hasAnyMark && !wasSus) {
-        console.warn('No marks detected, fetching again');
-        return getMarks(filters, true);
     }
 
     return result;
