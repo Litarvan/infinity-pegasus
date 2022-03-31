@@ -9,7 +9,6 @@ export function title(page) {
 }
 
 // TODO: Coefficients
-// TODO: Progression
 // TODO: Moyenne du module ?
 // TODO: Modal pour les conditions d'utilisation
 // TODO: Indiquer qu'on peut activer/désactiver l'extension via l'icône en haut à droite

@@ -4,6 +4,7 @@
     import { quadIn, quadOut } from 'svelte/easing';
 
     import { title } from '/app';
+    import { progress } from '/lib/stores';
     import { getMarks, getMarksFilters } from '/lib/pegasus/marks';
     import { getUpdates } from '/lib/pegasus/updates';
     import { downloadDocument, MARKS_DOCUMENT, REPORT_DOCUMENT, YEAR_FILTER, SEMESTER_FILTER } from '/lib/pegasus/documents';
@@ -136,7 +137,7 @@
     {#if $state === 'A'}
         <div class="loading" transition:fade={{ duration: 150, easing: quadOut }} on:outroend={outro}>
             <Spinner />
-            <div class="subtitle">Chargement des notes...</div>
+            <div class="subtitle">{$progress}...</div>
         </div>
     {/if}
     {#if $state === 'B'}

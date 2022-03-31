@@ -1,3 +1,4 @@
+import { progress } from '../stores';
 import { getDocuments, MARKS_DOCUMENT } from './documents';
 
 const MODULE_REGEX = /(((.*) - )|(\[(.*)] ))?(.*) \[ *(.*) ECTS]/;
@@ -22,6 +23,8 @@ export async function getMarksFilters()
 export async function getMarks(filters, wasSus)
 {
     const blob = await fetchMarksPDF(filters);
+
+    progress.set("Lecture du relevé");
 
     const pdfjs = window['pdfjs-dist/build/pdf'];
     pdfjs.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.11.338/pdf.worker.min.js';
@@ -56,6 +59,8 @@ export async function getMarks(filters, wasSus)
 async function fetchMarksPDF(filters)
 {
     const marks = await getMarksDocument();
+
+    progress.set("Récupération du relevé de notes");
     return marks.fetchBlob(filters);
 }
 

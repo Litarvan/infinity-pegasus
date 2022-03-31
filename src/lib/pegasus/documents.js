@@ -1,4 +1,5 @@
-import { fetchHtml } from './index.js';
+import { progress } from '../stores';
+import { fetchHtml } from './index';
 
 export const MARKS_DOCUMENT = 'Relevé de notes';
 export const REPORT_DOCUMENT = 'Bulletin de notes';
@@ -12,6 +13,8 @@ export async function getDocuments()
     if (documents) {
         return documents;
     }
+
+    progress.set("Listage des documents");
 
     const result = [];
 
@@ -53,6 +56,8 @@ async function getFilters(document)
     if (document.__filters) {
         return document.__filters;
     }
+
+    progress.set("Listage des filtres");
 
     const filters = [];
 

@@ -1,6 +1,7 @@
 import { writable } from 'svelte/store';
 
 export const justLoggedOut = writable(hasJustLoggedOut());
+export const progress = writable("Chargement");
 
 function hasJustLoggedOut()
 {
