@@ -83,6 +83,25 @@
         return value.toFixed(2).replace('.', ',');
     }
 
+    function color(value)
+    {
+        const yellow = [255, 206, 40];
+        const min = value >= 10 ? yellow : [227, 14, 14];
+        const max = value < 10 ? yellow : [68, 183, 50];
+
+        if (value >= 10) {
+            value -= 10;
+        }
+
+        let result = '#';
+        for (let i = 0; i < 3; i++) {
+            result += Math.round(min[i] + (max[i] - min[i]) * (value / 10)).toString(16).padStart(2, '0');
+        }
+
+        console.log(result);
+        return result;
+    }
+
     function getSignForUpdate(type, value, old)
     {
         switch (type) {
@@ -203,7 +222,7 @@
                         <div class="info">
                             <div class="id">{subject.id}</div>
                             <div class="name">{subject.name}</div>
-                            <div class="average"><span class="value" class:good={getAverage(subject) >= 10} class:bad={getAverage(subject) < 10}>{format(getAverage(subject))}</span>&nbsp;/ 20</div>
+                            <div class="average"><span class="value" style:color={color(getAverage(subject))}>{format(getAverage(subject))}</span>&nbsp;/ 20</div>
                             <div class="class-average">(moyenne: {format(getClassAverage(subject))})</div>
                         </div>
 
@@ -215,7 +234,7 @@
                                     <div class="mark">
                                         <div class="point"></div>
                                         <div class="name">{mark.name}</div>&nbsp;:&nbsp;
-                                        <div class="value"><span class="itself" class:good={mark.value >= 10} class:bad={mark.value < 10}>{format(mark.value)}</span>&nbsp;/ 20</div>
+                                        <div class="value"><span class="itself" style:color={color(mark.value)}>{format(mark.value)}</span>&nbsp;/ 20</div>
                                         <div class="average">(moyenne: {format(mark.average)})</div>
                                     </div>
                                 {/each}
