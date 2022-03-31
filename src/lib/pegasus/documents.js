@@ -2,6 +2,8 @@ import { fetchHtml } from './index.js';
 
 export const MARKS_DOCUMENT = 'Relevé de notes';
 export const REPORT_DOCUMENT = 'Bulletin de notes';
+export const YEAR_FILTER = 'PARAM_annee';
+export const SEMESTER_FILTER = 'PARAM_produit';
 
 let documents;
 
@@ -61,17 +63,35 @@ async function getFilters(document)
             parent = parent.parentElement;
         }
 
+        // TODO: Constants
+        let values = [];
+        if (select.id === SEMESTER_FILTER) {
+            const year = filters.find(f => f.id === YEAR_FILTER);
+
+            for (const { value } of year.values) {
+                const subSelect = await fetchHtml('editions', 'get-report-semesters', { annee: value });
+                values.push(...getValues(subSelect).map(v => ({ ...v, year: value })));
+            }
+        } else {
+            values = getValues(select);
+        }
+
         filters.push({
             id: select.id,
             name: parent.previousElementSibling.querySelector('label').innerText.replace(':', '').trim(),
-            values: [...select.querySelectorAll('option')].map(({ value, innerText }) => ({
-                name: innerText.replaceAll(/([( ]) /g, '$1'),
-                value
-            })).reverse()
+            values
         });
     }
 
     return document.__filters = filters;
+}
+
+function getValues(select)
+{
+    return [...select.querySelectorAll('option')].map(({ value, innerText }) => ({
+        name: innerText.replaceAll(/([( ]) /g, '$1'),
+        value
+    })).reverse();
 }
 
 async function getBlob(document, filters = {})

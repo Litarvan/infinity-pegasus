@@ -11,7 +11,12 @@ async function getMarksDocument()
 
 export async function getMarksFilters()
 {
-    return getMarksDocument().then(d => d.fetchFilters());
+    // S[1-3] reports PDFs sucks A LOT, can't be parsed, and takes a ton of time to fetch, so I filter them out.
+    const [year, semester] = await getMarksDocument().then(d => d.fetchFilters());
+    semester.values = semester.values.filter(v => !v.name.includes('Prépa'));
+    year.values = year.values.filter(v => semester.values.find(vv => vv.year === v.value));
+
+    return [year, semester];
 }
 
 export async function getMarks(filters, wasSus)

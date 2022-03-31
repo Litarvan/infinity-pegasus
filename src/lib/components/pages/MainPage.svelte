@@ -6,7 +6,7 @@
     import { title } from '/app';
     import { getMarks, getMarksFilters } from '/lib/pegasus/marks';
     import { getUpdates } from '/lib/pegasus/updates';
-    import { downloadDocument, MARKS_DOCUMENT, REPORT_DOCUMENT } from '/lib/pegasus/documents';
+    import { downloadDocument, MARKS_DOCUMENT, REPORT_DOCUMENT, YEAR_FILTER, SEMESTER_FILTER } from '/lib/pegasus/documents';
     import swapper from '/lib/ui/swapper';
 
     import ComboBox from '../ComboBox.svelte';
@@ -40,7 +40,7 @@
     {
         filters = await getMarksFilters();
         filtersValues = {
-            ...Object.fromEntries(filters.map(f => [f.id, (f.values.find(v => v.name === '2021' || v.name.includes('STAGE')) || f.values[0]).value])), // TODO ...
+            ...Object.fromEntries(filters.map(f => [f.id, (f.id === SEMESTER_FILTER ? (f.values.find(v => v.name.includes('STAGE')) || f.values.at(-2)) : f.values.at(-1)).value])), // TODO: ...
             ...JSON.parse(localStorage.filters || '{}')
         };
 
@@ -57,8 +57,12 @@
 
     function updateFilter(id, value)
     {
-        // TODO: Clean filters transfer
         filtersValues[id] = value;
+        if (id === YEAR_FILTER) {
+            filtersValues[SEMESTER_FILTER] = null;
+            return;
+        }
+
         localStorage.filters = JSON.stringify(filtersValues);
 
         toggle();
@@ -139,7 +143,9 @@
         <div class="content" transition:fade={{ duration: 150, easing: quadIn }} on:outroend={outro}>
             <div class="filters">
                 {#each filters as { name, id, values }}
-                    <ComboBox {name} {values} value={filtersValues[id]} on:update={e => updateFilter(id, e.detail.value)} />
+                    <!-- Sucks a bit, but well... -->
+                    {@const choices = values.filter(v => id !== SEMESTER_FILTER || v.year === filtersValues[YEAR_FILTER])}
+                    <ComboBox {name} values={choices} value={filtersValues[id]} on:update={e => updateFilter(id, e.detail.value)} />
                 {/each}
             </div>
 
