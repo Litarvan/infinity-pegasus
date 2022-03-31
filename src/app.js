@@ -8,7 +8,8 @@ export function title(page) {
     return `${app.name} — ${page}`;
 }
 
-// TODO: Coefficients
+// TODO: Modal aucune note
+// TODO: Modal coefficents
 // TODO: Moyenne du module ?
 // TODO: Modal pour les conditions d'utilisation
 // TODO: Indiquer qu'on peut activer/désactiver l'extension via l'icône en haut à droite

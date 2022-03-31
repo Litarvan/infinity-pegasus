@@ -1,4 +1,5 @@
 import { progress } from '../stores';
+
 import { getDocuments, MARKS_DOCUMENT } from './documents';
 
 const MODULE_REGEX = /(((.*) - )|(\[(.*)] ))?(.*) \[ *(.*) ECTS]/;
@@ -50,6 +51,7 @@ export async function getMarks(filters, wasSus)
         }
     }
     if (!hasAnyMark && !wasSus) {
+        console.warn('No marks detected, fetching again');
         return getMarks(filters, true);
     }
 
@@ -102,7 +104,7 @@ function parseSubject(texts, i)
     while (i < texts.length && (texts[i].match(MARK_REGEX) || (i + 1 < texts.length && isMarkCode(texts[i + 1])))) {
         const mark = { id: nextMarkId++ };
         if (texts[i].match(MARK_REGEX)) {
-            mark.average = parseMark(texts[i++]);
+            mark.classAverage = parseMark(texts[i++]);
         }
         if (texts[i].match(MARK_REGEX)) {
             mark.value = parseMark(texts[i++]);

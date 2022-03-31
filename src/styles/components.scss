@@ -45,10 +45,20 @@ button, a, .clickable {
 }
 
 .point {
-    width: 10px;
-    height: 10px;
+    width: 8px;
+    height: 8px;
 
     background-color: #D5D9DC;
 
     border-radius: 50%;
+
+    &.big {
+        width: 10px;
+        height: 10px;
+    }
+
+    &.small {
+        width: 6px;
+        height: 6px;
+    }
 }

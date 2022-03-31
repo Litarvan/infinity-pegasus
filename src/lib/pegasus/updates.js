@@ -14,6 +14,24 @@ export function getUpdates(filters, marks)
         return [];
     }
 
+    let hasAnyMark = false;
+    main:
+    for (const module of marks) {
+        for (const subject of module.subjects) {
+            for (const mark of subject.marks) {
+                if (mark.value !== undefined) {
+                    hasAnyMark = true;
+                    break main;
+                }
+            }
+        }
+    }
+
+    // Just in case the bug where Pegasus returns no marks happens twice (happened to me once)
+    if (!hasAnyMark) {
+        return [];
+    }
+
     let result = updates[key] || [];
     for (const module of marks) {
         const otherModule = previous.find(m => m.name === module.name);
@@ -33,7 +51,7 @@ export function getUpdates(filters, marks)
             {
                 const existing = result.find(u => u.subject === subject.id && u.id === id && u.name === name);
 
-                if (existing) {
+                if (existing && !(existing.type === 'average-update' || type === 'average-update')) {
                     existing.type = type;
                     existing.date = new Date();
                     existing.value = value;
@@ -51,14 +69,14 @@ export function getUpdates(filters, marks)
                 }
             }
 
-            for (const { id, name, value, average } of subject.marks) {
+            for (const { id, name, value, classAverage } of subject.marks) {
                 const otherMark = otherSubject.marks.find(m => m.id === id && m.name === name);
                 if (!otherMark) {
                     pushUpdate('add', id, name, value);
                 } else if (otherMark.value !== value) {
-                    pushUpdate('update', id, name, value, otherMark.value);
-                } else if (otherMark.average !== average) {
-                    pushUpdate('average-update', id, name, average, otherMark.average);
+                    pushUpdate(otherMark.value === undefined ? 'remove' : 'update', id, name, value, otherMark.value);
+                } else if (otherMark.classAverage !== classAverage) {
+                    pushUpdate('average-update', id, name, classAverage, otherMark.average);
                 }
             }
 
@@ -66,7 +84,7 @@ export function getUpdates(filters, marks)
                 const otherMark = subject.marks.find(m => m.name === mark.name);
                 if (!otherMark) {
                     // TODO: Save deleted marks
-                    pushUpdate('remove', mark.name, undefined, mark.value);
+                    pushUpdate('remove', mark.id, mark.name, undefined, mark.value);
                 }
             }
         }

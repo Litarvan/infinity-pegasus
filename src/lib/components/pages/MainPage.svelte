@@ -7,6 +7,7 @@
     import { progress } from '/lib/stores';
     import { getMarks, getMarksFilters } from '/lib/pegasus/marks';
     import { getUpdates } from '/lib/pegasus/updates';
+    import { computeAverages } from '/lib/pegasus/coefficients';
     import { downloadDocument, MARKS_DOCUMENT, REPORT_DOCUMENT, YEAR_FILTER, SEMESTER_FILTER } from '/lib/pegasus/documents';
     import swapper from '/lib/ui/swapper';
 
@@ -27,6 +28,7 @@
     ];
 
     let marks;
+    let averages;
     let filters;
     let filtersValues;
     let updates;
@@ -52,6 +54,10 @@
     {
         marks = await getMarks(filtersValues);
         updates = await getUpdates(filtersValues, marks);
+
+        averages = computeAverages(filtersValues, marks);
+
+        console.log(marks);
 
         toggle();
     }
@@ -85,6 +91,10 @@
 
     function color(value)
     {
+        if (value === null) {
+            return 'auto';
+        }
+
         const yellow = [255, 206, 40];
         const min = value >= 10 ? yellow : [227, 14, 14];
         const max = value < 10 ? yellow : [68, 183, 50];
@@ -98,7 +108,6 @@
             result += Math.round(min[i] + (max[i] - min[i]) * (value / 10)).toString(16).padStart(2, '0');
         }
 
-        console.log(result);
         return result;
     }
 
@@ -131,20 +140,9 @@
         });
     }
 
-    function getAverage(subject)
+    function hasEqualCoefficients(subject)
     {
-        let sum = 0;
-        subject.marks.forEach(m => sum += m.value || 0);
-
-        return sum / subject.marks.map(m => m.value).filter(v => v !== null && v !== undefined).length;
-    }
-
-    function getClassAverage(subject)
-    {
-        let sum = 0;
-        subject.marks.forEach(m => sum += m.average || 0);
-
-        return sum / subject.marks.map(m => m.average).filter(v => v !== null && v !== undefined).length;
+        return subject.marks.every(m => m.coefficient === subject.marks[0].coefficient);
     }
 </script>
 
@@ -181,7 +179,7 @@
             <div class="updates">
                 {#each updates as { type, subject, name, value, old }}
                     <div class="update">
-                        <div class="point"></div>
+                        <div class="point big"></div>
                         <div class="id">{subject}</div>
                         <div class="name">{name} ·&nbsp;<span class="target">{#if type.includes('average')}Moyenne{:else}Note{/if}</span></div>
                         <div class="mark">
@@ -198,12 +196,27 @@
             </div>
 
             <div class="header">
+                Moyennes
+                <hr />
+            </div>
+            <div class="big-list">
+                {#each Object.entries(averages) as [name, average], i}
+                    <div class="entry">
+                        <div class="point"></div>
+                        <div class="name">{name}</div>
+                        <div class="point small"></div>
+                        <div class="mark"><span class="value" style:color={i === 0 ? color(average) : 'auto'}>{format(average)}</span>&nbsp;/ 20</div>
+                    </div>
+                {/each}
+            </div>
+
+            <div class="header">
                 Documents
                 <hr />
             </div>
-            <div class="documents" class:downloading>
+            <div class="big-list" class:downloading>
                 {#each documents as doc}
-                    <div class="document" class:clickable={!downloading} on:click={() => download(doc)}>
+                    <div class="entry" class:clickable={!downloading} on:click={() => download(doc)}>
                         <div class="point"></div>
                         <div class="name">{doc}</div>
                         <img class="arrow" src={ExternalArrow} alt={doc} />
@@ -222,8 +235,8 @@
                         <div class="info">
                             <div class="id">{subject.id}</div>
                             <div class="name">{subject.name}</div>
-                            <div class="average"><span class="value" style:color={color(getAverage(subject))}>{format(getAverage(subject))}</span>&nbsp;/ 20</div>
-                            <div class="class-average">(moyenne: {format(getClassAverage(subject))})</div>
+                            <div class="average"><span class="value" style:color={color(subject.average)}>{format(subject.average)}</span>&nbsp;/ 20</div>
+                            <div class="class-average">(moyenne: {format(subject.classAverage)}{#if subject.coefficient !== 1}, coeff. {format(subject.coefficient)}{/if})</div>
                         </div>
 
                         {#if subject.marks.length === 0}
@@ -235,7 +248,7 @@
                                         <div class="point"></div>
                                         <div class="name">{mark.name}</div>&nbsp;:&nbsp;
                                         <div class="value"><span class="itself" style:color={color(mark.value)}>{format(mark.value)}</span>&nbsp;/ 20</div>
-                                        <div class="average">(moyenne: {format(mark.average)})</div>
+                                        <div class="average">(moyenne: {format(mark.classAverage)}{#if !hasEqualCoefficients(subject)}, compte pour {Math.round(mark.coefficient * 100)}%{/if})</div>
                                     </div>
                                 {/each}
                             </div>
@@ -347,9 +360,6 @@
                 font-weight: 500;
 
                 .point {
-                    width: 6px;
-                    height: 6px;
-
                     margin-left: 2px;
                     margin-right: 12px;
                 }
@@ -374,7 +384,7 @@
         }
     }
 
-    .documents {
+    .big-list {
         flex-direction: column;
 
         margin-bottom: 20px;
@@ -386,7 +396,7 @@
             opacity: .5;
         }
 
-        .document {
+        .entry {
             align-items: center;
 
             margin-bottom: 12px;
@@ -396,20 +406,23 @@
 
             user-select: none;
 
-            .point {
-                width: 8px;
-                height: 8px;
-            }
-
             .name {
                 margin-left: 12px;
+                margin-right: 10px;
             }
 
             .arrow {
                 height: 20px;
 
-                margin-left: 10px;
                 margin-bottom: 1px;
+            }
+
+            .mark {
+                .value {
+                    font-weight: bold;
+                }
+
+                margin-left: 10px;
             }
         }
     }
@@ -476,8 +489,7 @@
                 margin: 3px 0;
 
                 .point {
-                    width: 7px;
-                    height: 7px;
+                    margin-bottom: 1px;
 
                     background-color: #D5D9DC;
 
