@@ -231,7 +231,8 @@
                     <div class="text">
                         <div class="name">{module.name}</div>
                         <div class="point"></div>
-                        <span style:color={color(module.average)}>{format(module.average)}</span>&nbsp;/ 20
+                        <span class="average" style:color={color(module.average)}>{format(module.average)}</span>
+                        <span class="max">&nbsp;/ 20</span>
                         <span class="class-average">(promo: {format(module.classAverage)})</span>
                     </div>
                     <hr />
@@ -454,15 +455,20 @@
     .module {
         margin-top: 50px;
 
+        &, &.text {
+            max-width: 100%;
+        }
+
         .name {
             display: inline-block;
-
-            // Sucks, but it's the only way I found :/
-            max-width: 600px;
 
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
+        }
+
+        .name, .average, .class-average, .max {
+            white-space: nowrap;
         }
 
         .class-average {
@@ -475,6 +481,8 @@
             align-items: center;
 
             .point {
+                flex-shrink: 0;
+
                 margin: 2px 10px 0;
             }
         }
@@ -524,6 +532,7 @@
 
         .marks {
             flex-direction: column;
+            flex-grow: 1;
 
             padding: 15px 0;
 
@@ -541,7 +550,15 @@
                 }
 
                 .name {
+                    display: inline-block;
+
+                    max-width: calc(100% - 400px);
+
                     margin-left: 15px;
+
+                    white-space: nowrap;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
                 }
 
                 .value {
@@ -566,5 +583,9 @@
         width: 100%;
 
         font-size: 28px;
+    }
+
+    @media (max-width: 1200px) {
+        // max-width: calc(100% - 400px);
     }
 </style>
