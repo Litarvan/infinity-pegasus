@@ -229,7 +229,7 @@
             {#each marks as module}
                 <div class="header module">
                     <div class="text">
-                        {module.name}
+                        <div class="name">{module.name}</div>
                         <div class="point"></div>
                         <span style:color={color(module.average)}>{format(module.average)}</span>&nbsp;/ 20
                         <span class="class-average">(promo: {format(module.classAverage)})</span>
@@ -453,6 +453,17 @@
 
     .module {
         margin-top: 50px;
+
+        .name {
+            display: inline-block;
+
+            // Sucks, but it's the only way I found :/
+            max-width: 650px;
+
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
 
         .class-average {
             margin-left: 10px;
