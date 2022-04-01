@@ -9,7 +9,7 @@ export function title(page) {
 }
 
 // TODO: Modal aucune note
-// TODO: Modal coefficents
 // TODO: Modal d'erreur
+// TODO: README (y compris dans le dossier des coefficients)
 
 // TODO: Vite fait improve le design (mettre en grand si ya qu'une note ?) (tout réduire ?)

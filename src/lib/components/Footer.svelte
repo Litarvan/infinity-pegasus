@@ -4,7 +4,7 @@
     import Link from './Link.svelte';
 
     const links = [
-        { label: 'Coefficients' },
+        { label: 'Coefficients', to: `${app.repository}/tree/master/src/lib/pegasus/coefficients` },
         { label: 'Sources (GitHub)', to: app.repository }
     ];
 </script>

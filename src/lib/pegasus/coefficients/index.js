@@ -7,6 +7,8 @@ const S5_2024 = Symbol('S5 (2024)');
 const S6_2024 = Symbol('S6 (2024)');
 
 const coefficients = {
+    [S5_2023]: (await import('./s5_2023')).default,
+    [S6_2023]: (await import('./s6_2023')).default,
     [S5_2024]: (await import('./s5_2024')).default,
     [S6_2024]: (await import('./s6_2024')).default
 };

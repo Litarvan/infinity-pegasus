@@ -2,7 +2,12 @@ import { progress } from '../stores';
 
 import { getDocuments, MARKS_DOCUMENT } from './documents';
 
-const MODULE_REGEX = /(((.*) - )|(\[(.*)] ))?(.*) \[ *(.*) ECTS]/;
+// Supports :
+// - 'ID - Module name [X ECTS]'
+// - '[ID] Module name [X ECTS]'
+// - 'ID Module name [X ECTS]'
+// - 'ID_Module name [X ECTS]'
+const MODULE_REGEX = /(((.*) - )|(\[(.*)] )|(([A-Z1-9]+)_? ))?(.*) \[ *(.*) ECTS]/;
 const MARK_REGEX = /\d+,\d\d/g;
 
 async function getMarksDocument()
@@ -61,7 +66,8 @@ async function parsePage(page, result)
         }
 
         while (i < texts.length && texts[i].match(MODULE_REGEX)) {
-            const [,,, id,, idBrackets, name, credits] = texts[i++].match(MODULE_REGEX);
+            const [,,, id,, idBrackets,, idAlone, name, credits] = texts[i++].match(MODULE_REGEX);
+            console.log(texts[i - 1].match(MODULE_REGEX));
             const subjects = [];
 
             while (i < texts.length && texts[i] !== 'Niveau') {
@@ -71,7 +77,7 @@ async function parsePage(page, result)
                 i = ni;
             }
 
-            result.push({ id: id || idBrackets, name, credits: parseFloat(credits), subjects })
+            result.push({ id: id || idBrackets || idAlone, name, credits: parseFloat(credits), subjects })
         }
     }
 }
