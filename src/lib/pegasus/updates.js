@@ -63,7 +63,7 @@ export function getUpdates(filters, marks)
                 } else if (otherMark.value !== value) {
                     pushUpdate(otherMark.value === undefined ? 'remove' : 'update', id, name, value, otherMark.value);
                 } else if (otherMark.classAverage !== classAverage) {
-                    pushUpdate('average-update', id, name, classAverage, otherMark.average);
+                    pushUpdate('average-update', id, name, classAverage, otherMark.classAverage);
                 }
             }
 

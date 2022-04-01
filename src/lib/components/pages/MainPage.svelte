@@ -459,16 +459,25 @@
             max-width: 100%;
         }
 
-        .name {
-            display: inline-block;
-
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
+        .text {
+            align-items: center;
         }
 
         .name, .average, .class-average, .max {
             white-space: nowrap;
+        }
+
+        .name {
+            display: inline-block;
+
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .point {
+            flex-shrink: 0;
+
+            margin: 2px 10px 0;
         }
 
         .class-average {
@@ -476,19 +485,11 @@
 
             font-weight: normal;
         }
-
-        .text {
-            align-items: center;
-
-            .point {
-                flex-shrink: 0;
-
-                margin: 2px 10px 0;
-            }
-        }
     }
 
     .subject {
+        $info-size: 250px;
+
         width: 100%;
 
         margin: 15px 0;
@@ -498,7 +499,7 @@
             align-items: center;
             flex-shrink: 0;
 
-            width: 250px;
+            width: $info-size;
 
             padding-top: 15px;
             padding-bottom: 17px;
@@ -534,10 +535,14 @@
             flex-direction: column;
             flex-grow: 1;
 
+            max-width: calc(100% - #{$info-size} - 25px);
+
             padding: 15px 0;
 
             .mark {
                 align-items: center;
+
+                max-width: 100%;
 
                 margin: 3px 0;
 
@@ -549,14 +554,15 @@
                     border-radius: 50%;
                 }
 
+                .name, .value, .class-average {
+                    white-space: nowrap;
+                }
+
                 .name {
                     display: inline-block;
 
-                    max-width: calc(100% - 400px);
-
                     margin-left: 15px;
 
-                    white-space: nowrap;
                     overflow: hidden;
                     text-overflow: ellipsis;
                 }
