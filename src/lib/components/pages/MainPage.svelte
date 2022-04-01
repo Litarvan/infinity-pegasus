@@ -181,7 +181,7 @@
                     <div class="update">
                         <div class="point big"></div>
                         <div class="id">{subject}</div>
-                        <div class="name">{name} ·&nbsp;<span class="target">{#if type.includes('average')}Moyenne{:else}Note{/if}</span></div>
+                        <div class="name">{name} ·&nbsp;<span class="target">{#if type.includes('average')}Moyenne de promo{:else}Note{/if}</span></div>
                         <div class="mark">
                             <div class="point"></div>
                             {#if value && old}
@@ -548,14 +548,6 @@
                     font-weight: bold;
                     justify-content: flex-end;
                     width: 80px;
-
-                    .good {
-                        color: #44B728;
-                    }
-
-                    .bad {
-                        color: #E30E0E;
-                    }
                 }
 
                 .class-average {
