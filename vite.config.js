@@ -24,6 +24,7 @@ export default defineConfig({
         }
     },
     build: {
+        target: ['chrome89', 'firefox89', 'esnext'],
         rollupOptions: {
             output: {
                 entryFileNames: `assets/[name].js`,
