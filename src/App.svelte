@@ -35,7 +35,7 @@ Cliquez à nouveau pour la ré-activer.`,
                 button: 'Compris.',
 
                 top: 50,
-                right: 50,
+                right: window.chrome ? 107 : 49,
                 width: 350,
 
                 arrow: true
@@ -63,7 +63,7 @@ Cliquez à nouveau pour la ré-activer.`,
 {#if $modal}
     <div id="modal" transition:fade={{ duration: 200, easing: quadInOut }} class:center={$modal.center} on:click={onModalClick}>
         {#if $modal.arrow}
-            <div class="arrow">
+            <div class="arrow" style:right={$modal.right + 'px'}>
                 {@html UpArrow}
             </div>
         {/if}
