@@ -458,7 +458,7 @@
             display: inline-block;
 
             // Sucks, but it's the only way I found :/
-            max-width: 650px;
+            max-width: 600px;
 
             white-space: nowrap;
             overflow: hidden;
