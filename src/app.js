@@ -9,6 +9,6 @@ export function title(page) {
 }
 
 // TODO: Supprimer les console.log
-// TODO: README (y compris dans le dossier des coefficients)
+// TODO: README
 
 // TODO: Vite fait improve le design (mettre en grand si ya qu'une note ?) (tout réduire ?)
