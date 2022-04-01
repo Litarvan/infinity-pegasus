@@ -225,8 +225,13 @@
             </div>
 
             {#each marks as module}
-                <div class="header">
-                    {module.name}
+                <div class="header module">
+                    <div class="text">
+                        {module.name}
+                        <div class="point"></div>
+                        <span style:color={color(module.average)}>{format(module.average)}</span>&nbsp;/ 20
+                        <span class="class-average">(promo: {format(module.classAverage)})</span>
+                    </div>
                     <hr />
                 </div>
 
@@ -236,7 +241,7 @@
                             <div class="id">{subject.id}</div>
                             <div class="name">{subject.name}</div>
                             <div class="average"><span class="value" style:color={color(subject.average)}>{format(subject.average)}</span>&nbsp;/ 20</div>
-                            <div class="class-average">(moyenne: {format(subject.classAverage)}{#if subject.coefficient !== 1}, coeff. {format(subject.coefficient)}{/if})</div>
+                            <div class="class-average">(promo: {format(subject.classAverage)}{#if subject.coefficient !== 1}, coeff. {format(subject.coefficient)}{/if})</div>
                         </div>
 
                         {#if subject.marks.length === 0}
@@ -248,7 +253,7 @@
                                         <div class="point"></div>
                                         <div class="name">{mark.name}</div>&nbsp;:&nbsp;
                                         <div class="value"><span class="itself" style:color={color(mark.value)}>{format(mark.value)}</span>&nbsp;/ 20</div>
-                                        <div class="average">(moyenne: {format(mark.classAverage)}{#if !hasEqualCoefficients(subject)}, compte pour {Math.round(mark.coefficient * 100)}%{/if})</div>
+                                        <div class="class-average">(promo: {format(mark.classAverage)}{#if !hasEqualCoefficients(subject)}, compte pour {Math.round(mark.coefficient * 100)}%{/if})</div>
                                     </div>
                                 {/each}
                             </div>
@@ -404,7 +409,9 @@
 
             font-size: 21px;
 
-            user-select: none;
+            &.clickable {
+                user-select: none;
+            }
 
             .name {
                 margin-left: 12px;
@@ -427,9 +434,32 @@
         }
     }
 
+    .class-average {
+        color: #909090;
+    }
+
+    .module {
+        margin-top: 50px;
+
+        .class-average {
+            margin-left: 10px;
+
+            font-weight: normal;
+        }
+
+        .text {
+            align-items: center;
+
+            .point {
+                margin: 2px 10px 0;
+            }
+        }
+    }
+
     .subject {
         width: 100%;
-        margin-bottom: 25px;
+
+        margin: 15px 0;
 
         .info {
             flex-direction: column;
@@ -447,10 +477,9 @@
             }
 
             .name {
-                font-size: 14px;
-
                 padding: 0 10px;
 
+                font-size: 14px;
                 text-align: center;
             }
 
@@ -461,20 +490,11 @@
 
                 .value {
                     font-weight: bold;
-
-                    &.good {
-                        color: #44B728;
-                    }
-
-                    &.bad {
-                        color: #E30E0E;
-                    }
                 }
             }
 
             .class-average {
                 font-size: 14px;
-                color: #909090;
             }
         }
 
@@ -514,10 +534,7 @@
                     }
                 }
 
-                .average {
-                    color: #909090;
-                    font-style: italic;
-
+                .class-average {
                     margin-left: 10px;
                 }
             }
@@ -525,11 +542,12 @@
     }
 
     .no-marks {
-        width: 100%;
         flex-grow: 1;
 
         justify-content: center;
         align-items: center;
+
+        width: 100%;
 
         font-size: 28px;
     }

@@ -37,7 +37,7 @@ export function computeAverages(filters, marks)
             for (const mark of subject.marks) {
                 let coefficient = 1;
                 for (const [regex, value] of Object.entries(subjectCoefficients)) {
-                    if (new RegExp(regex).test(mark.name || mark.id)) {
+                    if (new RegExp(regex).test(regex.match(/^[0-9]+$/g) ? mark.id : mark.name)) {
                         coefficient = value;
                         break;
                     }
