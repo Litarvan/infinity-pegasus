@@ -8,7 +8,7 @@
     import MainPage from './lib/components/pages/MainPage.svelte';
 
     import { getLogoutURL, getName, isLogged } from './lib/pegasus/auth';
-    import { justLoggedOut } from './lib/stores';
+    import { justLoggedOut, modal } from './lib/stores';
 
     import Background from './lib/components/Background.svelte';
     import Footer from './lib/components/Footer.svelte';
@@ -19,7 +19,7 @@
     import './app.scss';
 
     const name = getName();
-    let modal = false;
+    let bubbleElement;
 
     onMount(() => {
         if (localStorage.seenHelpDisable) {
@@ -27,10 +27,30 @@
         }
 
         setTimeout(() => {
-            modal = true;
+            modal.set({
+                title: 'Retourner sur Pegasus ?',
+                content: `Pour désactiver Infinity Pegasus et retourner sur le Pegasus original, cliquez simplement sur le bouton de l'extension.
+
+Cliquez à nouveau pour la ré-activer.`,
+                button: 'Compris.',
+
+                top: 50,
+                right: 50,
+                width: 350,
+
+                arrow: true
+            });
+
             setTimeout(() => localStorage.seenHelpDisable = true);
         }, 750);
     });
+
+    function onModalClick(event)
+    {
+        if (!bubbleElement.contains(event.target)) {
+            modal.set(null);
+        }
+    }
 
     function onLogout()
     {
@@ -40,18 +60,19 @@
 
 <Background />
 
-{#if modal}
-    <div id="modal" transition:fade={{ duration: 200, easing: quadInOut }}>
-        <div class="arrow">
-            {@html UpArrow}
-        </div>
-        <div class="bubble card">
-            <div class="title">Retourner sur Pegasus ?</div>
-            <div class="text">
-                Pour désactiver Infinity Pegasus et retourner sur le Pegasus original, cliquez simplement sur le bouton de l'extension.
-                Cliquez à nouveau pour la ré-activer.
+{#if $modal}
+    <div id="modal" transition:fade={{ duration: 200, easing: quadInOut }} class:center={$modal.center} on:click={onModalClick}>
+        {#if $modal.arrow}
+            <div class="arrow">
+                {@html UpArrow}
             </div>
-            <button class="ok" on:click={() => modal = false}>Compris.</button>
+        {/if}
+        <div class="bubble card" style:top={$modal.top + 'px'} style:right={$modal.right + 'px'} style:width={$modal.width + 'px'} bind:this={bubbleElement}>
+            <div class="title">{$modal.title}</div>
+            <div class="text">
+                {@html $modal.content}
+            </div>
+            <button class="ok" on:click={() => modal.set(null)}>{$modal.button}</button>
         </div>
     </div>
 {/if}
@@ -95,6 +116,15 @@
 
         background: rgba(0, 0, 0, 0.5);
 
+        &.center {
+            justify-content: center;
+            align-items: center;
+        }
+
+        &:not(.center) .bubble {
+            position: absolute;
+        }
+
         .arrow {
             position: absolute;
             top: 7px;
@@ -104,13 +134,7 @@
         }
 
         .bubble {
-            position: absolute;
-            top: 50px;
-            right: 50px;
-
             flex-direction: column;
-
-            width: 350px;
 
             padding: 15px 17px;
 
@@ -124,7 +148,10 @@
             }
 
             .text {
+                display: block;
+
                 font-size: 15px;
+                white-space: pre-wrap;
             }
 
             .ok {

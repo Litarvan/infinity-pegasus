@@ -18,10 +18,10 @@ button, a, .clickable {
     line-height: 22px;
 
     text-align: center;
+}
 
-    .link {
-        color: $color-subtext-link;
-    }
+.link.colored {
+    color: $color-subtext-link;
 }
 
 .card {
