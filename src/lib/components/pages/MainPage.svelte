@@ -224,6 +224,8 @@
                 {/each}
             </div>
 
+            <hr class="separator" />
+
             {#each marks as module}
                 <div class="header module">
                     <div class="text">
@@ -432,6 +434,17 @@
                 margin-left: 10px;
             }
         }
+    }
+
+    .separator {
+        width: 100%;
+
+        margin-top: 25px;
+
+        opacity: .3;
+
+        border-bottom: 0;
+        border-color: #FFFFFF;
     }
 
     .class-average {

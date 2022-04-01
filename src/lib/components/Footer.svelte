@@ -4,6 +4,7 @@
     import Link from './Link.svelte';
 
     const links = [
+        { label: 'Coefficients' },
         { label: 'Sources (GitHub)', to: app.repository }
     ];
 </script>
