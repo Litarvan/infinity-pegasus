@@ -8,8 +8,6 @@ export function title(page) {
     return `${app.name} — ${page}`;
 }
 
-// TODO: Modal aucune note
-// TODO: Modal d'erreur
 // TODO: Supprimer les console.log
 // TODO: README (y compris dans le dossier des coefficients)
 

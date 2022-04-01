@@ -3,8 +3,8 @@
     import { fade } from 'svelte/transition';
     import { quadIn, quadOut } from 'svelte/easing';
 
-    import { title } from '/app';
-    import { progress } from '/lib/stores';
+    import { app, title } from '/app';
+    import { modal, progress } from '/lib/stores';
     import { getMarks, getMarksFilters } from '/lib/pegasus/marks';
     import { getUpdates } from '/lib/pegasus/updates';
     import { computeAverages } from '/lib/pegasus/coefficients';
@@ -34,10 +34,24 @@
     let updates;
     let downloading = false;
 
-    onMount(() => load().catch(e => {
+    onMount(() => load().catch(handleError));
+
+    function handleError(e)
+    {
         console.error('[MainPage.svelte] Error while loading marks');
         console.error(e);
-    }));
+
+        modal.set({
+            title: 'Erreur',
+            content: `Erreur lors de la récupération des notes : ${e}
+
+Si le problème persiste, merci d'<a class="link colored" href="${app.repository}/issues" target="_blank">ouvrir une issue</a>, en y attachant le contenu de la console (CTRL + SHIFT + I, onglet 'Console').`,
+            button: 'OK',
+
+            width: 500,
+            center: true
+        });
+    }
 
     async function load()
     {
@@ -59,6 +73,18 @@
 
         console.log(marks);
 
+        if (marks.every(m => m.subjects.every(s => s.marks.every(m => m.value === undefined))) && !marks.every(m => m.subjects.every(s => s.marks.length === 0))) {
+            setTimeout(() => modal.set({
+                title: 'PegaSUS',
+                content: `Pegasus n'a retourné aucune note, ça arrive de temps en temps.\nRéessayez dans une vingtaine de secondes, ça devrait se résoudre tout seul.`,
+                button: 'Cringe :)',
+
+                width: 400,
+
+                center: true
+            }), 250);
+        }
+
         toggle();
     }
 
@@ -74,10 +100,7 @@
 
         toggle();
 
-        updateMarks().catch(e => {
-            console.error('[MainPage.svelte] Error while updating marks');
-            console.error(e);
-        });
+        updateMarks().catch(handleError);
     }
 
     function format(value)
