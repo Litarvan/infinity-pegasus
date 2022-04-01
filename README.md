@@ -13,3 +13,7 @@
 
 ## Télécharger pour [Firefox](https://addons.mozilla.org/fr/firefox/addon/infinity-pegasus/) ou [Chrome](https://chrome.google.com/webstore/detail/infinity-pegasus/khbapaojhccoiojehmnbpikcinkbgjpf?hl=fr)
 
+## Screenshots
+
+<img width="1904" alt="image" src="https://user-images.githubusercontent.com/8712146/161355165-60599c54-7eb5-47c6-905f-edc1209b1e46.png">
+<img width="1903" alt="image" src="https://user-images.githubusercontent.com/8712146/161355205-0ecfa010-df22-4e12-b2a8-57c6535cb82b.png">
