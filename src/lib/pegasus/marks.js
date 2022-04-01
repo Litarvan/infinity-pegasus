@@ -7,7 +7,7 @@ import { getDocuments, MARKS_DOCUMENT } from './documents';
 // - '[ID] Module name [X ECTS]'
 // - 'ID Module name [X ECTS]'
 // - 'ID_Module name [X ECTS]'
-const MODULE_REGEX = /(((.*) - )|(\[(.*)] )|(([A-Z1-9]+)_? ))?(.*) \[ *(.*) ECTS]/;
+const MODULE_REGEX = /(((.*) - )|(\[(.*)] )|(([A-Z1-9]+)[_ ]))?(.*) \[ *(.*) ECTS]/;
 const MARK_REGEX = /\d+,\d\d/g;
 
 async function getMarksDocument()
