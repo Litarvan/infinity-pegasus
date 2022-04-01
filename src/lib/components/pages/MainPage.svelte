@@ -75,9 +75,13 @@ Si le problème persiste, merci d'<a class="link colored" href="${app.repository
 
         if (marks.every(m => m.subjects.every(s => s.marks.every(m => m.value === undefined))) && !marks.every(m => m.subjects.every(s => s.marks.length === 0))) {
             setTimeout(() => modal.set({
-                title: 'PegaSUS',
-                content: `Pegasus n'a retourné aucune note, ça arrive de temps en temps.\nRéessayez dans une vingtaine de secondes, ça devrait se résoudre tout seul.`,
-                button: 'Cringe :)',
+                title: 'Aucune note',
+                content: `Pegasus n'a retourné aucune note.
+
+Si vous êtes en début de semestre et que vous n'avez vraiment aucune note, alors tout va bien.
+
+Sinon, il arrive que Pegasus ne retourne pas de note. Dans ce cas-là réessayez dans une vingtaine de secondes, ça devrait se résoudre tout seul.`,
+                button: 'Noté',
 
                 width: 400,
 

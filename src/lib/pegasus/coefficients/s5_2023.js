@@ -29,7 +29,7 @@ export default {
         'PPEX': {
             _subject: 3,
             'Python pour tous': 0.5,
-            'Programmation Pratique (Examens et Mini projets)': 2.5
+            'Programmation Pratique \\(Examens et Mini projets)': 2.5
         }
     },
     MCE1: {

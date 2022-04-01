@@ -41,7 +41,7 @@ export default {
 
 Les notes telles que `Sujet CC1` ou `Sujet CC2` seront coefficient 3, et les autres coefficient 2.
 
-**Attention : Il faut penser à escape les `[` s'ils ne sont pas utilisés pour écrire une range !**
+**Attention : Il faut donc penser à escape les `[` et les `(` qui font partie du nom de la note !**
 
 - Il est possible d'utiliser le nom d'un module comme clé si celui-ci n'a pas d'ID.
 - Il est possible d'utiliser le numéro d'une note (correspondant à l'ordre dans le relevé) comme clé si plusieurs notes
