@@ -46,7 +46,7 @@
             content: `Erreur lors de la récupération des notes : ${e}
 
 Si le problème persiste, merci d'<a class="link colored" href="${app.repository}/issues" target="_blank">ouvrir une issue</a>, en y attachant le contenu de la console (CTRL + SHIFT + I, onglet 'Console').`,
-            button: 'OK',
+            button: 'Cringe :)',
 
             width: 500,
             center: true
@@ -70,8 +70,6 @@ Si le problème persiste, merci d'<a class="link colored" href="${app.repository
         updates = await getUpdates(filtersValues, marks);
 
         averages = computeAverages(filtersValues, marks);
-
-        console.log(marks);
 
         if (marks.every(m => m.subjects.every(s => s.marks.every(m => m.value === undefined))) && !marks.every(m => m.subjects.every(s => s.marks.length === 0))) {
             setTimeout(() => modal.set({
@@ -616,9 +614,5 @@ Sinon, il arrive que Pegasus ne retourne pas de note. Dans ce cas-là réessayez
         width: 100%;
 
         font-size: 28px;
-    }
-
-    @media (max-width: 1200px) {
-        // max-width: calc(100% - 400px);
     }
 </style>

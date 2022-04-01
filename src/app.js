@@ -8,7 +8,4 @@ export function title(page) {
     return `${app.name} — ${page}`;
 }
 
-// TODO: Supprimer les console.log
-// TODO: README
-
 // TODO: Vite fait improve le design (mettre en grand si ya qu'une note ?) (tout réduire ?)

@@ -67,7 +67,6 @@ async function parsePage(page, result)
 
         while (i < texts.length && texts[i].match(MODULE_REGEX)) {
             const [,,, id,, idBrackets,, idAlone, name, credits] = texts[i++].match(MODULE_REGEX);
-            console.log(texts[i - 1].match(MODULE_REGEX));
             const subjects = [];
 
             while (i < texts.length && texts[i] !== 'Niveau') {
