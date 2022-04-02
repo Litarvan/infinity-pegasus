@@ -478,11 +478,9 @@ Sinon, il arrive que Pegasus ne retourne pas de note. Dans ce cas-là réessayez
     }
 
     .module {
-        margin-top: 50px;
+        max-width: 100%;
 
-        &, &.text {
-            max-width: 100%;
-        }
+        margin-top: 50px;
 
         .text {
             align-items: center;

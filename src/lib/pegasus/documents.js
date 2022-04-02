@@ -48,7 +48,19 @@ export async function downloadDocument(doc, filters)
     const documents = await getDocuments();
     const blob = await getBlob(documents.find(d => d.name === doc), filters);
 
-    open(URL.createObjectURL(blob), '_blank');
+    // TODO: Find a better way
+    if (localStorage.download) {
+        const d = new Date();
+        const f = x => x.toString().padStart(2, '0');
+
+        const link = document.createElement('a');
+        link.href = URL.createObjectURL(blob);
+        link.target = '_blank';
+        link.download = `${doc.split(' ')[0]}_${d.getFullYear()}${f(d.getMonth() + 1)}${f(d.getDate())}_${f(d.getHours())}${f(d.getMinutes())}${f(d.getSeconds())}.pdf`;
+        link.click();
+    } else {
+        open(URL.createObjectURL(blob), '_blank');
+    }
 }
 
 async function getFilters(document)
