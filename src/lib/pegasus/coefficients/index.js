@@ -57,14 +57,14 @@ export function computeAverages(filters, marks)
             }
 
             subject.coefficient = subjectCoefficients._subject || 1;
-            subject.average = (totalSubjectMarks / totalSubjectCoefficient) || null;
-            subject.classAverage = (totalSubjectClassAverages / totalSubjectCoefficient) || null;
+            subject.average = filterNaN(totalSubjectMarks / totalSubjectCoefficient);
+            subject.classAverage = filterNaN(totalSubjectClassAverages / totalSubjectCoefficient);
 
-            if (subject.average) {
+            if (subject.average != null) {
                 totalModuleMarks += subject.average * subject.coefficient;
                 totalModuleCoefficient += subject.coefficient;
             }
-            if (subject.classAverage) {
+            if (subject.classAverage != null) {
                 totalModuleClassAverages += subject.classAverage * subject.coefficient;
                 totalModuleClassCoefficient += subject.coefficient;
             }
@@ -75,14 +75,14 @@ export function computeAverages(filters, marks)
             subject.coefficient /= minCoefficient;
         }
 
-        module.average = (totalModuleMarks / totalModuleCoefficient) || null;
-        module.classAverage = (totalModuleClassAverages / totalModuleClassCoefficient) || null;
+        module.average = filterNaN(totalModuleMarks / totalModuleCoefficient);
+        module.classAverage = filterNaN(totalModuleClassAverages / totalModuleClassCoefficient);
 
-        if (module.average) {
+        if (module.average !== null) {
             totalMarks += module.average * module.credits;
             totalCredits += module.credits;
         }
-        if (module.classAverage) {
+        if (module.classAverage != null) {
             totalClassMarks += module.classAverage * module.credits;
             totalClassCredits += module.credits;
         }
@@ -119,4 +119,9 @@ function getCoefficients(filters)
             }
             break;
     }
+}
+
+function filterNaN(value)
+{
+    return !isNaN(value) ? value : null;
 }
