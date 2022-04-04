@@ -9,7 +9,7 @@
     let background;
 
     onMount(() => {
-        const nvg = new NoisyVerticalGradient(50, 1080, ['#343D55', '#0e1016']);
+        const nvg = new NoisyVerticalGradient(50, Math.max(window.visualViewport.height, 1080), ['#343D55', '#0e1016']);
         background.style.backgroundImage = nvg.render_png();
     });
 </script>
