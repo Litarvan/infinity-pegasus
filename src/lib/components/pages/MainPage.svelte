@@ -13,12 +13,12 @@
     import ComboBox from '../ComboBox.svelte';
     import Spinner from '../Spinner.svelte';
 
-    import UpdateArrow from '/assets/images/update_arrow.svg';
-    import IncreaseArrow from '/assets/images/increase_arrow.svg';
-    import DecreaseArrow from '/assets/images/decrease_arrow.svg';
-    import ExternalArrow from '/assets/images/external_arrow.svg';
-    import Plus from '/assets/images/plus.svg';
-    import Minus from '/assets/images/minus.svg';
+    import UpdateArrow from '/assets/images/update_arrow.svg?raw';
+    import IncreaseArrow from '/assets/images/increase_arrow.svg?raw';
+    import DecreaseArrow from '/assets/images/decrease_arrow.svg?raw';
+    import ExternalArrow from '/assets/images/external_arrow.svg?raw';
+    import Plus from '/assets/images/plus.svg?raw';
+    import Minus from '/assets/images/minus.svg?raw';
 
     const { state, toggle, outro } = swapper();
 
@@ -215,10 +215,10 @@ Sinon, il arrive que Pegasus ne retourne pas de note. Dans ce cas-là réessayez
                             <div class="point"></div>
                             {#if value && old}
                                 <div class="from">{format(old)}</div>
-                                <img class="update-arrow" src={UpdateArrow} alt="To" />
+                                <div class="update-arrow">{@html UpdateArrow}</div>
                             {/if}
                             <div class="to">{format(value || old)}</div>
-                            <img class="type-sign" src={getSignForUpdate(type, value, old)} alt="Sign" />
+                            <div class="type-sign">{@html getSignForUpdate(type, value, old)}</div>
                         </div>
                     </div>
                 {/each}
@@ -412,7 +412,9 @@ Sinon, il arrive que Pegasus ne retourne pas de note. Dans ce cas-là réessayez
                 }
 
                 .type-sign {
-                    width: 30px;
+                    :global(svg) {
+                        width: 30px;
+                    }
 
                     margin-left: 12px;
                     margin-bottom: 2px;
