@@ -248,7 +248,7 @@ Sinon, il arrive que Pegasus ne retourne pas de note. Dans ce cas-là réessayez
                     <div class="entry" class:clickable={!downloading} on:click={() => download(doc)}>
                         <div class="point"></div>
                         <div class="name">{doc}</div>
-                        <img class="arrow" src={ExternalArrow} alt={doc} />
+                        <div class="arrow">{@html ExternalArrow}</div>
                     </div>
                 {/each}
             </div>
@@ -453,7 +453,9 @@ Sinon, il arrive que Pegasus ne retourne pas de note. Dans ce cas-là réessayez
             }
 
             .arrow {
-                height: 20px;
+                :global(svg) {
+                    height: 20px;
+                }
 
                 margin-bottom: 1px;
             }
