@@ -52,10 +52,6 @@ export function computeAverages(filters, marks)
                 totalSubjectCoefficient += coefficient;
             }
 
-            for (const mark of subject.marks) {
-                mark.coefficient /= totalSubjectCoefficient;
-            }
-
             subject.coefficient = subjectCoefficients._subject || 1;
             subject.average = filterNaN(totalSubjectMarks / totalSubjectCoefficient);
             subject.classAverage = filterNaN(totalSubjectClassAverages / totalSubjectCoefficient);
@@ -68,11 +64,6 @@ export function computeAverages(filters, marks)
                 totalModuleClassAverages += subject.classAverage * subject.coefficient;
                 totalModuleClassCoefficient += subject.coefficient;
             }
-        }
-
-        const minCoefficient = Math.min(...module.subjects.map(s => s.coefficient));
-        for (const subject of module.subjects) {
-            subject.coefficient /= minCoefficient;
         }
 
         module.average = filterNaN(totalModuleMarks / totalModuleCoefficient);
@@ -89,9 +80,25 @@ export function computeAverages(filters, marks)
     }
 
     return {
-        'Moyenne générale': totalMarks / totalCredits,
-        'Moyenne de la promo': totalClassMarks / totalClassCredits,
+        average: totalMarks / totalCredits,
+        classAverage: totalClassMarks / totalClassCredits
     };
+}
+
+export function normalizeCoefficients(marks)
+{
+    for (const module of marks) {
+        const minCoefficient = Math.min(...module.subjects.map(s => s.coefficient));
+        for (const subject of module.subjects) {
+            const total = subject.marks.reduce((total, mark) => total + mark.coefficient, 0);
+
+            for (const mark of subject.marks) {
+                mark.coefficient /= total;
+            }
+
+            subject.coefficient /= minCoefficient;
+        }
+    }
 }
 
 function getCoefficients(filters)

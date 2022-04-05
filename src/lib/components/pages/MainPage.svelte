@@ -7,7 +7,6 @@
     import { modal, progress } from '/lib/stores';
     import { getMarks, getMarksFilters } from '/lib/pegasus/marks';
     import { getUpdates } from '/lib/pegasus/updates';
-    import { computeAverages } from '/lib/pegasus/coefficients';
     import { downloadDocument, MARKS_DOCUMENT, REPORT_DOCUMENT, YEAR_FILTER, SEMESTER_FILTER } from '/lib/pegasus/documents';
     import swapper from '/lib/ui/swapper';
 
@@ -22,13 +21,10 @@
     import Minus from '/assets/images/minus.svg';
 
     const { state, toggle, outro } = swapper();
-    const documents = [
-        MARKS_DOCUMENT,
-        REPORT_DOCUMENT
-    ];
 
     let marks;
     let averages;
+    let documents;
     let filters;
     let filtersValues;
     let updates;
@@ -66,10 +62,18 @@ Si le problème persiste, merci d'<a class="link colored" href="${app.repository
 
     async function updateMarks()
     {
-        marks = await getMarks(filtersValues);
-        updates = await getUpdates(filtersValues, marks);
+        const result = await getMarks(filtersValues);
+        marks = result.marks;
+        averages = {
+            'Moyenne générale': result.average,
+            'Moyenne de la promotion': result.classAverage
+        };
 
-        averages = computeAverages(filtersValues, marks);
+        updates = await getUpdates(filtersValues, marks);
+        documents = [
+            MARKS_DOCUMENT,
+            ...(result.fromReport ? [REPORT_DOCUMENT] : [])
+        ];
 
         if (marks.every(m => m.subjects.every(s => s.marks.every(m => m.value === undefined))) && !marks.every(m => m.subjects.every(s => s.marks.length === 0))) {
             setTimeout(() => modal.set({

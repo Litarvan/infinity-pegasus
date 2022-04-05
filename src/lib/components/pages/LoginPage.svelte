@@ -52,7 +52,7 @@ Les coefficients sont manuellement entrés au fur et à mesure de l'année (sauf
             <span>Se connecter avec Microsoft</span>
         </a>
         <p id="terms" class="subtext">
-            En cliquant sur le bouton ci-dessus vous acceptez les <a class="link colored" on:click={() => showConditions()}>conditions d'utilisation</a> du
+            En cliquant sur le bouton ci-dessus vous acceptez les <span class="link colored clickable" on:click={() => showConditions()}>conditions d'utilisation</span> du
             service
         </p>
     </div>

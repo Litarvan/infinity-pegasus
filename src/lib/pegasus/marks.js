@@ -1,6 +1,7 @@
 import { progress } from '../stores';
 
-import { getDocuments, MARKS_DOCUMENT } from './documents';
+import { computeAverages, normalizeCoefficients } from './coefficients';
+import { getDocuments, MARKS_DOCUMENT, REPORT_DOCUMENT } from './documents';
 
 // Supports :
 // - 'ID - Module name [X ECTS]'
@@ -10,82 +11,115 @@ import { getDocuments, MARKS_DOCUMENT } from './documents';
 const MODULE_REGEX = /(((.*) - )|(\[(.*)] )|(([A-Z1-9]+)[_ ]))? ?(.*) \[ *(.*) ECTS]/;
 const MARK_REGEX = /\d+,\d\d/g;
 
-async function getMarksDocument()
-{
-    const documents = await getDocuments();
-    return documents.find(d => d.name === MARKS_DOCUMENT);
-}
-
 export async function getMarksFilters()
 {
     // S[1-3] reports PDFs sucks A LOT, can't be parsed, and takes a ton of time to fetch, so I filter them out.
-    const [year, semester] = await getMarksDocument().then(d => d.fetchFilters());
+    const documents = await getDocuments();
+    const [year, semester] = await documents.find(d => d.name === MARKS_DOCUMENT).fetchFilters();
     semester.values = semester.values.filter(v => !v.name.includes('Prépa'));
     year.values = year.values.filter(v => semester.values.find(vv => vv.year === v.value));
 
     return [year, semester];
 }
 
-export async function getMarks(filters)
+export async function getMarks(filters, noReport)
 {
-    const blob = await fetchMarksPDF(filters);
+    const blob = await fetchMarksPDF(filters, !noReport);
 
-    progress.set("Lecture du relevé");
+    progress.set(`Lecture du ${noReport ? 'relevé': 'bulletin'}`);
 
     const pdfjs = window['pdfjs-dist/build/pdf'];
     pdfjs.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.11.338/pdf.worker.min.js';
 
     const doc = await pdfjs.getDocument({ url: URL.createObjectURL(blob) }).promise;
     const result = [];
+    let averages;
 
     for (let i = 1; i <= doc.numPages; i++) {
-        await parsePage(await doc.getPage(i), result);
+        if (!(averages = await parsePage(await doc.getPage(i), result, !noReport)) && !noReport) {
+            return getMarks(filters, true);
+        }
     }
 
-    return result;
+    if (noReport) {
+        averages = computeAverages(filters, result);
+    }
+
+    normalizeCoefficients(result);
+
+    return { ...averages, fromReport: !noReport, marks: result };
 }
 
-async function fetchMarksPDF(filters)
+async function fetchMarksPDF(filters, report)
 {
-    const marks = await getMarksDocument();
+    const documents = await getDocuments();
+    const marks = documents.find(d => d.name === (report ? REPORT_DOCUMENT : MARKS_DOCUMENT));
 
-    progress.set("Récupération du relevé de notes");
+    progress.set(`Récupération du ${report ? 'bulletin' : 'relevé'} de notes`);
     return marks.fetchBlob(filters);
 }
 
-async function parsePage(page, result)
+async function parsePage(page, result, report)
 {
     const content = await page.getTextContent();
     const texts = content.items.filter(i => !i.hasEOL).map(i => i.str);
 
+    if (texts[0] === "L'édition de ce document n'a pas encore été autorisée par la pédagogie.") {
+        return false;
+    }
+
+    let average, classAverage;
     let i = 0;
 
     while (i < texts.length) {
         while (i < texts.length && !texts[i].match(MODULE_REGEX)) {
-            i++;
+            if (texts[i++] === 'Moyenne du semestre de la promotion') {
+                average = parseMark(texts[i++]);
+                classAverage = parseMark(texts[i++]);
+            }
         }
 
         while (i < texts.length && texts[i].match(MODULE_REGEX)) {
             const [,,, id,, idBrackets,, idAlone, name, credits] = texts[i++].match(MODULE_REGEX);
             const subjects = [];
+            let grade, average, classAverage;
+
+            if (report) {
+                i++;
+                grade = texts[i++];
+                classAverage = parseMark(texts[i++]);
+                average = parseMark(texts[i++]);
+            }
 
             while (i < texts.length && texts[i] !== 'Niveau') {
-                const [subject, ni] = parseSubject(texts, i);
+                const [subject, ni] = parseSubject(texts, i, report);
 
                 subjects.push(subject);
                 i = ni;
             }
 
-            result.push({ id: id || idBrackets || idAlone, name, credits: parseFloat(credits), subjects })
+            result.push({ id: id || idBrackets || idAlone, name, credits: parseFloat(credits), grade, average, classAverage, subjects });
         }
     }
+
+    return { average, classAverage };
 }
 
-function parseSubject(texts, i)
+function parseSubject(texts, i, report)
 {
     const name = texts[i++];
     const id = texts[i++];
+    let grade, average, classAverage, coefficient;
     const marks = [];
+
+    if (report) {
+        i++;
+        grade = texts[i++];
+        average = parseMark(texts[i++]);
+        i++;
+        classAverage = parseMark(texts[i++]);
+        coefficient = parseMark(texts[i++]);
+    }
 
     let nextMarkId = 0;
     while (i < texts.length && (texts[i].match(MARK_REGEX) || (i + 1 < texts.length && isMarkCode(texts[i + 1])))) {
@@ -95,6 +129,9 @@ function parseSubject(texts, i)
         }
         if (texts[i].match(MARK_REGEX)) {
             mark.value = parseMark(texts[i++]);
+        }
+        if (report) {
+            mark.coefficient = parseMark(texts[i++]);
         }
 
         const markName = texts[i++];
@@ -110,7 +147,7 @@ function parseSubject(texts, i)
         marks.push(mark);
     }
 
-    return [{ name, id, marks }, i];
+    return [{ name, id, grade, average, classAverage, coefficient, marks }, i];
 }
 
 function parseMark(mark)
