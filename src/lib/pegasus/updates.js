@@ -38,7 +38,7 @@ export function getUpdates(filters, marks)
             {
                 const existing = result.find(u => u.subject === subject.id && u.id === id && u.name === name);
 
-                if (existing && !(existing.type === 'average-update' || type === 'average-update')) {
+                if (existing && (!(existing.type === 'average-update' || type === 'average-update') || existing.type === type)) {
                     existing.type = type;
                     existing.date = new Date();
                     existing.value = value;
@@ -77,13 +77,32 @@ export function getUpdates(filters, marks)
         }
     }
 
-    result = purge(result);
+    result = removeDuplicates(purge(result));
 
     save[key] = marks;
     updates[key] = result;
 
     localStorage.save = JSON.stringify(save);
     localStorage.updates = JSON.stringify(updates);
+
+    return result;
+}
+
+// Temporary clean-up of the consequences of a bug that was fixed
+function removeDuplicates(updates)
+{
+    const result = [];
+    for (const update of updates) {
+        let existing;
+        if (existing = result.find(u => u.subject === update.subject && u.id === update.id && u.name === update.name && u.type === update.type)) {
+            existing.date = update.date;
+            existing.value = update.value;
+
+            continue;
+        }
+
+        result.push(update);
+    }
 
     return result;
 }
