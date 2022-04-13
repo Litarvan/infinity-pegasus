@@ -56,12 +56,24 @@ export function getUpdates(filters, marks)
                 }
             }
 
+            // TODO: average-add?
             for (const { id, name, value, classAverage } of subject.marks) {
+                if (value === undefined) {
+                    continue;
+                }
+
                 const otherMark = otherSubject.marks.find(m => m.id === id && m.name === name);
                 if (!otherMark) {
                     pushUpdate('add', id, name, value);
                 } else if (otherMark.value !== value) {
-                    pushUpdate(otherMark.value === undefined ? 'remove' : 'update', id, name, value, otherMark.value);
+                    let type = 'update';
+                    if (otherMark.value === undefined) {
+                        type = 'add';
+                    } else if (value === undefined) {
+                        type = 'remove';
+                    }
+
+                    pushUpdate(type, id, name, value, otherMark.value);
                 } else if (otherMark.classAverage !== classAverage) {
                     pushUpdate('average-update', id, name, classAverage, otherMark.classAverage);
                 }
@@ -77,7 +89,7 @@ export function getUpdates(filters, marks)
         }
     }
 
-    result = removeDuplicates(purge(result));
+    result = fixWrongTypes(removeDuplicates(purge(result))).sort((a, b) => new Date(b.date) - new Date(a.date));
 
     save[key] = marks;
     updates[key] = result;
@@ -99,6 +111,31 @@ function removeDuplicates(updates)
             existing.value = update.value;
 
             continue;
+        }
+
+        result.push(update);
+    }
+
+    return result;
+}
+
+// Temporary clean-up of the consequences of a bug that was fixed
+function fixWrongTypes(updates)
+{
+    const result = [];
+    for (const update of updates) {
+        if (new Date(update.date) >= new Date('2022-04-13')) {
+            result.push(update);
+            continue;
+        }
+
+        if (update.type === 'add' && update.value === undefined) {
+            continue;
+        }
+
+        if (update.type === 'remove') {
+            update.date = new Date();
+            update.type = 'add';
         }
 
         result.push(update);
