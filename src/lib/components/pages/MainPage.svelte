@@ -201,7 +201,7 @@ Sinon, il arrive que Pegasus ne retourne pas de note. Dans ce cas-là réessayez
                 <hr />
             </div>
 
-            {#if updates.filter(type => type !== 'average-update').length === 0}
+            {#if updates.filter(u => u.type !== 'average-update').length === 0}
                 <div class="no-updates">Aucune mise à jour détectée depuis la dernière fois.</div>
             {/if}
 
