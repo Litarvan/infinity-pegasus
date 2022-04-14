@@ -58,13 +58,11 @@ export function getUpdates(filters, marks)
 
             // TODO: average-add?
             for (const { id, name, value, classAverage } of subject.marks) {
-                if (value === undefined) {
-                    continue;
-                }
-
                 const otherMark = otherSubject.marks.find(m => m.id === id && m.name === name);
                 if (!otherMark) {
-                    pushUpdate('add', id, name, value);
+                    if (value !== undefined) {
+                        pushUpdate('add', id, name, value);
+                    }
                 } else if (otherMark.value !== value) {
                     let type = 'update';
                     if (otherMark.value === undefined) {
