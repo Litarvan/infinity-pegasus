@@ -60,7 +60,7 @@ export function getUpdates(filters, marks)
             for (const { id, name, value, classAverage } of subject.marks) {
                 const otherMark = otherSubject.marks.find(m => m.id === id && m.name === name);
                 if (!otherMark) {
-                    if (value !== undefined) {
+                    if (value !== null) {
                         pushUpdate('add', id, name, value);
                     }
                 } else if (otherMark.value !== value) {
@@ -87,7 +87,7 @@ export function getUpdates(filters, marks)
         }
     }
 
-    result = fixWrongTypes(removeDuplicates(purge(result))).sort((a, b) => new Date(b.date) - new Date(a.date));
+    result = removeEmptyUpdates(fixWrongTypes(removeDuplicates(purge(result)))).sort((a, b) => new Date(b.date) - new Date(a.date));
 
     save[key] = marks;
     updates[key] = result;
@@ -137,6 +137,19 @@ function fixWrongTypes(updates)
         }
 
         result.push(update);
+    }
+
+    return result;
+}
+
+// Temporary clean-up of the consequences of a bug that was fixed
+function removeEmptyUpdates(updates)
+{
+    const result = [];
+    for (const update of updates) {
+        if (update.type !== 'add' || update.value !== undefined) {
+            result.push(update);
+        }
     }
 
     return result;

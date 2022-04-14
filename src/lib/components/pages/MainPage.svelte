@@ -207,20 +207,23 @@ Sinon, il arrive que Pegasus ne retourne pas de note. Dans ce cas-là réessayez
 
             <div class="updates">
                 {#each updates as { type, subject, name, value, old }}
-                    <div class="update">
-                        <div class="point big"></div>
-                        <div class="id">{subject}</div>
-                        <div class="name">{name} ·&nbsp;<span class="target">{#if type.includes('average')}Moyenne de promo{:else}Note{/if}</span></div>
-                        <div class="mark">
-                            <div class="point"></div>
-                            {#if value && old}
-                                <div class="from">{format(old)}</div>
-                                <div class="update-arrow">{@html UpdateArrow}</div>
-                            {/if}
-                            <div class="to">{format(value || old)}</div>
-                            <div class="type-sign">{@html getSignForUpdate(type, value, old)}</div>
+                    <!-- Parce qu'en vrai on s'en branle un peu -->
+                    {#if type !== 'average-update'}
+                        <div class="update">
+                            <div class="point big"></div>
+                            <div class="id">{subject}</div>
+                            <div class="name">{name} ·&nbsp;<span class="target">{#if type.includes('average')}Moyenne de promo{:else}Note{/if}</span></div>
+                            <div class="mark">
+                                <div class="point"></div>
+                                {#if value && old}
+                                    <div class="from">{format(old)}</div>
+                                    <div class="update-arrow">{@html UpdateArrow}</div>
+                                {/if}
+                                <div class="to">{format(value || old)}</div>
+                                <div class="type-sign">{@html getSignForUpdate(type, value, old)}</div>
+                            </div>
                         </div>
-                    </div>
+                    {/if}
                 {/each}
             </div>
 
