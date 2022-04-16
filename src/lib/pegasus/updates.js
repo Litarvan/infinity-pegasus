@@ -50,8 +50,8 @@ export function getUpdates(filters, marks)
                         subject: subject.id,
                         id,
                         name,
-                        ...(value ? { value } : {}),
-                        ...(old ? { old } : {})
+                        ...(value !== undefined && value !== null ? { value } : {}),
+                        ...(old !== undefined && value !== null ? { old } : {})
                     });
                 }
             }
