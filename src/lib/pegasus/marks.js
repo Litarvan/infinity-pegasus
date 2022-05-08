@@ -10,6 +10,7 @@ import { getDocuments, MARKS_DOCUMENT, REPORT_DOCUMENT } from './documents';
 // - 'ID_Module name [X ECTS]'
 const MODULE_REGEX = /(((.*) - )|(\[(.*)] )|(([A-Z1-9]+)[_ ]))? ?(.*) \[ *(.*) ECTS]/;
 const MARK_REGEX = /\d+,\d\d/g;
+const POSITION_THRESHOLD = 5;
 
 export async function getMarksFilters()
 {
@@ -62,9 +63,17 @@ async function fetchMarksPDF(filters, report)
 async function parsePage(page, result, report)
 {
     const content = await page.getTextContent();
-    const texts = content.items.filter(i => !i.hasEOL).map(i => i.str);
+    const elements = content.items.filter(i => !i.hasEOL).sort((a, b) => {
+        const dy = a.transform[6] - b.transform[6];
+        if (dy === 0) {
+            return a.transform[5] - b.transform[5];
+        }
 
-    if (texts[0] === "L'édition de ce document n'a pas encore été autorisée par la pédagogie.") {
+        return dy;
+    });
+    const texts = elements.map(i => i.str);
+
+    if (!texts[0] || texts[0] === "L'édition de ce document n'a pas encore été autorisée par la pédagogie.") {
         return false;
     }
 
@@ -92,7 +101,7 @@ async function parsePage(page, result, report)
             }
 
             while (i < texts.length && texts[i] !== 'Niveau') {
-                const [subject, ni] = parseSubject(texts, i, report);
+                const [subject, ni] = parseSubject(elements, texts, i, report);
 
                 subjects.push(subject);
                 i = ni;
@@ -105,7 +114,7 @@ async function parsePage(page, result, report)
     return { average, classAverage };
 }
 
-function parseSubject(texts, i, report)
+function parseSubject(elements, texts, i, report)
 {
     const name = texts[i++];
     const id = texts[i++];
@@ -127,7 +136,12 @@ function parseSubject(texts, i, report)
         if (texts[i].match(MARK_REGEX)) {
             mark.classAverage = parseMark(texts[i++]);
         }
-        if (texts[i].match(MARK_REGEX)) {
+        const delta = (a, b) => Math.abs(a - b);
+        const x = elements[i - 1].transform[4];
+        if (delta(x, 464) < delta(x, 506)) { // This means there is no average, only a mark, this can rarely happen
+            mark.value = mark.classAverage;
+            delete mark.classAverage;
+        } else if (texts[i].match(MARK_REGEX)) {
             mark.value = parseMark(texts[i++]);
         }
         if (report) {
@@ -137,6 +151,7 @@ function parseSubject(texts, i, report)
         const markName = texts[i++];
 
         // This is turbo-sus, but it's the only way to handle mark names being formatted like mark codes.
+        // UPDATE: We can use positions instead, if this breaks then they should be used.
         if (isMarkCode(markName) && (texts[i + 2].match(MARK_REGEX) || (!texts[i + 3].match(MARK_REGEX) && !isMarkCode(texts[i + 3]) && texts[i + 3] !== 'Note'))) {
             mark.name = 'Note';
         } else {
