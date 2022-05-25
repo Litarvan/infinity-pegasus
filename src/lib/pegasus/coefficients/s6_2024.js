@@ -42,7 +42,9 @@ export default {
             _subject: 1/6
         },
         CAMA: {
-            _subject: 1/3
+            _subject: 1/3,
+            '.* CC1': 1/2,
+            '.*': 1/4
         }
     },
     IF2: {
