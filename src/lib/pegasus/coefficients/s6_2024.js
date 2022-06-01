@@ -37,8 +37,9 @@ export default {
     MAT2: {
         PBS1: {
             _subject: 3/6,
-            '.* Finale': 1/2,
-            '.* CC[1-2]': 1/4
+            '.* Finale': 3 / 5 * 6 / 8,
+            '.* CC[1-2]': 1 / 5 * 6 / 8,
+            '.*': 2 / 8
         },
         CHIFR: {
             _subject: 1/6
