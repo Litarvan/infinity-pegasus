@@ -12,9 +12,9 @@ export default {
     APR2: {
         CPP: {
             _subject: 1/9, // TODO: Le syllabus marque 1/19, probablement une erreur
-            // TODO: QCM: 20% (ça a normalement changé?)
-            // TODO: Piscine: 35% (ça a normalement changé?)
-            // TODO: Rush: 35%
+            'QCM CPP': .2,
+            'Rush CPP': .45,
+            'Exo CPP': .35
         },
         JAVA: {
             _subject: 1/9
