@@ -13,8 +13,8 @@ export default {
         CPP: {
             _subject: 1/9, // TODO: Le syllabus marque 1/19, probablement une erreur
             'QCM CPP': .2,
-            'Rush CPP': .45,
-            'Exo CPP': .35
+            'Rush CPP': .4,
+            'Exo CPP': .4
         },
         JAVA: {
             _subject: 1/9
