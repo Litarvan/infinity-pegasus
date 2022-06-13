@@ -93,7 +93,7 @@ export default {
         },
     },
     CCE2: {
-        MSST: {
+        M_SST_SI6: {
             _subject: 1/4
         },
         REPP: {
@@ -104,7 +104,7 @@ export default {
         MARK: {
             _subject: 1/4 // TODO: Le syllabus marque 1/5, probablement une erreur
         },
-        GEPRO0: {
+        GEPRO: {
             _subject: 1/4,
             // TODO: 80% QCM
             // TODO: 20% Présence
