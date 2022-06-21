@@ -1,0 +1,4 @@
+Adrien Navratil operates the Infinity Pegasus extension.
+
+Infinity Pegasus is a web extension where all data processing is made client-side, in your browser. There is no server, except the one hosting the website assets.
+Your data never leaves your device, and nothing is collected.
