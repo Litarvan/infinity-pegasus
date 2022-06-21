@@ -1,0 +1,969 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 55;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		15028C882862118400C0B47C /* Icon.svg in Resources */ = {isa = PBXBuildFile; fileRef = 15028C872862118400C0B47C /* Icon.svg */; };
+		15028C892862118400C0B47C /* Icon.svg in Resources */ = {isa = PBXBuildFile; fileRef = 15028C872862118400C0B47C /* Icon.svg */; };
+		159F87792861EA4600B80726 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 159F87782861EA4600B80726 /* AppDelegate.swift */; };
+		159F877B2861EA4600B80726 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 159F877A2861EA4600B80726 /* SceneDelegate.swift */; };
+		159F877E2861EA4600B80726 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 159F877C2861EA4600B80726 /* LaunchScreen.storyboard */; };
+		159F87812861EA4600B80726 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 159F877F2861EA4600B80726 /* Main.storyboard */; };
+		159F878A2861EA4600B80726 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 159F87892861EA4600B80726 /* AppDelegate.swift */; };
+		159F878D2861EA4600B80726 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 159F878B2861EA4600B80726 /* Main.storyboard */; };
+		159F87952861EA4600B80726 /* Infinity Pegasus Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 159F87942861EA4600B80726 /* Infinity Pegasus Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		159F879F2861EA4600B80726 /* Infinity Pegasus Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 159F879E2861EA4600B80726 /* Infinity Pegasus Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		159F87A52861EA4600B80726 /* Main.html in Resources */ = {isa = PBXBuildFile; fileRef = 159F87682861EA4500B80726 /* Main.html */; };
+		159F87A62861EA4600B80726 /* Main.html in Resources */ = {isa = PBXBuildFile; fileRef = 159F87682861EA4500B80726 /* Main.html */; };
+		159F87A92861EA4600B80726 /* Style.css in Resources */ = {isa = PBXBuildFile; fileRef = 159F876B2861EA4500B80726 /* Style.css */; };
+		159F87AA2861EA4600B80726 /* Style.css in Resources */ = {isa = PBXBuildFile; fileRef = 159F876B2861EA4500B80726 /* Style.css */; };
+		159F87AB2861EA4600B80726 /* Script.js in Resources */ = {isa = PBXBuildFile; fileRef = 159F876C2861EA4500B80726 /* Script.js */; };
+		159F87AC2861EA4600B80726 /* Script.js in Resources */ = {isa = PBXBuildFile; fileRef = 159F876C2861EA4500B80726 /* Script.js */; };
+		159F87AD2861EA4600B80726 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 159F876D2861EA4500B80726 /* ViewController.swift */; };
+		159F87AE2861EA4600B80726 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 159F876D2861EA4500B80726 /* ViewController.swift */; };
+		159F87AF2861EA4600B80726 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 159F876E2861EA4600B80726 /* Assets.xcassets */; };
+		159F87B02861EA4600B80726 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 159F876E2861EA4600B80726 /* Assets.xcassets */; };
+		159F87B12861EA4600B80726 /* SafariWebExtensionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 159F87702861EA4600B80726 /* SafariWebExtensionHandler.swift */; };
+		159F87B22861EA4600B80726 /* SafariWebExtensionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 159F87702861EA4600B80726 /* SafariWebExtensionHandler.swift */; };
+		159F87CE2861EA4700B80726 /* enabled_48.png in Resources */ = {isa = PBXBuildFile; fileRef = 159F87C42861EA4700B80726 /* enabled_48.png */; };
+		159F87CF2861EA4700B80726 /* disabled_48.png in Resources */ = {isa = PBXBuildFile; fileRef = 159F87C52861EA4700B80726 /* disabled_48.png */; };
+		159F87D12861EA4700B80726 /* icon_128.png in Resources */ = {isa = PBXBuildFile; fileRef = 159F87C72861EA4700B80726 /* icon_128.png */; };
+		159F87D22861EA4700B80726 /* pdf.min.js in Resources */ = {isa = PBXBuildFile; fileRef = 159F87C82861EA4700B80726 /* pdf.min.js */; };
+		159F87D32861EA4700B80726 /* disabled_128.png in Resources */ = {isa = PBXBuildFile; fileRef = 159F87C92861EA4700B80726 /* disabled_128.png */; };
+		159F87D42861EA4700B80726 /* manifest.json in Resources */ = {isa = PBXBuildFile; fileRef = 159F87CA2861EA4700B80726 /* manifest.json */; };
+		159F87D52861EA4700B80726 /* enabled_128.png in Resources */ = {isa = PBXBuildFile; fileRef = 159F87CB2861EA4700B80726 /* enabled_128.png */; };
+		159F87D62861EA4700B80726 /* content.js in Resources */ = {isa = PBXBuildFile; fileRef = 159F87CC2861EA4700B80726 /* content.js */; };
+		159F87D72861EA4700B80726 /* service_worker.js in Resources */ = {isa = PBXBuildFile; fileRef = 159F87CD2861EA4700B80726 /* service_worker.js */; };
+		159F87D82861EA4700B80726 /* enabled_48.png in Resources */ = {isa = PBXBuildFile; fileRef = 159F87C42861EA4700B80726 /* enabled_48.png */; };
+		159F87D92861EA4700B80726 /* disabled_48.png in Resources */ = {isa = PBXBuildFile; fileRef = 159F87C52861EA4700B80726 /* disabled_48.png */; };
+		159F87DB2861EA4700B80726 /* icon_128.png in Resources */ = {isa = PBXBuildFile; fileRef = 159F87C72861EA4700B80726 /* icon_128.png */; };
+		159F87DC2861EA4700B80726 /* pdf.min.js in Resources */ = {isa = PBXBuildFile; fileRef = 159F87C82861EA4700B80726 /* pdf.min.js */; };
+		159F87DD2861EA4700B80726 /* disabled_128.png in Resources */ = {isa = PBXBuildFile; fileRef = 159F87C92861EA4700B80726 /* disabled_128.png */; };
+		159F87DE2861EA4700B80726 /* manifest.json in Resources */ = {isa = PBXBuildFile; fileRef = 159F87CA2861EA4700B80726 /* manifest.json */; };
+		159F87DF2861EA4700B80726 /* enabled_128.png in Resources */ = {isa = PBXBuildFile; fileRef = 159F87CB2861EA4700B80726 /* enabled_128.png */; };
+		159F87E02861EA4700B80726 /* content.js in Resources */ = {isa = PBXBuildFile; fileRef = 159F87CC2861EA4700B80726 /* content.js */; };
+		159F87E12861EA4700B80726 /* service_worker.js in Resources */ = {isa = PBXBuildFile; fileRef = 159F87CD2861EA4700B80726 /* service_worker.js */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		159F87962861EA4600B80726 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 159F87622861EA4500B80726 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 159F87932861EA4600B80726;
+			remoteInfo = "Infinity Pegasus Extension (iOS)";
+		};
+		159F87A02861EA4600B80726 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 159F87622861EA4500B80726 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 159F879D2861EA4600B80726;
+			remoteInfo = "Infinity Pegasus Extension (macOS)";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		159F87B82861EA4600B80726 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				159F87952861EA4600B80726 /* Infinity Pegasus Extension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		159F87BF2861EA4600B80726 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				159F879F2861EA4600B80726 /* Infinity Pegasus Extension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		15028C872862118400C0B47C /* Icon.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Icon.svg; sourceTree = "<group>"; };
+		159F87692861EA4500B80726 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = Base; path = ../Base.lproj/Main.html; sourceTree = "<group>"; };
+		159F876B2861EA4500B80726 /* Style.css */ = {isa = PBXFileReference; lastKnownFileType = text.css; path = Style.css; sourceTree = "<group>"; };
+		159F876C2861EA4500B80726 /* Script.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = Script.js; sourceTree = "<group>"; };
+		159F876D2861EA4500B80726 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		159F876E2861EA4600B80726 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		159F87702861EA4600B80726 /* SafariWebExtensionHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariWebExtensionHandler.swift; sourceTree = "<group>"; };
+		159F87752861EA4600B80726 /* Infinity Pegasus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Infinity Pegasus.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		159F87782861EA4600B80726 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		159F877A2861EA4600B80726 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		159F877D2861EA4600B80726 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		159F87802861EA4600B80726 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		159F87822861EA4600B80726 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		159F87872861EA4600B80726 /* Infinity Pegasus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Infinity Pegasus.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		159F87892861EA4600B80726 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		159F878C2861EA4600B80726 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		159F878E2861EA4600B80726 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		159F878F2861EA4600B80726 /* Infinity Pegasus.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Infinity Pegasus.entitlements"; sourceTree = "<group>"; };
+		159F87942861EA4600B80726 /* Infinity Pegasus Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Infinity Pegasus Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		159F87992861EA4600B80726 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		159F879E2861EA4600B80726 /* Infinity Pegasus Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Infinity Pegasus Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		159F87A32861EA4600B80726 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		159F87A42861EA4600B80726 /* Infinity Pegasus.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Infinity Pegasus.entitlements"; sourceTree = "<group>"; };
+		159F87C42861EA4700B80726 /* enabled_48.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = enabled_48.png; path = "../../extension-chrome/enabled_48.png"; sourceTree = "<group>"; };
+		159F87C52861EA4700B80726 /* disabled_48.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = disabled_48.png; path = "../../extension-chrome/disabled_48.png"; sourceTree = "<group>"; };
+		159F87C72861EA4700B80726 /* icon_128.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon_128.png; path = "../../extension-chrome/icon_128.png"; sourceTree = "<group>"; };
+		159F87C82861EA4700B80726 /* pdf.min.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; name = pdf.min.js; path = "../../extension-chrome/pdf.min.js"; sourceTree = "<group>"; };
+		159F87C92861EA4700B80726 /* disabled_128.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = disabled_128.png; path = "../../extension-chrome/disabled_128.png"; sourceTree = "<group>"; };
+		159F87CA2861EA4700B80726 /* manifest.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = manifest.json; path = "../../extension-chrome/manifest.json"; sourceTree = "<group>"; };
+		159F87CB2861EA4700B80726 /* enabled_128.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = enabled_128.png; path = "../../extension-chrome/enabled_128.png"; sourceTree = "<group>"; };
+		159F87CC2861EA4700B80726 /* content.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; name = content.js; path = "../../extension-chrome/content.js"; sourceTree = "<group>"; };
+		159F87CD2861EA4700B80726 /* service_worker.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; name = service_worker.js; path = "../../extension-chrome/service_worker.js"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		159F87722861EA4600B80726 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		159F87842861EA4600B80726 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		159F87912861EA4600B80726 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		159F879B2861EA4600B80726 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		159F87612861EA4500B80726 = {
+			isa = PBXGroup;
+			children = (
+				159F87662861EA4500B80726 /* Shared (App) */,
+				159F876F2861EA4600B80726 /* Shared (Extension) */,
+				159F87772861EA4600B80726 /* iOS (App) */,
+				159F87882861EA4600B80726 /* macOS (App) */,
+				159F87982861EA4600B80726 /* iOS (Extension) */,
+				159F87A22861EA4600B80726 /* macOS (Extension) */,
+				159F87762861EA4600B80726 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		159F87662861EA4500B80726 /* Shared (App) */ = {
+			isa = PBXGroup;
+			children = (
+				159F876D2861EA4500B80726 /* ViewController.swift */,
+				159F876E2861EA4600B80726 /* Assets.xcassets */,
+				159F87672861EA4500B80726 /* Resources */,
+			);
+			path = "Shared (App)";
+			sourceTree = "<group>";
+		};
+		159F87672861EA4500B80726 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				159F87682861EA4500B80726 /* Main.html */,
+				15028C872862118400C0B47C /* Icon.svg */,
+				159F876B2861EA4500B80726 /* Style.css */,
+				159F876C2861EA4500B80726 /* Script.js */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		159F876F2861EA4600B80726 /* Shared (Extension) */ = {
+			isa = PBXGroup;
+			children = (
+				159F87C32861EA4700B80726 /* Resources */,
+				159F87702861EA4600B80726 /* SafariWebExtensionHandler.swift */,
+			);
+			path = "Shared (Extension)";
+			sourceTree = "<group>";
+		};
+		159F87762861EA4600B80726 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				159F87752861EA4600B80726 /* Infinity Pegasus.app */,
+				159F87872861EA4600B80726 /* Infinity Pegasus.app */,
+				159F87942861EA4600B80726 /* Infinity Pegasus Extension.appex */,
+				159F879E2861EA4600B80726 /* Infinity Pegasus Extension.appex */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		159F87772861EA4600B80726 /* iOS (App) */ = {
+			isa = PBXGroup;
+			children = (
+				159F87782861EA4600B80726 /* AppDelegate.swift */,
+				159F877A2861EA4600B80726 /* SceneDelegate.swift */,
+				159F877C2861EA4600B80726 /* LaunchScreen.storyboard */,
+				159F877F2861EA4600B80726 /* Main.storyboard */,
+				159F87822861EA4600B80726 /* Info.plist */,
+			);
+			path = "iOS (App)";
+			sourceTree = "<group>";
+		};
+		159F87882861EA4600B80726 /* macOS (App) */ = {
+			isa = PBXGroup;
+			children = (
+				159F87892861EA4600B80726 /* AppDelegate.swift */,
+				159F878B2861EA4600B80726 /* Main.storyboard */,
+				159F878E2861EA4600B80726 /* Info.plist */,
+				159F878F2861EA4600B80726 /* Infinity Pegasus.entitlements */,
+			);
+			path = "macOS (App)";
+			sourceTree = "<group>";
+		};
+		159F87982861EA4600B80726 /* iOS (Extension) */ = {
+			isa = PBXGroup;
+			children = (
+				159F87992861EA4600B80726 /* Info.plist */,
+			);
+			path = "iOS (Extension)";
+			sourceTree = "<group>";
+		};
+		159F87A22861EA4600B80726 /* macOS (Extension) */ = {
+			isa = PBXGroup;
+			children = (
+				159F87A32861EA4600B80726 /* Info.plist */,
+				159F87A42861EA4600B80726 /* Infinity Pegasus.entitlements */,
+			);
+			path = "macOS (Extension)";
+			sourceTree = "<group>";
+		};
+		159F87C32861EA4700B80726 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				159F87C42861EA4700B80726 /* enabled_48.png */,
+				159F87C52861EA4700B80726 /* disabled_48.png */,
+				159F87C72861EA4700B80726 /* icon_128.png */,
+				159F87C82861EA4700B80726 /* pdf.min.js */,
+				159F87C92861EA4700B80726 /* disabled_128.png */,
+				159F87CA2861EA4700B80726 /* manifest.json */,
+				159F87CB2861EA4700B80726 /* enabled_128.png */,
+				159F87CC2861EA4700B80726 /* content.js */,
+				159F87CD2861EA4700B80726 /* service_worker.js */,
+			);
+			name = Resources;
+			path = "Shared (Extension)";
+			sourceTree = SOURCE_ROOT;
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		159F87742861EA4600B80726 /* Infinity Pegasus (iOS) */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 159F87B92861EA4600B80726 /* Build configuration list for PBXNativeTarget "Infinity Pegasus (iOS)" */;
+			buildPhases = (
+				159F87712861EA4600B80726 /* Sources */,
+				159F87722861EA4600B80726 /* Frameworks */,
+				159F87732861EA4600B80726 /* Resources */,
+				159F87B82861EA4600B80726 /* Embed App Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				159F87972861EA4600B80726 /* PBXTargetDependency */,
+			);
+			name = "Infinity Pegasus (iOS)";
+			productName = "Infinity Pegasus (iOS)";
+			productReference = 159F87752861EA4600B80726 /* Infinity Pegasus.app */;
+			productType = "com.apple.product-type.application";
+		};
+		159F87862861EA4600B80726 /* Infinity Pegasus (macOS) */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 159F87C02861EA4600B80726 /* Build configuration list for PBXNativeTarget "Infinity Pegasus (macOS)" */;
+			buildPhases = (
+				159F87832861EA4600B80726 /* Sources */,
+				159F87842861EA4600B80726 /* Frameworks */,
+				159F87852861EA4600B80726 /* Resources */,
+				159F87BF2861EA4600B80726 /* Embed App Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				159F87A12861EA4600B80726 /* PBXTargetDependency */,
+			);
+			name = "Infinity Pegasus (macOS)";
+			productName = "Infinity Pegasus (macOS)";
+			productReference = 159F87872861EA4600B80726 /* Infinity Pegasus.app */;
+			productType = "com.apple.product-type.application";
+		};
+		159F87932861EA4600B80726 /* Infinity Pegasus Extension (iOS) */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 159F87B52861EA4600B80726 /* Build configuration list for PBXNativeTarget "Infinity Pegasus Extension (iOS)" */;
+			buildPhases = (
+				159F87902861EA4600B80726 /* Sources */,
+				159F87912861EA4600B80726 /* Frameworks */,
+				159F87922861EA4600B80726 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Infinity Pegasus Extension (iOS)";
+			productName = "Infinity Pegasus Extension (iOS)";
+			productReference = 159F87942861EA4600B80726 /* Infinity Pegasus Extension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+		159F879D2861EA4600B80726 /* Infinity Pegasus Extension (macOS) */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 159F87BC2861EA4600B80726 /* Build configuration list for PBXNativeTarget "Infinity Pegasus Extension (macOS)" */;
+			buildPhases = (
+				159F879A2861EA4600B80726 /* Sources */,
+				159F879B2861EA4600B80726 /* Frameworks */,
+				159F879C2861EA4600B80726 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Infinity Pegasus Extension (macOS)";
+			productName = "Infinity Pegasus Extension (macOS)";
+			productReference = 159F879E2861EA4600B80726 /* Infinity Pegasus Extension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		159F87622861EA4500B80726 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1340;
+				LastUpgradeCheck = 1340;
+				TargetAttributes = {
+					159F87742861EA4600B80726 = {
+						CreatedOnToolsVersion = 13.4.1;
+					};
+					159F87862861EA4600B80726 = {
+						CreatedOnToolsVersion = 13.4.1;
+					};
+					159F87932861EA4600B80726 = {
+						CreatedOnToolsVersion = 13.4.1;
+					};
+					159F879D2861EA4600B80726 = {
+						CreatedOnToolsVersion = 13.4.1;
+					};
+				};
+			};
+			buildConfigurationList = 159F87652861EA4500B80726 /* Build configuration list for PBXProject "Infinity Pegasus" */;
+			compatibilityVersion = "Xcode 13.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 159F87612861EA4500B80726;
+			productRefGroup = 159F87762861EA4600B80726 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				159F87742861EA4600B80726 /* Infinity Pegasus (iOS) */,
+				159F87862861EA4600B80726 /* Infinity Pegasus (macOS) */,
+				159F87932861EA4600B80726 /* Infinity Pegasus Extension (iOS) */,
+				159F879D2861EA4600B80726 /* Infinity Pegasus Extension (macOS) */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		159F87732861EA4600B80726 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				159F877E2861EA4600B80726 /* LaunchScreen.storyboard in Resources */,
+				159F87A52861EA4600B80726 /* Main.html in Resources */,
+				159F87AB2861EA4600B80726 /* Script.js in Resources */,
+				159F87AF2861EA4600B80726 /* Assets.xcassets in Resources */,
+				159F87812861EA4600B80726 /* Main.storyboard in Resources */,
+				159F87A92861EA4600B80726 /* Style.css in Resources */,
+				15028C882862118400C0B47C /* Icon.svg in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		159F87852861EA4600B80726 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				159F87AA2861EA4600B80726 /* Style.css in Resources */,
+				159F878D2861EA4600B80726 /* Main.storyboard in Resources */,
+				159F87AC2861EA4600B80726 /* Script.js in Resources */,
+				159F87B02861EA4600B80726 /* Assets.xcassets in Resources */,
+				159F87A62861EA4600B80726 /* Main.html in Resources */,
+				15028C892862118400C0B47C /* Icon.svg in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		159F87922861EA4600B80726 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				159F87D82861EA4700B80726 /* enabled_48.png in Resources */,
+				159F87DE2861EA4700B80726 /* manifest.json in Resources */,
+				159F87E12861EA4700B80726 /* service_worker.js in Resources */,
+				159F87DC2861EA4700B80726 /* pdf.min.js in Resources */,
+				159F87D92861EA4700B80726 /* disabled_48.png in Resources */,
+				159F87DB2861EA4700B80726 /* icon_128.png in Resources */,
+				159F87E02861EA4700B80726 /* content.js in Resources */,
+				159F87DD2861EA4700B80726 /* disabled_128.png in Resources */,
+				159F87DF2861EA4700B80726 /* enabled_128.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		159F879C2861EA4600B80726 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				159F87CE2861EA4700B80726 /* enabled_48.png in Resources */,
+				159F87D42861EA4700B80726 /* manifest.json in Resources */,
+				159F87D72861EA4700B80726 /* service_worker.js in Resources */,
+				159F87D22861EA4700B80726 /* pdf.min.js in Resources */,
+				159F87CF2861EA4700B80726 /* disabled_48.png in Resources */,
+				159F87D12861EA4700B80726 /* icon_128.png in Resources */,
+				159F87D62861EA4700B80726 /* content.js in Resources */,
+				159F87D32861EA4700B80726 /* disabled_128.png in Resources */,
+				159F87D52861EA4700B80726 /* enabled_128.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		159F87712861EA4600B80726 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				159F87AD2861EA4600B80726 /* ViewController.swift in Sources */,
+				159F87792861EA4600B80726 /* AppDelegate.swift in Sources */,
+				159F877B2861EA4600B80726 /* SceneDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		159F87832861EA4600B80726 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				159F87AE2861EA4600B80726 /* ViewController.swift in Sources */,
+				159F878A2861EA4600B80726 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		159F87902861EA4600B80726 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				159F87B12861EA4600B80726 /* SafariWebExtensionHandler.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		159F879A2861EA4600B80726 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				159F87B22861EA4600B80726 /* SafariWebExtensionHandler.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		159F87972861EA4600B80726 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 159F87932861EA4600B80726 /* Infinity Pegasus Extension (iOS) */;
+			targetProxy = 159F87962861EA4600B80726 /* PBXContainerItemProxy */;
+		};
+		159F87A12861EA4600B80726 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 159F879D2861EA4600B80726 /* Infinity Pegasus Extension (macOS) */;
+			targetProxy = 159F87A02861EA4600B80726 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		159F87682861EA4500B80726 /* Main.html */ = {
+			isa = PBXVariantGroup;
+			children = (
+				159F87692861EA4500B80726 /* Base */,
+			);
+			name = Main.html;
+			sourceTree = "<group>";
+		};
+		159F877C2861EA4600B80726 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				159F877D2861EA4600B80726 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		159F877F2861EA4600B80726 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				159F87802861EA4600B80726 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		159F878B2861EA4600B80726 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				159F878C2861EA4600B80726 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		159F87B32861EA4600B80726 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		159F87B42861EA4600B80726 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+			};
+			name = Release;
+		};
+		159F87B62861EA4600B80726 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "iOS (Extension)/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Infinity Pegasus Extension";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0.1;
+				OTHER_LDFLAGS = (
+					"-framework",
+					SafariServices,
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "study.infinity.pegasus.Infinity-Pegasus.Extension";
+				PRODUCT_NAME = "Infinity Pegasus Extension";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		159F87B72861EA4600B80726 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "iOS (Extension)/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Infinity Pegasus Extension";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0.1;
+				OTHER_LDFLAGS = (
+					"-framework",
+					SafariServices,
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "study.infinity.pegasus.Infinity-Pegasus.Extension";
+				PRODUCT_NAME = "Infinity Pegasus Extension";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		159F87BA2861EA4600B80726 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "iOS (App)/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Inf. Pegasus";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0.1;
+				OTHER_LDFLAGS = (
+					"-framework",
+					SafariServices,
+					"-framework",
+					WebKit,
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "study.infinity.pegasus.Infinity-Pegasus";
+				PRODUCT_NAME = "Infinity Pegasus";
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		159F87BB2861EA4600B80726 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "iOS (App)/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Inf. Pegasus";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0.1;
+				OTHER_LDFLAGS = (
+					"-framework",
+					SafariServices,
+					"-framework",
+					WebKit,
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "study.infinity.pegasus.Infinity-Pegasus";
+				PRODUCT_NAME = "Infinity Pegasus";
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		159F87BD2861EA4600B80726 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = "macOS (Extension)/Infinity Pegasus.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "macOS (Extension)/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Infinity Pegasus Extension";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MARKETING_VERSION = 1.0.1;
+				OTHER_LDFLAGS = (
+					"-framework",
+					SafariServices,
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "study.infinity.pegasus.Infinity-Pegasus.Extension";
+				PRODUCT_NAME = "Infinity Pegasus Extension";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		159F87BE2861EA4600B80726 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = "macOS (Extension)/Infinity Pegasus.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "macOS (Extension)/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Infinity Pegasus Extension";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MARKETING_VERSION = 1.0.1;
+				OTHER_LDFLAGS = (
+					"-framework",
+					SafariServices,
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "study.infinity.pegasus.Infinity-Pegasus.Extension";
+				PRODUCT_NAME = "Infinity Pegasus Extension";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		159F87C12861EA4600B80726 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "macOS (App)/Infinity Pegasus.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "macOS (App)/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Infinity Pegasus";
+				INFOPLIST_KEY_NSMainStoryboardFile = Main;
+				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MARKETING_VERSION = 1.0.1;
+				OTHER_LDFLAGS = (
+					"-framework",
+					SafariServices,
+					"-framework",
+					WebKit,
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "study.infinity.pegasus.Infinity-Pegasus";
+				PRODUCT_NAME = "Infinity Pegasus";
+				SDKROOT = macosx;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		159F87C22861EA4600B80726 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "macOS (App)/Infinity Pegasus.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "macOS (App)/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Infinity Pegasus";
+				INFOPLIST_KEY_NSMainStoryboardFile = Main;
+				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MARKETING_VERSION = 1.0.1;
+				OTHER_LDFLAGS = (
+					"-framework",
+					SafariServices,
+					"-framework",
+					WebKit,
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "study.infinity.pegasus.Infinity-Pegasus";
+				PRODUCT_NAME = "Infinity Pegasus";
+				SDKROOT = macosx;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		159F87652861EA4500B80726 /* Build configuration list for PBXProject "Infinity Pegasus" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				159F87B32861EA4600B80726 /* Debug */,
+				159F87B42861EA4600B80726 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		159F87B52861EA4600B80726 /* Build configuration list for PBXNativeTarget "Infinity Pegasus Extension (iOS)" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				159F87B62861EA4600B80726 /* Debug */,
+				159F87B72861EA4600B80726 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		159F87B92861EA4600B80726 /* Build configuration list for PBXNativeTarget "Infinity Pegasus (iOS)" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				159F87BA2861EA4600B80726 /* Debug */,
+				159F87BB2861EA4600B80726 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		159F87BC2861EA4600B80726 /* Build configuration list for PBXNativeTarget "Infinity Pegasus Extension (macOS)" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				159F87BD2861EA4600B80726 /* Debug */,
+				159F87BE2861EA4600B80726 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		159F87C02861EA4600B80726 /* Build configuration list for PBXNativeTarget "Infinity Pegasus (macOS)" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				159F87C12861EA4600B80726 /* Debug */,
+				159F87C22861EA4600B80726 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 159F87622861EA4500B80726 /* Project object */;
+}

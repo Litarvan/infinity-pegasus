@@ -104,6 +104,59 @@ Cliquez à nouveau pour la ré-activer.`,
 <style lang="scss">
     @import 'vars';
 
+    $content-default-size: 575px;
+
+    #content {
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+
+        z-index: 2;
+
+        width: $content-default-size;
+        padding: 35px 0;
+
+        overflow-y: auto;
+
+        background-color: $color-background;
+
+        &.wide {
+            width: 1200px;
+
+            #header #logo {
+                width: 300px;
+                margin-top: 0;
+                margin-left: 0;
+            }
+        }
+    }
+
+    #header {
+        width: 100%;
+        padding: 20px 75px;
+
+        justify-content: space-between;
+        align-items: center;
+        flex-shrink: 0;
+
+        overflow: hidden;
+
+        #logo {
+            flex-shrink: 0;
+
+            width: 400px;
+            margin-top: 25px;
+            margin-left: 12.5px; // Same as `justify-content: center` but with nice transition
+        }
+
+        #logout {
+            color: #251515;
+
+            font-size: 22px;
+            font-weight: 500;
+        }
+    }
+
     #modal {
         position: absolute;
         top: 0;
@@ -166,54 +219,29 @@ Cliquez à nouveau pour la ré-activer.`,
         }
     }
 
-    #content {
-        flex-direction: column;
-        justify-content: space-between;
-        align-items: center;
+    @media (max-width: $content-default-size) {
+        #header {
+            padding: 0;
+            justify-content: center;
 
-        z-index: 2;
-
-        width: 575px;
-        padding: 35px 0;
-
-        overflow-y: auto;
-
-        background-color: $color-background;
-
-        &.wide {
-            width: 1200px;
-
-            #header #logo {
-                width: 300px;
-                margin-top: 0;
+            #logo {
+                margin-top: 15px;
                 margin-left: 0;
+
+                max-width: 80%;
             }
         }
     }
 
-    #header {
-        width: 100%;
-        padding: 20px 75px;
-
-        justify-content: space-between;
-        align-items: center;
-        flex-shrink: 0;
-
-        overflow: hidden;
-
-        #logo {
-            flex-shrink: 0;
-
-            width: 400px;
-            margin-top: 25px;
-            margin-left: 12.5px; // Same as `justify-content: center` but with nice transition
+    @media (max-height: 650px) {
+        #header #logo {
+            margin-top: 0;
         }
+    }
 
-        #logout {
-            color: #251515;
-
-            font-size: 22px;
-            font-weight: 500;
+    @media (max-height: 550px) {
+        #content {
+            padding: 15px;
         }
     }
 </style>

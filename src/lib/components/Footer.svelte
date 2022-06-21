@@ -40,4 +40,16 @@
             color: $color-link;
         }
     }
+
+    @media (max-width: 425px) {
+        #footer #links {
+            font-size: 18px;
+        }
+    }
+
+    @media (max-width: 350px) {
+        #footer #links {
+            font-size: 16px;
+        }
+    }
 </style>

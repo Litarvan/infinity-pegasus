@@ -49,7 +49,7 @@ Les coefficients sont manuellement entrés au fur et à mesure de l'année (sauf
     <div id="login" transition:fade={{ duration: 150, easing: quadOut }} on:outroend={outro}>
         <a id="login-button" href={PEGASUS_AUTH_URL} on:click|preventDefault={doLogin}>
             <div id="ms-logo">{@html msLogo}</div>
-            <span>Se connecter avec Microsoft</span>
+            <span class="text">Se connecter avec Microsoft</span>
         </a>
         <p id="terms" class="subtext">
             En cliquant sur le bouton ci-dessus vous acceptez les <span class="link colored clickable" on:click={() => showConditions()}>conditions d'utilisation</span> du
@@ -64,11 +64,16 @@ Les coefficients sont manuellement entrés au fur et à mesure de l'année (sauf
 {/if}
 
 <style lang="scss">
+    @use 'sass:math';
+
     @import 'vars';
+
+    $login-width: 375px;
+    $login-max-width: 0.80;
 
     #login {
         flex-direction: column;
-        width: 375px;
+        width: $login-width;
     }
 
     #login-button {
@@ -105,5 +110,72 @@ Les coefficients sont manuellement entrés au fur et à mesure de l'année (sauf
 
     #spinner {
         margin-bottom: 20px;
+    }
+
+    @media (max-width: #{math.div($login-width, $login-max-width)}) {
+        #login {
+            max-width: #{$login-max-width * 100%};
+
+            #login-button {
+                padding: 12px 0;
+
+                font-size: 19px;
+
+                #ms-logo {
+                    width: 28px;
+                }
+            }
+        }
+
+        #terms {
+            padding: 0;
+        }
+    }
+
+    @media (max-width: 420px) {
+        #login #login-button {
+            display: flex;
+            align-items: center;
+
+            padding: 10px 0;
+
+            font-size: 17px;
+
+            #ms-logo {
+                width: 24px;
+
+                margin-right: 12px;
+            }
+
+            .text {
+                margin-bottom: -1px;
+            }
+        }
+    }
+
+    @media (max-width: 375px) {
+        #login #login-button {
+            padding: 8px 0;
+
+            font-size: 15px;
+
+            #ms-logo {
+                width: 20px;
+            }
+        }
+    }
+
+    @media (max-width: 350px) {
+        #login #login-button {
+            padding: 6px 0;
+
+            font-size: 14px;
+
+            #ms-logo {
+                width: 18px;
+
+                margin-right: 10px;
+            }
+        }
     }
 </style>

@@ -62,3 +62,16 @@ button, a, .clickable {
         height: 6px;
     }
 }
+
+@media (max-width: 425px) {
+    .subtext {
+        font-size: 15px;
+    }
+}
+
+@media (max-width: 375px) {
+    .subtext {
+        font-size: 13px;
+        line-height: 18px;
+    }
+}
