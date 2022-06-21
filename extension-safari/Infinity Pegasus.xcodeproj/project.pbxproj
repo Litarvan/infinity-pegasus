@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		15028C882862118400C0B47C /* Icon.svg in Resources */ = {isa = PBXBuildFile; fileRef = 15028C872862118400C0B47C /* Icon.svg */; };
-		15028C892862118400C0B47C /* Icon.svg in Resources */ = {isa = PBXBuildFile; fileRef = 15028C872862118400C0B47C /* Icon.svg */; };
+		15028C912862675300C0B47C /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 15028C902862675300C0B47C /* Icon.png */; };
+		15028C922862675300C0B47C /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 15028C902862675300C0B47C /* Icon.png */; };
 		159F87792861EA4600B80726 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 159F87782861EA4600B80726 /* AppDelegate.swift */; };
 		159F877B2861EA4600B80726 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 159F877A2861EA4600B80726 /* SceneDelegate.swift */; };
 		159F877E2861EA4600B80726 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 159F877C2861EA4600B80726 /* LaunchScreen.storyboard */; };
@@ -92,7 +92,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		15028C872862118400C0B47C /* Icon.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Icon.svg; sourceTree = "<group>"; };
+		15028C902862675300C0B47C /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
 		159F87692861EA4500B80726 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = Base; path = ../Base.lproj/Main.html; sourceTree = "<group>"; };
 		159F876B2861EA4500B80726 /* Style.css */ = {isa = PBXFileReference; lastKnownFileType = text.css; path = Style.css; sourceTree = "<group>"; };
 		159F876C2861EA4500B80726 /* Script.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = Script.js; sourceTree = "<group>"; };
@@ -184,8 +184,8 @@
 		159F87672861EA4500B80726 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				15028C902862675300C0B47C /* Icon.png */,
 				159F87682861EA4500B80726 /* Main.html */,
-				15028C872862118400C0B47C /* Icon.svg */,
 				159F876B2861EA4500B80726 /* Style.css */,
 				159F876C2861EA4500B80726 /* Script.js */,
 			);
@@ -399,8 +399,8 @@
 				159F87AB2861EA4600B80726 /* Script.js in Resources */,
 				159F87AF2861EA4600B80726 /* Assets.xcassets in Resources */,
 				159F87812861EA4600B80726 /* Main.storyboard in Resources */,
+				15028C912862675300C0B47C /* Icon.png in Resources */,
 				159F87A92861EA4600B80726 /* Style.css in Resources */,
-				15028C882862118400C0B47C /* Icon.svg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -408,12 +408,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				15028C922862675300C0B47C /* Icon.png in Resources */,
 				159F87AA2861EA4600B80726 /* Style.css in Resources */,
 				159F878D2861EA4600B80726 /* Main.storyboard in Resources */,
 				159F87AC2861EA4600B80726 /* Script.js in Resources */,
 				159F87B02861EA4600B80726 /* Assets.xcassets in Resources */,
 				159F87A62861EA4600B80726 /* Main.html in Resources */,
-				15028C892862118400C0B47C /* Icon.svg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
