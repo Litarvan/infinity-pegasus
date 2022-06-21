@@ -22,28 +22,37 @@
     let bubbleElement;
 
     onMount(() => {
-        if (localStorage.seenHelpDisable) {
-            return;
-        }
-
-        setTimeout(() => {
-            modal.set({
-                title: 'Retourner sur Pegasus ?',
-                content: `Pour désactiver Infinity Pegasus et retourner sur le Pegasus original, cliquez simplement sur le bouton de l'extension.
+        if (!localStorage.seenHelpDisable) {
+            setTimeout(() => {
+                modal.set({
+                    title: 'Retourner sur Pegasus ?',
+                    content: `Pour désactiver Infinity Pegasus et retourner sur le Pegasus original, cliquez simplement sur le bouton de l'extension.
 
 Cliquez à nouveau pour la ré-activer.`,
-                button: 'Compris.',
+                    button: 'Compris.',
 
-                top: 50,
-                right: window.chrome ? 107 : 49,
-                width: 350,
+                    top: 50,
+                    right: navigator.userAgent.includes('afari') ? 88 : (window.chrome ? 107 : 49),
+                    width: 350,
 
-                arrow: true
-            });
+                    arrow: true
+                });
 
-            setTimeout(() => localStorage.seenHelpDisable = true);
-        }, 750);
+                setTimeout(() => localStorage.seenHelpDisable = true);
+            }, 750);
+        }
+
+        window.addEventListener('resize', onResize);
+        onResize();
+
+        return () => window.removeEventListener('resize', onResize);
     });
+
+    function onResize()
+    {
+        const [body, app] = [...document.querySelectorAll('body, #app'),].map(e => e.style);
+        body.height = app.height = `${window.innerHeight}px`;
+    }
 
     function onModalClick(event)
     {
@@ -231,6 +240,57 @@ Cliquez à nouveau pour la ré-activer.`,
                 max-width: 80%;
             }
         }
+
+        #modal {
+            justify-content: center;
+            align-items: center;
+
+            .arrow {
+                display: none;
+            }
+
+            .bubble {
+                position: initial !important;
+                margin: 25px;
+
+                .text {
+                    font-size: 14px;
+                }
+            }
+        }
+    }
+
+    @media (max-width: 425px) {
+        #modal .bubble {
+            .title {
+                font-size: 20px;
+            }
+
+            .text {
+                font-size: 13px;
+            }
+        }
+    }
+
+    @media (max-width: 375px) {
+        #modal .bubble {
+            margin: 18px;
+
+            .title {
+                font-size: 16px;
+            }
+
+            .text {
+                font-size: 11px;
+            }
+
+            .ok {
+                margin-top: 15px;
+                padding: 6px 0;
+
+                font-size: 14px;
+            }
+        }
     }
 
     @media (max-height: 650px) {
@@ -243,8 +303,5 @@ Cliquez à nouveau pour la ré-activer.`,
         #content {
             padding: 15px 0;
         }
-    }
-
-    @media (max-width: 350px) {
     }
 </style>
