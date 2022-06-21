@@ -155,26 +155,12 @@ Les coefficients sont manuellement entrés au fur et à mesure de l'année (sauf
 
     @media (max-width: 375px) {
         #login #login-button {
-            padding: 8px 0;
+            padding: 6px 0;
 
             font-size: 15px;
 
             #ms-logo {
-                width: 20px;
-            }
-        }
-    }
-
-    @media (max-width: 350px) {
-        #login #login-button {
-            padding: 6px 0;
-
-            font-size: 14px;
-
-            #ms-logo {
                 width: 18px;
-
-                margin-right: 10px;
             }
         }
     }

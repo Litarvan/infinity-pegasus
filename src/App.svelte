@@ -241,7 +241,10 @@ Cliquez à nouveau pour la ré-activer.`,
 
     @media (max-height: 550px) {
         #content {
-            padding: 15px;
+            padding: 15px 0;
         }
+    }
+
+    @media (max-width: 350px) {
     }
 </style>
