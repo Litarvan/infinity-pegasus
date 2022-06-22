@@ -27,11 +27,9 @@
         if (!localStorage.seenHelpDisable) {
             setTimeout(() => {
                 modal.set({
-                    title: 'Retourner sur Pegasus ?',
-                    content: `Pour désactiver Infinity Pegasus et retourner sur le Pegasus original, cliquez simplement sur le bouton de l'extension.
-
-Cliquez à nouveau pour la ré-activer.`,
-                    button: 'Compris.',
+                    title: $_('app.back.title'),
+                    content: $_('app.back.content'),
+                    button: $_('app.back.button'),
 
                     top: 50,
                     right: navigator.userAgent.includes('afari') ? 88 : (window.chrome ? 107 : 49),

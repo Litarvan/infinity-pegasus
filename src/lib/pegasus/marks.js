@@ -27,7 +27,7 @@ export async function getMarks(filters, noReport)
 {
     const blob = await fetchMarksPDF(filters, !noReport);
 
-    progress.set(`Lecture du ${noReport ? 'relevé': 'bulletin'}`);
+    progress.set(`reading.${noReport ? 'summary' : 'report'}`);
 
     const pdfjs = window['pdfjs-dist/build/pdf'];
     pdfjs.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.11.338/pdf.worker.min.js';
@@ -56,7 +56,7 @@ async function fetchMarksPDF(filters, report)
     const documents = await getDocuments();
     const marks = documents.find(d => d.name === (report ? REPORT_DOCUMENT : MARKS_DOCUMENT));
 
-    progress.set(`Récupération du ${report ? 'bulletin' : 'relevé'} de notes`);
+    progress.set(`fetching.${(report ? 'report' : 'summary')}`);
     return marks.fetchBlob(filters);
 }
 

@@ -25,17 +25,11 @@
     function showConditions()
     {
         modal.set({
-            title: 'Disclaimer',
-            content: `Infinity Pegasus est une extension navigateur dont l'entièreté du traitement se situe côté client, dans votre navigateur. Aucun serveur n'entre en jeu, si ce n'est pour héberger les ressources du site.
-
-De ce fait, aucune condition particulière n'est nécessaire pour son utilisation.
-
-Cependant, même si j'ai fait de mon mieux pour garantir la fiabilité des données qui sont affichées, il est possible que les notes et moyennes affichées ne soient pas toutes exactes.
-
-Seuls les PDFs (relevé et bulletin de notes) sont à considérer comme 100% fiables.
-
-Les coefficients sont manuellement entrés au fur et à mesure de l'année (sauf ceux des modules), il est donc courant que le calcul des moyennes ne soit pas exact. Pour aider à améliorer leur précision, n'hésitez pas à me notifier des erreurs, et à <a class="link colored" href="${app.repository}/tree/master/src/lib/pegasus/coefficients" target="_blank">participer à l'ajout des coefficients sur le GitHub.</a>`,
-            button: 'C\'est noté.',
+            title: $_('login.disclaimer.title'),
+            content: $_('login.disclaimer.content.text', { values: {
+                link: `<a class="link colored" href="${app.repository}/tree/master/src/lib/pegasus/coefficients" target="_blank">${$_('login.disclaimer.content.link')}</a>`
+            }}),
+            button: $_('login.disclaimer.button'),
 
             width: 500,
             center: true

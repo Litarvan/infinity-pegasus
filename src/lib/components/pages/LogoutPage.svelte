@@ -1,4 +1,6 @@
 <script>
+    import { _ } from 'svelte-i18n';
+
     import { title } from '/app';
     import { justLoggedOut } from '/lib/stores';
 
@@ -9,12 +11,12 @@
 </script>
 
 <svelte:head>
-    <title>{title('Déconnexion')}</title>
+    <title>{title($_('logout.title'))}</title>
 </svelte:head>
 
 <div id="logout">
-    <span id="message">Vous êtes maintenant déconnecté</span>
-    <a id="login" on:click={goToLogin}>Se connecter</a>
+    <span id="message">{$_('logout.text')}</span>
+    <a id="login" on:click={goToLogin}>{$_('logout.login')}</a>
 </div>
 
 <style lang="scss">

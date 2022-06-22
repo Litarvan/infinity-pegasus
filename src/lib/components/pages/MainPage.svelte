@@ -40,11 +40,11 @@
         console.error(e);
 
         modal.set({
-            title: 'Erreur',
-            content: `Erreur lors de la récupération des notes : ${e}
-
-Si le problème persiste, merci d'<a class="link colored" href="${app.repository}/issues" target="_blank">ouvrir une issue</a>, en y attachant le contenu de la console (CTRL + SHIFT + I, onglet 'Console').`,
-            button: 'Cringe :)',
+            title: $_('app.error.title'),
+            content: $_('app.error.content.text', { values: {
+                    link: `<a class="link colored" href="${app.repository}/issues" target="_blank">${$_('app.error.content.link')}</a>`
+                }}),
+            button: $_('app.error.ok'),
 
             width: 500,
             center: true
@@ -79,13 +79,9 @@ Si le problème persiste, merci d'<a class="link colored" href="${app.repository
 
         if (marks.every(m => m.subjects.every(s => s.marks.every(m => m.value === undefined))) && !marks.every(m => m.subjects.every(s => s.marks.length === 0))) {
             setTimeout(() => modal.set({
-                title: 'Aucune note',
-                content: `Pegasus n'a retourné aucune note.
-
-Si vous êtes en début de semestre et que vous n'avez vraiment aucune note, alors tout va bien.
-
-Sinon, il arrive que Pegasus ne retourne pas de note. Dans ce cas-là réessayez dans une vingtaine de secondes, ça devrait se résoudre tout seul.`,
-                button: 'Noté',
+                title: $_('app.noMarks.title'),
+                content: $_('app.noMarks.content.text'),
+                button: $_('app.noMarks.ok'),
 
                 width: 400,
 
@@ -114,10 +110,10 @@ Sinon, il arrive que Pegasus ne retourne pas de note. Dans ce cas-là réessayez
     function format(value)
     {
         if (value !== 0 && !value) {
-            return '--,--';
+            return `--${$_('app.separator')}--`;
         }
 
-        return value.toFixed(2).replace('.', ',');
+        return value.toFixed(2).replace('.', $_('app.separator'));
     }
 
     function color(value)
@@ -178,14 +174,14 @@ Sinon, il arrive que Pegasus ne retourne pas de note. Dans ce cas-là réessayez
 </script>
 
 <svelte:head>
-    <title>{title('Accueil')}</title>
+    <title>{title($_('main.title'))}</title>
 </svelte:head>
 
 <div id="main">
     {#if $state === 'A'}
         <div class="loading" transition:fade={{ duration: 150, easing: quadOut }} on:outroend={outro}>
             <Spinner />
-            <div class="subtitle">{$progress}...</div>
+            <div class="subtitle">{$_(`main.progress.${$progress}`)}...</div>
         </div>
     {/if}
     {#if $state === 'B'}
@@ -214,7 +210,7 @@ Sinon, il arrive que Pegasus ne retourne pas de note. Dans ce cas-là réessayez
                         <div class="update">
                             <div class="point big"></div>
                             <div class="id">{subject}</div>
-                            <div class="name">{name} ·&nbsp;<span class="target">{#if type.includes('average')}Moyenne de promo{:else}Note{/if}</span></div>
+                            <div class="name">{name} ·&nbsp;<span class="target">{$_(`main.updates.${type.includes('average') ? 'average' : 'mark'}`)}</span></div>
                             <div class="mark">
                                 <div class="point"></div>
                                 {#if value && old}
@@ -267,7 +263,7 @@ Sinon, il arrive que Pegasus ne retourne pas de note. Dans ce cas-là réessayez
                         <div class="point"></div>
                         <span class="average" style:color={color(module.average)}>{format(module.average)}</span>
                         <span class="max">&nbsp;/ 20</span>
-                        <span class="class-average">(promo: {format(module.classAverage)})</span>
+                        <span class="class-average">({$_('main.promo')}: {format(module.classAverage)})</span>
                     </div>
                     <hr />
                 </div>
@@ -278,11 +274,11 @@ Sinon, il arrive que Pegasus ne retourne pas de note. Dans ce cas-là réessayez
                             <div class="id">{subject.id}</div>
                             <div class="name">{subject.name}</div>
                             <div class="average"><span class="value" style:color={color(subject.average)}>{format(subject.average)}</span>&nbsp;/ 20</div>
-                            <div class="class-average">(promo: {format(subject.classAverage)}{#if subject.coefficient !== 1}, coeff. {format(subject.coefficient)}{/if})</div>
+                            <div class="class-average">({$_('main.promo')}: {format(subject.classAverage)}{#if subject.coefficient !== 1}, {$_('main.coefficient')} {format(subject.coefficient)}{/if})</div>
                         </div>
 
                         {#if subject.marks.length === 0}
-                            <div class="no-marks">Aucune note</div>
+                            <div class="no-marks">{$_('main.empty')}</div>
                         {:else}
                             <div class="marks">
                                 {#each subject.marks as mark}
@@ -290,7 +286,7 @@ Sinon, il arrive que Pegasus ne retourne pas de note. Dans ce cas-là réessayez
                                         <div class="point"></div>
                                         <div class="name">{mark.name}</div>&nbsp;:&nbsp;
                                         <div class="value"><span class="itself" style:color={color(mark.value)}>{format(mark.value)}</span>&nbsp;/ 20</div>
-                                        <div class="class-average">(promo: {format(mark.classAverage)}{#if !hasEqualCoefficients(subject)}, compte pour {Math.round(mark.coefficient * 100)}%{/if})</div>
+                                        <div class="class-average">({$_('main.promo')}: {format(mark.classAverage)}{#if !hasEqualCoefficients(subject)}, {$_('main.percentage')} {Math.round(mark.coefficient * 100)}%{/if})</div>
                                     </div>
                                 {/each}
                             </div>

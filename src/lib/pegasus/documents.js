@@ -14,7 +14,7 @@ export async function getDocuments()
         return documents;
     }
 
-    progress.set("Listage des documents");
+    progress.set('listing.documents');
 
     const result = [];
 
@@ -69,7 +69,7 @@ async function getFilters(document)
         return document.__filters;
     }
 
-    progress.set("Listage des filtres");
+    progress.set('listing.filters');
 
     const filters = [];
 
