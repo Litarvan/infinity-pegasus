@@ -2,6 +2,8 @@
     import { fade } from 'svelte/transition';
     import { quadIn, quadOut } from 'svelte/easing';
 
+    import { _ } from 'svelte-i18n';
+
     import { app, title } from '/app';
     import { modal } from '/lib/stores';
     import { PEGASUS_AUTH_URL } from '/lib/pegasus';
@@ -42,18 +44,19 @@ Les coefficients sont manuellement entrés au fur et à mesure de l'année (sauf
 </script>
 
 <svelte:head>
-    <title>{title('Se connecter')}</title>
+    <title>{title($_('login.title'))}</title>
 </svelte:head>
 
 {#if $state === 'A'}
     <div id="login" transition:fade={{ duration: 150, easing: quadOut }} on:outroend={outro}>
         <a id="login-button" href={PEGASUS_AUTH_URL} on:click|preventDefault={doLogin}>
             <div id="ms-logo">{@html msLogo}</div>
-            <span class="text">Se connecter avec Microsoft</span>
+            <span class="text">{$_('login.login_ms')}</span>
         </a>
         <p id="terms" class="subtext">
-            En cliquant sur le bouton ci-dessus vous acceptez les <span class="link colored clickable" on:click={() => showConditions()}>conditions d'utilisation</span> du
-            service
+            {$_('login.terms.prefix')}
+            <span class="link colored clickable" on:click={() => showConditions()}>{$_('login.terms.link')}</span>
+            {$_('login.terms.suffix')}
         </p>
     </div>
 {/if}
@@ -64,9 +67,9 @@ Les coefficients sont manuellement entrés au fur et à mesure de l'année (sauf
 {/if}
 
 <style lang="scss">
-    @use 'sass:math';
+    @use "sass:math";
 
-    @import 'vars';
+    @import "vars";
 
     $login-width: 375px;
     $login-max-width: 0.80;

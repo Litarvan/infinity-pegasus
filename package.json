@@ -9,7 +9,8 @@
   },
   "dependencies": {
     "normalizecss": "^3.0.0",
-    "pdfjs-dist": "=2.11.338"
+    "pdfjs-dist": "=2.11.338",
+    "svelte-i18n": "^3.4.0"
   },
   "devDependencies": {
     "@sveltejs/vite-plugin-svelte": "^1.0.0-next.40",

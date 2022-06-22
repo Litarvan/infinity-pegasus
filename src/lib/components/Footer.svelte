@@ -1,11 +1,13 @@
 <script>
+    import { _ } from 'svelte-i18n';
+
     import { app } from '/app';
 
     import Link from './Link.svelte';
 
     const links = [
-        { label: 'Coefficients', to: `${app.repository}/tree/master/src/lib/pegasus/coefficients` },
-        { label: 'Sources (GitHub)', to: app.repository }
+        { label: $_('footer.links.coefficients'), to: `${app.repository}/tree/master/src/lib/pegasus/coefficients` },
+        { label: $_('footer.links.sources'), to: app.repository }
     ];
 </script>
 
@@ -17,8 +19,9 @@
         {/each}
     </div>
     <p class="subtext">
-        Copyright © 2021-2022 Adrien ‘Litarvan’ Navratil<br />
-        Sous <Link to="{app.repository}/blob/master/LICENSE">license MIT</Link>
+        {$_('footer.copyright.text')}<br/>
+        {$_('footer.copyright.license.prefix')}
+        <Link to="{app.repository}/blob/master/LICENSE">{$_('footer.copyright.license.link')}</Link>
     </p>
 </div>
 

@@ -1,5 +1,5 @@
 // This method actually sucks, original page is first loaded and displayed before being replaced by ours.
-// Since Chrome never implemented webRequest.filterResponseData (that we use on firefox), there is sadly no better way (as far as I know).
+// Since Chrome/Safari never implemented webRequest.filterResponseData (that we use on firefox), there is sadly no better way (as far as I know).
 
 const DEBUG = false;
 

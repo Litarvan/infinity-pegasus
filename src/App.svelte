@@ -3,6 +3,8 @@
     import { fade } from 'svelte/transition';
     import { quadInOut } from 'svelte/easing';
 
+    import { _ } from 'svelte-i18n';
+
     import LoginPage from './lib/components/pages/LoginPage.svelte';
     import LogoutPage from './lib/components/pages/LogoutPage.svelte';
     import MainPage from './lib/components/pages/MainPage.svelte';
@@ -94,7 +96,7 @@ Cliquez à nouveau pour la ré-activer.`,
 
         {#if name}
             <a id="logout" on:click={onLogout} href={getLogoutURL()} in:fade={{ delay: 200 }} out:fade={{ duration: 175 }}>
-                Se déconnecter
+                {$_('app.logout')}
             </a>
         {/if}
     </div>

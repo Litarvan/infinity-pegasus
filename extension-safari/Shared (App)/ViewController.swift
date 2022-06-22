@@ -16,7 +16,7 @@ import SafariServices
 typealias PlatformViewController = NSViewController
 #endif
 
-let extensionBundleIdentifier = "study.infinity.pegasus.Infinity-Pegasus.Extension"
+let extensionBundleIdentifier = "com.litarvan.infinity-pegasus.extension"
 
 class ViewController: PlatformViewController, WKNavigationDelegate, WKScriptMessageHandler {
 

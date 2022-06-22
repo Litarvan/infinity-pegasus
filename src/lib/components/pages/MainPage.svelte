@@ -3,6 +3,8 @@
     import { fade } from 'svelte/transition';
     import { quadIn, quadOut } from 'svelte/easing';
 
+    import { _ } from 'svelte-i18n';
+
     import { app, title } from '/app';
     import { modal, progress } from '/lib/stores';
     import { getMarks, getMarksFilters } from '/lib/pegasus/marks';
@@ -65,8 +67,8 @@ Si le problème persiste, merci d'<a class="link colored" href="${app.repository
         const result = await getMarks(filtersValues);
         marks = result.marks;
         averages = {
-            'Moyenne générale': result.average,
-            'Moyenne de la promotion': result.classAverage
+            student: result.average,
+            promo: result.classAverage
         };
 
         updates = await getUpdates(filtersValues, marks);
@@ -197,12 +199,12 @@ Sinon, il arrive que Pegasus ne retourne pas de note. Dans ce cas-là réessayez
             </div>
 
             <div class="header">
-                Dernières mises à jour
+                {$_('main.updates.title')}
                 <hr />
             </div>
 
             {#if updates.filter(u => u.type !== 'average-update').length === 0}
-                <div class="no-updates">Aucune mise à jour détectée depuis la dernière fois.</div>
+                <div class="no-updates">{$_('main.updates.empty')}</div>
             {/if}
 
             <div class="updates">
@@ -228,14 +230,14 @@ Sinon, il arrive que Pegasus ne retourne pas de note. Dans ce cas-là réessayez
             </div>
 
             <div class="header">
-                Moyennes
+                {$_('main.averages.title')}
                 <hr />
             </div>
             <div class="big-list">
                 {#each Object.entries(averages) as [name, average], i}
                     <div class="entry">
                         <div class="point"></div>
-                        <div class="name">{name}</div>
+                        <div class="name">{$_(`main.averages.${name}`)}</div>
                         <div class="point small"></div>
                         <div class="mark"><span class="value" style:color={i === 0 ? color(average) : 'auto'}>{format(average)}</span>&nbsp;/ 20</div>
                     </div>
@@ -243,7 +245,7 @@ Sinon, il arrive que Pegasus ne retourne pas de note. Dans ce cas-là réessayez
             </div>
 
             <div class="header">
-                Documents
+                {$_('main.documents.title')}
                 <hr />
             </div>
             <div class="big-list" class:downloading>

@@ -23,7 +23,8 @@
     "*://inge-etud.epita.net/*"
   ],
   "background": {
-    "service_worker": "service_worker.js"
+    "service_worker": "service_worker.js",
+    "persistent": false
   },
   "content_scripts": [{
     "matches": ["*://inge-etud.epita.net/*"],
