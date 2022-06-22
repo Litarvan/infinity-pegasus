@@ -507,8 +507,6 @@
         }
 
         .point {
-            flex-shrink: 0;
-
             margin: 2px 10px 0;
         }
 
@@ -621,5 +619,110 @@
         width: 100%;
 
         font-size: 28px;
+    }
+
+    @media (max-width: 850px) {
+        .filters {
+            flex-direction: column;
+            gap: 15px;
+        }
+    }
+
+    @media (max-width: 600px) {
+        .content {
+            padding: 5px 50px;
+        }
+
+        .header {
+            font-size: 26px;
+        }
+
+        .no-updates {
+            font-size: 16px;
+        }
+
+        .big-list .entry {
+            padding-left: 20px;
+
+            font-size: 17px;
+        }
+    }
+
+    @media (max-width: 500px) {
+        .content {
+            padding: 5px 35px;
+        }
+
+        .filters {
+            margin-bottom: 35px;
+        }
+    }
+
+    @media (max-width: 400px) {
+        .header {
+            font-size: 22px;
+        }
+
+        .loading {
+            margin-bottom: 25px;
+
+            :global(.spinner) {
+                width: 80px;
+            }
+
+            .subtitle {
+                margin-top: 20px;
+
+                font-size: 17px;
+            }
+        }
+
+        .no-updates {
+            margin-bottom: 10px;
+
+            font-size: 14px;
+            line-height: 18px;
+        }
+
+        .big-list .entry {
+            margin-bottom: 8px;
+            padding-left: 15px;
+
+            font-size: 14px;
+
+            .point {
+                width: 6px;
+                height: 6px;
+
+                &.small {
+                    width: 4px;
+                    height: 4px;
+                }
+            }
+
+            .name {
+                margin-right: 8px;
+            }
+
+            .mark {
+                margin-left: 8px;
+            }
+
+            .arrow :global(svg) {
+                width: 14px;
+                height: 14px;
+            }
+        }
+
+        .separator {
+            margin-top: 5px;
+            margin-bottom: 0;
+        }
+    }
+
+    @media (max-width: 350px) {
+        .content {
+            padding: 5px 25px;
+        }
     }
 </style>

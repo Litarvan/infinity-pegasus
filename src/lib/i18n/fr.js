@@ -81,7 +81,7 @@ Les coefficients sont manuellement entrés au fur et à mesure de l'année (sauf
         averages: {
             title: 'Moyennes',
             student: 'Moyenne générale',
-            promo: 'Moyenne de la promotion'
+            promo: 'Moyenne de promotion'
         },
         documents: {
             title: 'Documents'

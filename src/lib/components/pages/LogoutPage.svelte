@@ -39,4 +39,14 @@
         margin-top: 10px;
         margin-bottom: 25px;
     }
+
+    @media (max-width: 425px) {
+        #message {
+            font-size: 18px;
+        }
+
+        #login {
+            font-size: 16px;
+        }
+    }
 </style>

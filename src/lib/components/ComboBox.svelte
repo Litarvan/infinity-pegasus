@@ -64,6 +64,8 @@
     $border-radius: 6px;
     $horizontal-padding: 12px;
 
+    $choices-margin: $name-height + $name-margin + $box-height + 7px;
+
     .combo-box {
         flex-direction: column;
 
@@ -108,7 +110,8 @@
         flex-direction: column;
 
         position: absolute;
-        top: $name-height + $name-margin + $box-height + 7px;
+        top: $choices-margin;
+        z-index: 2;
 
         width: 100%;
 
@@ -130,6 +133,39 @@
                 border-bottom-left-radius: $border-radius;
                 border-bottom-right-radius: $border-radius;
             }
+        }
+    }
+
+    @media (max-width: 975px) {
+        .box {
+            min-width: auto;
+        }
+    }
+
+    @media (max-width: 400px) {
+        .name {
+            margin-bottom: $name-margin - 3px;
+
+            font-size: 14px;
+        }
+
+        .box, .choices {
+            font-size: 12px;
+        }
+
+        .box {
+            height: $box-height - 8px;
+
+            :global(svg) {
+                height: 8px;
+
+                margin-top: 1px;
+                margin-right: -2px;
+            }
+        }
+
+        .choices {
+            top: $choices-margin - 8px;
         }
     }
 </style>

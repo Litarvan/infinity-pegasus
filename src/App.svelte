@@ -260,6 +260,21 @@
         }
     }
 
+    @media (max-width: 650px) {
+        #header {
+            flex-direction: column;
+            margin-bottom: 20px;
+
+            #logo {
+                margin-top: 0;
+            }
+
+            #logout {
+                font-size: 18px;
+            }
+        }
+    }
+
     @media (max-width: 425px) {
         #modal .bubble {
             .title {
@@ -296,6 +311,10 @@
     @media (max-height: 650px) {
         #header #logo {
             margin-top: 0;
+
+            :global(svg) {
+                height: 115px;
+            }
         }
     }
 

@@ -161,4 +161,14 @@
             }
         }
     }
+
+    @media (max-height: 550px) {
+        #spinner {
+            margin-bottom: 40px;
+
+            :global(.spinner) {
+                width: 80px;
+            }
+        }
+    }
 </style>

@@ -45,6 +45,8 @@ button, a, .clickable {
 }
 
 .point {
+    flex-shrink: 0;
+
     width: 8px;
     height: 8px;
 
