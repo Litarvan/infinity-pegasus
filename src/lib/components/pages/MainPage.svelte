@@ -261,20 +261,29 @@
                     <div class="text">
                         <div class="name">{module.name}</div>
                         <div class="point"></div>
-                        <span class="average" style:color={color(module.average)}>{format(module.average)}</span>
-                        <span class="max">&nbsp;/ 20</span>
-                        <span class="class-average">({$_('main.promo')}: {format(module.classAverage)})</span>
+                        <div class="bottom">
+                            <span class="average" style:color={color(module.average)}>{format(module.average)}</span>
+                            <span class="max">&nbsp;/ 20</span>
+                            <span class="class-average">({$_('main.promo')}: {format(module.classAverage)})</span>
+                        </div>
                     </div>
-                    <hr />
+                    <hr class="bottom-line" />
                 </div>
 
                 {#each module.subjects as subject}
                     <div class="subject card">
                         <div class="info">
-                            <div class="id">{subject.id}</div>
-                            <div class="name">{subject.name}</div>
-                            <div class="average"><span class="value" style:color={color(subject.average)}>{format(subject.average)}</span>&nbsp;/ 20</div>
-                            <div class="class-average">({$_('main.promo')}: {format(subject.classAverage)}{#if subject.coefficient !== 1}, {$_('main.coefficient')} {format(subject.coefficient)}{/if})</div>
+                            <div class="top">
+                                <div class="id">{subject.id}</div>
+                                <div class="point"></div>
+                                <div class="name">{subject.name}</div>
+                            </div>
+                            <div class="bottom">
+                                <div class="average"><span class="value" style:color={color(subject.average)}>{format(subject.average)}</span>&nbsp;/ 20</div>
+                                <div class="class-average">({$_('main.promo')}: {format(subject.classAverage)}{#if subject.coefficient !== 1}, {$_('main.coefficient')} {format(subject.coefficient)}{/if})</div>
+                            </div>
+
+                            <hr class="bottom-line" />
                         </div>
 
                         {#if subject.marks.length === 0}
@@ -284,9 +293,13 @@
                                 {#each subject.marks as mark}
                                     <div class="mark">
                                         <div class="point"></div>
-                                        <div class="name">{mark.name}</div>&nbsp;:&nbsp;
-                                        <div class="value"><span class="itself" style:color={color(mark.value)}>{format(mark.value)}</span>&nbsp;/ 20</div>
-                                        <div class="class-average">({$_('main.promo')}: {format(mark.classAverage)}{#if !hasEqualCoefficients(subject)}, {$_('main.percentage')} {Math.round(mark.coefficient * 100)}%{/if})</div>
+                                        <div class="line">
+                                            <div class="name">{mark.name}</div>&nbsp;:&nbsp;
+                                            <div class="value"><span class="itself" style:color={color(mark.value)}>{format(mark.value)}</span>&nbsp;/ 20</div>
+                                        </div>
+                                        <div class="class-average">
+                                            <span class="parenthesis">(</span>{$_('main.average')}: {format(mark.classAverage)}{#if !hasEqualCoefficients(subject)}, {$_('main.percentage')} {Math.round(mark.coefficient * 100)}%{/if}<span class="parenthesis">)</span>
+                                        </div>
                                     </div>
                                 {/each}
                             </div>
@@ -534,9 +547,17 @@
             padding-top: 15px;
             padding-bottom: 17px;
 
+            .top, .bottom {
+                display: contents;
+            }
+
             .id {
                 font-weight: bold;
                 font-size: 32px;
+            }
+
+            .point {
+                display: none;
             }
 
             .name {
@@ -558,6 +579,10 @@
 
             .class-average {
                 font-size: 14px;
+            }
+
+            .bottom-line {
+                display: none;
             }
         }
 
@@ -598,9 +623,10 @@
                 }
 
                 .value {
-                    font-weight: bold;
                     justify-content: flex-end;
-                    width: 80px;
+                    margin-left: 1px;
+
+                    font-weight: bold;
                 }
 
                 .class-average {
@@ -625,6 +651,173 @@
         .filters {
             flex-direction: column;
             gap: 15px;
+        }
+
+        .module {
+            margin-top: 20px;
+            margin-bottom: 6px;
+
+            .text {
+                flex-direction: column;
+                align-items: flex-start;
+
+                margin-left: -1px;
+
+                .name {
+                    max-width: 100%;
+                    margin-bottom: 2px;
+
+                    font-size: 20px;
+                }
+
+                .point {
+                    display: none;
+                }
+
+                .bottom {
+                    align-items: center;
+
+                    font-size: 16px;
+
+                    .class-average {
+                        margin-left: 5px;
+
+                        font-size: 14px;
+                    }
+                }
+            }
+
+            .bottom-line {
+                margin-top: 7px;
+                margin-bottom: 1px;
+
+                opacity: .6;
+            }
+        }
+
+        .subject {
+            flex-direction: column;
+
+            margin: 10px 0;
+            padding: 10px 14px;
+
+            .no-marks {
+                margin: 4px 0;
+
+                font-size: 14px;
+            }
+
+            .info {
+                align-items: flex-start;
+
+                width: 100%;
+
+                margin-top: 0;
+                padding: 0;
+
+                .top, .bottom {
+                    display: flex;
+                    align-items: center;
+
+                    max-width: 100%;
+                }
+
+                .id {
+                    font-size: 18px;
+                }
+
+                .point {
+                    display: block;
+
+                    width: 5px;
+                    height: 5px;
+
+                    margin: 0 8px;
+                }
+
+                .name {
+                    display: inline-block;
+
+                    padding: 0;
+
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                    overflow: hidden;
+
+                    font-size: 14px;
+                }
+
+                .average {
+                    margin: 0;
+
+                    font-size: 14px;
+                }
+
+                .class-average {
+                    margin-left: 5px;
+
+                    font-size: 12px;
+                }
+
+                .bottom-line {
+                    display: block;
+
+                    width: 100%;
+
+                    border-bottom: 0;
+                    border-color: #FFFFFF;
+
+                    opacity: 0.3;
+                }
+            }
+
+            .marks {
+                max-width: 100%;
+
+                padding: 0;
+
+                .mark {
+                    display: grid;
+                    grid-template-columns: 12px calc(100% - 5px);
+
+                    padding: 0 5px;
+
+                    .point {
+                        width: 5px;
+                        height: 5px;
+
+                        margin-top: 1px;
+                    }
+
+                    .line {
+                        flex-direction: row-reverse;
+                        justify-content: flex-end;
+
+                        font-size: 12px;
+
+                        .name {
+                            margin-left: 0;
+                        }
+
+                        .value {
+                            width: auto;
+
+                            margin-left: 0;
+                        }
+                    }
+
+                    .class-average {
+                        grid-column: 2 / 3;
+                        margin-left: 0;
+
+                        font-size: 10px;
+
+                        .parenthesis {
+                            display: none;
+                        }
+                    }
+                }
+            }
         }
     }
 
@@ -664,7 +857,7 @@
         }
 
         .loading {
-            margin-bottom: 25px;
+            margin-bottom: 20px;
 
             :global(.spinner) {
                 width: 80px;
@@ -715,8 +908,8 @@
         }
 
         .separator {
-            margin-top: 5px;
-            margin-bottom: 0;
+            margin-top: 0;
+            margin-bottom: 5px;
         }
     }
 

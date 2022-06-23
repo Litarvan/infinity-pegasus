@@ -71,7 +71,8 @@ Les coefficients sont manuellement entrés au fur et à mesure de l'année (sauf
                 report: 'Récupération du bulletin de notes'
             }
         },
-        promo: 'promo',
+        average: 'moyenne ',
+        promo: 'promo ',
         updates: {
             title: 'Dernières mises à jour',
             empty: 'Aucune mise à jour détectée depuis la dernière fois.',

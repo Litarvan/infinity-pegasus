@@ -319,6 +319,10 @@
     }
 
     @media (max-height: 550px) {
+        #header {
+            margin-bottom: 10px;
+        }
+
         #content {
             padding: 15px 0;
         }

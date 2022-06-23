@@ -71,6 +71,7 @@ Coefficients are manually added throughout the year (except the modules'), which
                 report: 'Reading the report'
             },
         },
+        average: 'average',
         promo: 'promo',
         updates: {
             title: 'Last updates',
