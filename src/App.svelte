@@ -321,6 +321,14 @@
     @media (max-height: 550px) {
         #header {
             margin-bottom: 10px;
+
+            #logo :global(svg) {
+                height: 100px;
+            }
+
+            #logout {
+                font-size: 16px;
+            }
         }
 
         #content {

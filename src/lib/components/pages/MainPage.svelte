@@ -42,8 +42,8 @@
         modal.set({
             title: $_('app.error.title'),
             content: $_('app.error.content.text', { values: {
-                    link: `<a class="link colored" href="${app.repository}/issues" target="_blank">${$_('app.error.content.link')}</a>`
-                }}),
+                link: `<a class="link colored" href="${app.repository}/issues" target="_blank">${$_('app.error.content.link')}</a>`
+            }}),
             button: $_('app.error.ok'),
 
             width: 500,
@@ -209,15 +209,18 @@
                     {#if type !== 'average-update'}
                         <div class="update">
                             <div class="point big"></div>
-                            <div class="id">{subject}</div>
-                            <div class="name">{name} ·&nbsp;<span class="target">{$_(`main.updates.${type.includes('average') ? 'average' : 'mark'}`)}</span></div>
+                            <div class="top">
+                                <div class="id">{subject}</div>
+                                <div class="dash">-</div>
+                                <div class="name">{name} &nbsp;<span class="target">·&nbsp; {$_(`main.updates.${type.includes('average') ? 'average' : 'mark'}`)}</span></div>
+                            </div>
                             <div class="mark">
                                 <div class="point"></div>
                                 {#if value && old}
                                     <div class="from">{format(old)}</div>
                                     <div class="update-arrow">{@html UpdateArrow}</div>
                                 {/if}
-                                <div class="to">{format(value || old)}</div>
+                                <div class="to"><span class="value" style:color={color(value || old)}>{format(value || old)}</span>&nbsp;/ 20</div>
                                 <div class="type-sign">{@html getSignForUpdate(type, value, old)}</div>
                             </div>
                         </div>
@@ -355,6 +358,7 @@
 
         hr {
             width: 100%;
+
             border-bottom: 0;
             border-color: $color-background;
         }
@@ -389,17 +393,29 @@
 
             font-size: 28px;
 
-            .id {
-                font-weight: bold;
-                margin: 0 15px;
-            }
+            .top {
+                align-items: center;
 
-            .name {
-                font-size: 18px;
-                margin-right: 10px;
+                .id {
+                    margin-left: 15px;
+                    margin-right: 10px;
 
-                .target {
-                    font-weight: 500;
+                    font-weight: bold;
+                }
+
+                .dash {
+                    margin-right: 10px;
+
+                    font-size: 24px;
+                }
+
+                .name {
+                    font-size: 18px;
+                    margin-right: 10px;
+
+                    .target {
+                        font-weight: 500;
+                    }
                 }
             }
 
@@ -653,6 +669,72 @@
             gap: 15px;
         }
 
+        .updates {
+            margin-top: 4px;
+            margin-bottom: 12px;
+
+            .update {
+                display: grid;
+                grid-template-columns: 17px 100%;
+
+                margin-bottom: 6px;
+                padding-left: 15px;
+
+                .point {
+                    width: 6px;
+                    height: 6px;
+                }
+
+                .top {
+                    .id {
+                        margin-left: 0;
+                        margin-right: 6px;
+
+                        font-size: 18px;
+                    }
+
+                    .dash {
+                        margin-right: 6px;
+
+                        font-size: 18px;
+                    }
+
+                    .name {
+                        display: inline-block;
+
+                        white-space: nowrap;
+                        text-overflow: ellipsis;
+                        overflow: hidden;
+
+                        font-size: 14px;
+
+                        .target {
+                            display: none;
+                        }
+                    }
+                }
+
+                .mark {
+                    grid-column: 2 / 3;
+                    height: 23px;
+
+                    font-size: 16px;
+                    // font-weight: 400;
+
+                    .point {
+                        display: none;
+                    }
+
+                    .type-sign {
+                        width: 14px;
+
+                        margin-left: 6px;
+                        margin-bottom: 2px;
+                    }
+                }
+            }
+        }
+
         .module {
             margin-top: 20px;
             margin-bottom: 6px;
@@ -828,6 +910,10 @@
 
         .header {
             font-size: 26px;
+
+            hr {
+                margin-top: 9px;
+            }
         }
 
         .no-updates {
@@ -853,7 +939,11 @@
 
     @media (max-width: 400px) {
         .header {
-            font-size: 22px;
+            font-size: 20px;
+
+            hr {
+                margin-top: 6px;
+            }
         }
 
         .loading {
@@ -866,7 +956,7 @@
             .subtitle {
                 margin-top: 20px;
 
-                font-size: 17px;
+                font-size: 15px;
             }
         }
 
