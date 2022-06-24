@@ -142,6 +142,12 @@
         }
     }
 
+    @media (max-width: 850px) {
+        .box {
+            min-width: initial;
+        }
+    }
+
     @media (max-width: 400px) {
         .name {
             margin-bottom: $name-margin - 3px;
