@@ -673,6 +673,14 @@
             gap: 15px;
         }
 
+        .header {
+            font-size: 28px;
+
+            hr {
+                margin-top: 9px;
+            }
+        }
+
         .updates {
             margin-top: 4px;
             margin-bottom: 12px;
