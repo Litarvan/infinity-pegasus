@@ -949,6 +949,10 @@
     }
 
     @media (max-width: 400px) {
+        .filters {
+            margin-bottom: 30px;
+        }
+
         .header {
             font-size: 20px;
 
@@ -1016,7 +1020,7 @@
 
     @media (max-width: 350px) {
         .content {
-            padding: 5px 25px;
+            padding: 0 25px;
         }
     }
 </style>

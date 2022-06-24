@@ -171,7 +171,7 @@
         }
 
         .choices {
-            top: $choices-margin - 8px;
+            top: $choices-margin - 10px;
         }
     }
 </style>
