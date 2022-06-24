@@ -138,7 +138,7 @@
 
     @media (max-width: 975px) {
         .box {
-            min-width: auto;
+            min-width: 340px;
         }
     }
 

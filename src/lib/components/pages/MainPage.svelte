@@ -625,6 +625,10 @@
                     border-radius: 50%;
                 }
 
+                .line {
+                    display: contents;
+                }
+
                 .name, .value, .class-average {
                     white-space: nowrap;
                 }
@@ -878,6 +882,7 @@
                     }
 
                     .line {
+                        display: flex;
                         flex-direction: row-reverse;
                         justify-content: flex-end;
 
