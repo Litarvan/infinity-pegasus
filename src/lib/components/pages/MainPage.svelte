@@ -725,6 +725,12 @@
                         display: none;
                     }
 
+                    .update-arrow {
+                        width: 20px;
+
+                        margin: 0 6px 1px;
+                    }
+
                     .type-sign {
                         width: 14px;
 
