@@ -109,6 +109,10 @@
 
     function format(value)
     {
+        if (value === 0.01) {
+            return 'Abs.';
+        }
+
         if (value !== 0 && !value) {
             return `--${$_('app.separator')}--`;
         }
@@ -118,6 +122,10 @@
 
     function color(value)
     {
+        if (value === 0.01) {
+            return '#666670';
+        }
+
         if (value === null) {
             return 'auto';
         }

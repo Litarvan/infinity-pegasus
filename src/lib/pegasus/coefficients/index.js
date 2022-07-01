@@ -30,6 +30,7 @@ export function computeAverages(filters, marks)
             let totalSubjectMarks = 0;
             let totalSubjectClassAverages = 0;
             let totalSubjectCoefficient = 0;
+            let totalSubjectClassCoefficient = 0;
             for (const mark of subject.marks) {
                 let coefficient = 1;
                 for (const [regex, value] of Object.entries(subjectCoefficients)) {
@@ -40,15 +41,20 @@ export function computeAverages(filters, marks)
                 }
 
                 mark.coefficient = coefficient;
+    
+                // 0.01 means this is a justified absence
+                if (mark.value !== 0.01) {
+                    totalSubjectMarks += mark.value * coefficient;
+                    totalSubjectCoefficient += coefficient;
+                }
 
-                totalSubjectMarks += mark.value * coefficient;
                 totalSubjectClassAverages += mark.classAverage * coefficient;
-                totalSubjectCoefficient += coefficient;
+                totalSubjectClassCoefficient += coefficient;
             }
 
             subject.coefficient = subjectCoefficients._subject || 1;
             subject.average = filterNaN(totalSubjectMarks / totalSubjectCoefficient);
-            subject.classAverage = filterNaN(totalSubjectClassAverages / totalSubjectCoefficient);
+            subject.classAverage = filterNaN(totalSubjectClassAverages / totalSubjectClassCoefficient);
 
             if (subject.average != null) {
                 totalModuleMarks += subject.average * subject.coefficient;
