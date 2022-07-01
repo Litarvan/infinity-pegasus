@@ -24,8 +24,8 @@ export default {
         },
         TC: {
             _subject: 3/9,
-            // TODO: Projet: 80%
-            // TODO: CM: 20%
+            "Projet TIGER QCM": 1/5,
+            "Projet TIGER": 4/5
         },
         JWS: {
             _subject: 1/9
