@@ -42,7 +42,9 @@ export default {
             '.*': 2 / 8
         },
         CHIFR: {
-            _subject: 1/6
+            _subject: 1/6,
+            '.*DM.*': .4,
+            '.*': .6
         },
         CAMA: {
             _subject: 1/3,
@@ -53,13 +55,13 @@ export default {
     IF2: {
         LOFO: {
             _subject: 2/8,
-            '.* CC[1-3]': 1/3 / 3,
+            '.* CC1': 1/3,
             '.*': 2/3
         },
         TYLA: {
             _subject: 1/8,
-            // TODO: 30% DM
-            // TODO: 70% EXAM
+            'DM .*': .3,
+            '.*': .7
         },
         THEG: {
             _subject: 3/8
