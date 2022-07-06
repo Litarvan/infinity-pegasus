@@ -8,7 +8,7 @@ addMessages('fr', fr);
 
 init({
     fallbackLocale: 'en',
-    initialLocale: getLocaleFromNavigator()
+    initialLocale: /*getLocaleFromNavigator()*/ 'en'
 });
 
 import App from './App.svelte';
