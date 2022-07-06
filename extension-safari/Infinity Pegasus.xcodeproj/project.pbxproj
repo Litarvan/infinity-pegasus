@@ -15,8 +15,8 @@
 		159F87812861EA4600B80726 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 159F877F2861EA4600B80726 /* Main.storyboard */; };
 		159F878A2861EA4600B80726 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 159F87892861EA4600B80726 /* AppDelegate.swift */; };
 		159F878D2861EA4600B80726 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 159F878B2861EA4600B80726 /* Main.storyboard */; };
-		159F87952861EA4600B80726 /* Infinity Pegasus Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 159F87942861EA4600B80726 /* Infinity Pegasus Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		159F879F2861EA4600B80726 /* Infinity Pegasus Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 159F879E2861EA4600B80726 /* Infinity Pegasus Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		159F87952861EA4600B80726 /* Infinity Pegasus Extension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 159F87942861EA4600B80726 /* Infinity Pegasus Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		159F879F2861EA4600B80726 /* Infinity Pegasus Extension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 159F879E2861EA4600B80726 /* Infinity Pegasus Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		159F87A52861EA4600B80726 /* Main.html in Resources */ = {isa = PBXBuildFile; fileRef = 159F87682861EA4500B80726 /* Main.html */; };
 		159F87A62861EA4600B80726 /* Main.html in Resources */ = {isa = PBXBuildFile; fileRef = 159F87682861EA4500B80726 /* Main.html */; };
 		159F87A92861EA4600B80726 /* Style.css in Resources */ = {isa = PBXBuildFile; fileRef = 159F876B2861EA4500B80726 /* Style.css */; };
@@ -67,26 +67,26 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		159F87B82861EA4600B80726 /* Embed App Extensions */ = {
+		159F87B82861EA4600B80726 /* Embed Foundation Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				159F87952861EA4600B80726 /* Infinity Pegasus Extension.appex in Embed App Extensions */,
+				159F87952861EA4600B80726 /* Infinity Pegasus Extension.appex in Embed Foundation Extensions */,
 			);
-			name = "Embed App Extensions";
+			name = "Embed Foundation Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		159F87BF2861EA4600B80726 /* Embed App Extensions */ = {
+		159F87BF2861EA4600B80726 /* Embed Foundation Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				159F879F2861EA4600B80726 /* Infinity Pegasus Extension.appex in Embed App Extensions */,
+				159F879F2861EA4600B80726 /* Infinity Pegasus Extension.appex in Embed Foundation Extensions */,
 			);
-			name = "Embed App Extensions";
+			name = "Embed Foundation Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -279,7 +279,7 @@
 				159F87712861EA4600B80726 /* Sources */,
 				159F87722861EA4600B80726 /* Frameworks */,
 				159F87732861EA4600B80726 /* Resources */,
-				159F87B82861EA4600B80726 /* Embed App Extensions */,
+				159F87B82861EA4600B80726 /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
@@ -298,7 +298,7 @@
 				159F87832861EA4600B80726 /* Sources */,
 				159F87842861EA4600B80726 /* Frameworks */,
 				159F87852861EA4600B80726 /* Resources */,
-				159F87BF2861EA4600B80726 /* Embed App Extensions */,
+				159F87BF2861EA4600B80726 /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
@@ -352,7 +352,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1340;
-				LastUpgradeCheck = 1340;
+				LastUpgradeCheck = 1400;
 				TargetAttributes = {
 					159F87742861EA4600B80726 = {
 						CreatedOnToolsVersion = 13.4.1;
@@ -571,6 +571,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -629,6 +630,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -791,8 +793,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = "macOS (Extension)/Infinity Pegasus.entitlements";
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = E5L7NC8M9T;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -804,7 +808,7 @@
 					"@executable_path/../Frameworks",
 					"@executable_path/../../../../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MACOSX_DEPLOYMENT_TARGET = "$(RECOMMENDED_MACOSX_DEPLOYMENT_TARGET)";
 				MARKETING_VERSION = 1.0.1;
 				OTHER_LDFLAGS = (
 					"-framework",
@@ -823,8 +827,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = "macOS (Extension)/Infinity Pegasus.entitlements";
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = E5L7NC8M9T;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -836,7 +842,7 @@
 					"@executable_path/../Frameworks",
 					"@executable_path/../../../../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MACOSX_DEPLOYMENT_TARGET = "$(RECOMMENDED_MACOSX_DEPLOYMENT_TARGET)";
 				MARKETING_VERSION = 1.0.1;
 				OTHER_LDFLAGS = (
 					"-framework",
@@ -861,6 +867,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = E5L7NC8M9T;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -873,7 +880,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MACOSX_DEPLOYMENT_TARGET = "$(RECOMMENDED_MACOSX_DEPLOYMENT_TARGET)";
 				MARKETING_VERSION = 1.0.1;
 				OTHER_LDFLAGS = (
 					"-framework",
@@ -900,6 +907,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = E5L7NC8M9T;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -912,7 +920,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MACOSX_DEPLOYMENT_TARGET = "$(RECOMMENDED_MACOSX_DEPLOYMENT_TARGET)";
 				MARKETING_VERSION = 1.0.1;
 				OTHER_LDFLAGS = (
 					"-framework",

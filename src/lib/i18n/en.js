@@ -21,7 +21,7 @@ If not, it sometimes happens that Pegasus returns no mark. In this case retry in
             button: 'Got it'
         },
         back: {
-            title: 'Going back to Pegasus ?',
+            title: 'Go back to Pegasus?',
             content: `To disable Infinity Pegasus and go back to the original Pegasus, simply click on the extension button.
 
 Click again to re-enable it.`,

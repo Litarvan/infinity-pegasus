@@ -902,7 +902,7 @@
                         flex-direction: row-reverse;
                         justify-content: flex-end;
 
-                        font-size: 12px;
+                        font-size: 13px;
 
                         .name {
                             margin-left: 0;
@@ -919,7 +919,7 @@
                         grid-column: 2 / 3;
                         margin-left: 0;
 
-                        font-size: 10px;
+                        font-size: 11px;
 
                         .parenthesis {
                             display: none;
@@ -1037,6 +1037,16 @@
     @media (max-width: 350px) {
         .content {
             padding: 0 25px;
+        }
+
+        .subject .marks .mark {
+            .line {
+                font-size: 12px;
+            }
+
+            .class-average {
+                font-size: 10px;
+            }
         }
     }
 </style>
