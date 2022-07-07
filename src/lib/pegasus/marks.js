@@ -172,5 +172,6 @@ function parseMark(mark)
 
 function isMarkCode(code)
 {
-    return code.match(/^[A-Z]+$/) && code.length > 5;
+    // TODO: Use x position
+    return code === 'TP' || code.match(/^[A-Z]+$/) && code.length > 5;
 }
