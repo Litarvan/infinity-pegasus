@@ -99,7 +99,8 @@ Les coefficients sont manuellement entrés au fur et à mesure de l'année (sauf
     footer: {
         links: {
             coefficients: 'Coefficients',
-            sources: 'Sources (GitHub)'
+            sources: 'GitHub',
+            reset: 'Reset'
         },
         copyright: {
             text: 'Copyright © 2021-2022 Adrien ‘Litarvan’ Navratil',

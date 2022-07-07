@@ -7,15 +7,24 @@
 
     const links = [
         { label: $_('footer.links.coefficients'), to: `${app.repository}/tree/master/src/lib/pegasus/coefficients` },
-        { label: $_('footer.links.sources'), to: app.repository }
+        { label: $_('footer.links.sources'), to: app.repository },
+        { label: $_('footer.links.reset'), exec: reset }
     ];
+
+    function reset(e)
+    {
+        e.preventDefault();
+
+        localStorage.clear();
+        window.location.reload();
+    }
 </script>
 
 <div id="footer">
     <div id="links">
-        {#each links as { label, to }, index (label) }
+        {#each links as { label, ...props }, index (label) }
             {#if index}&nbsp;·&nbsp;{/if}
-            <Link {to}>{label}</Link>
+            <Link {...props}>{label}</Link>
         {/each}
     </div>
     <p class="subtext">

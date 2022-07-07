@@ -99,7 +99,8 @@ Coefficients are manually added throughout the year (except the modules'), which
     footer: {
         links: {
             coefficients: 'Coefficients',
-            sources: 'Sources (GitHub)'
+            sources: 'GitHub',
+            reset: 'Reset'
         },
         copyright: {
             text: 'Copyright © 2021-2022 Adrien ‘Litarvan’ Navratil',
