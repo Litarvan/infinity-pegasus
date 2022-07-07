@@ -42,9 +42,10 @@
         modal.set({
             title: $_('app.error.title'),
             content: $_('app.error.content.text', { values: {
+                error: e.message,
                 link: `<a class="link colored" href="${app.repository}/issues" target="_blank">${$_('app.error.content.link')}</a>`
             }}),
-            button: $_('app.error.ok'),
+            button: $_('app.error.button'),
 
             width: 500,
             center: true

@@ -6,8 +6,8 @@ export default {
             content: {
                 text: `Erreur lors de la récupération des notes : {error}
 
-Si le problème persiste, merci d'{link}, en y attachant le contenu de la console (CTRL + SHIFT + I, onglet 'Console').`,
-                link: 'ouvrir une issue'
+Si le problème persiste, merci {link}, en y attachant le contenu de la console (CTRL + SHIFT + I, onglet 'Console').`,
+                link: 'd\'ouvrir une issue'
             },
             button: 'Cringe :)'
         },

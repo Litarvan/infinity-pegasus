@@ -131,7 +131,7 @@ function parseSubject(elements, texts, i, report)
     }
 
     let nextMarkId = 0;
-    while (i < texts.length && (texts[i].match(MARK_REGEX) || (i + 1 < texts.length && isMarkCode(texts[i + 1])))) {
+    while (i < texts.length && (texts[i].match(MARK_REGEX) || (i + 1 < texts.length && isMarkCode(elements[i + 1])))) {
         const mark = { id: nextMarkId++ };
         if (texts[i].match(MARK_REGEX)) {
             mark.classAverage = parseMark(texts[i++]);
@@ -148,17 +148,13 @@ function parseSubject(elements, texts, i, report)
             mark.coefficient = parseMark(texts[i++]);
         }
 
-        const markName = texts[i++];
-
-        // This is turbo-sus, but it's the only way to handle mark names being formatted like mark codes.
-        // UPDATE: We can use positions instead, if this breaks then they should be used.
-        if (isMarkCode(markName) && (texts[i + 2].match(MARK_REGEX) || (!texts[i + 3].match(MARK_REGEX) && !isMarkCode(texts[i + 3]) && texts[i + 3] !== 'Note'))) {
+        mark.name = texts[i++];
+        if (isMarkCode(elements[i - 1])) {
             mark.name = 'Note';
         } else {
-            mark.name = markName;
             i++;
         }
-
+       
         marks.push(mark);
     }
 
@@ -170,8 +166,7 @@ function parseMark(mark)
     return parseFloat(mark.replace(',', '.'));
 }
 
-function isMarkCode(code)
+function isMarkCode(element)
 {
-    // TODO: Use x position
-    return code === 'TP' || code.match(/^[A-Z]+$/) && code.length > 5;
+    return element.transform[4] === 94;
 }
