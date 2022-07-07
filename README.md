@@ -11,7 +11,26 @@
 # Infinity Pegasus 🐴
 > Make Pegasus great again!
 
-## Télécharger pour [Firefox](https://addons.mozilla.org/fr/firefox/addon/infinity-pegasus/) ou [Chrome](https://chrome.google.com/webstore/detail/infinity-pegasus/khbapaojhccoiojehmnbpikcinkbgjpf?hl=fr)
+## Desktop
+
+- Download for [Firefox](https://addons.mozilla.org/firefox/addon/infinity-pegasus/) 
+- Download for [Chrome](https://chrome.google.com/webstore/detail/infinity-pegasus/khbapaojhccoiojehmnbpikcinkbgjpf)
+- Safari support will arrive in a few days (pending Apple validation)
+
+## Mobile
+
+### iOS
+
+- Download for [Safari for iOS](https://apps.apple.com/app/infinity-pegasus/id1631029478)
+
+### Android
+
+The only way to use web extensions on Android right now is to use [Firefox Nightly](https://play.google.com/store/apps/details?id=org.mozilla.fenix), and then follow those instructions:
+- Open the app and go to the Settings page in `About Firefox Nightly` (at the bottom of page)
+- Tap the Firefox logo 5 times
+- Go back to the Settings page, go to `Advanced` and then `Custom Add-on collection`
+- Enter owner `17328166` and name `Infinity-Pegasus`
+- Firefox will restart, and in the `Add-ons` menu you should be able to install Infinity Pegasus.
 
 ## Screenshots
 
