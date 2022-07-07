@@ -23,6 +23,9 @@
 
 - Download for [Safari for iOS](https://apps.apple.com/app/infinity-pegasus/id1631029478)
 
+After downloading the app, open your phone settings and go to Safari's settings. In `Extensions`, enable Infinity Pegasus
+and also allow it to access the Pegasus website. **The extension won't work if you didn't do both.**
+
 ### Android
 
 The only way to use web extensions on Android right now is to use [Firefox Nightly](https://play.google.com/store/apps/details?id=org.mozilla.fenix), and then follow those instructions:
