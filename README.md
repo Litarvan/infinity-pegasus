@@ -17,6 +17,8 @@
 - Download for [Chrome](https://chrome.google.com/webstore/detail/infinity-pegasus/khbapaojhccoiojehmnbpikcinkbgjpf)
 - Safari support will arrive in a few days (pending Apple validation)
 
+After first installation, Pegasus page could need to be refreshed because of caching.
+
 ## Mobile
 
 ### iOS
@@ -26,14 +28,18 @@
 After downloading the app, open your phone settings and go to Safari's settings. In `Extensions`, enable Infinity Pegasus
 and also allow it to access the Pegasus website. **The extension won't work if you didn't do both.**
 
+After first installation, Pegasus page could need to be refreshed because of caching.
+
 ### Android
 
-The only way to use web extensions on Android right now is to use [Firefox Nightly](https://play.google.com/store/apps/details?id=org.mozilla.fenix), and then follow those instructions:
-- Open the app and go to the Settings page in `About Firefox Nightly` (at the bottom of page)
+The only way to use web extensions on Android right now is to use [Firefox Nightly](https://play.google.com/store/apps/details?id=org.mozilla.fenix), then follow these instructions:
+- Open the app, go to the Settings page and then in `About Firefox Nightly`at the bottom of the page
 - Tap the Firefox logo 5 times
 - Go back to the Settings page, go to `Advanced` and then `Custom Add-on collection`
 - Enter owner `17328166` and name `Infinity-Pegasus`
 - Firefox will restart, and in the `Add-ons` menu you should be able to install Infinity Pegasus.
+
+After first installation, Pegasus page could need to be refreshed because of caching.
 
 ## Screenshots
 
