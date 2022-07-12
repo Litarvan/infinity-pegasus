@@ -229,7 +229,7 @@
                                     <div class="from">{format(old)}</div>
                                     <div class="update-arrow">{@html UpdateArrow}</div>
                                 {/if}
-                                <div class="to"><span class="value" style:color={color(value === 0 || value ? value : old)}>{format(value || old)}</span>&nbsp;/ 20</div>
+                                <div class="to"><span class="value" style:color={color(value === 0 || value ? value : old)}>{format(value === 0 || value ? value : old)}</span>&nbsp;/ 20</div>
                                 <div class="type-sign">{@html getSignForUpdate(type, value, old)}</div>
                             </div>
                         </div>
