@@ -225,7 +225,7 @@
                             </div>
                             <div class="mark">
                                 <div class="point"></div>
-                                {#if (value === 0 || value) && old}
+                                {#if (value === 0 || value) && (old === 0 || old)}
                                     <div class="from">{format(old)}</div>
                                     <div class="update-arrow">{@html UpdateArrow}</div>
                                 {/if}
