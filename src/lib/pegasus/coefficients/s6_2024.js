@@ -55,8 +55,8 @@ export default {
     IF2: {
         LOFO: {
             _subject: 2/8,
-            '.* CC1': 1/3,
-            '.*': 2/3
+            '.* CC1': 0.3,
+            '.*': 0.7
         },
         TYLA: {
             _subject: 1/8,
