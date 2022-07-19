@@ -77,8 +77,12 @@ export default {
             '.*Soutenance.*': 0.25,
             '.*': 0.75
         },
-        // TODO: TIFT
-        // TODO: TIFIR
+        TIFT: {
+            _subject: 1/4
+        },
+        TIFIR: {
+            _subject: 1/4
+        }
     },
     MSH2: {
         LV: {
