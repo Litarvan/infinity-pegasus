@@ -86,9 +86,9 @@ export default {
     },
     MSH2: {
         LV: {
-            // TODO: 30% Oral
-            // TODO: 40% Écrit
-            // TODO: 30% CC/Suivi
+            'Anglais-1 .*': .3,
+            'QCM Moodle': .4,
+            'Suivi/oral': .3
         },
         CPT: {
             // TODO: TBD
