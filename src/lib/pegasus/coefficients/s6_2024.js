@@ -85,7 +85,7 @@ export default {
         }
     },
     MSH2: {
-        LV: {
+        'ANGL-1_S6': {
             'Anglais-1 .*': .3,
             'QCM Moodle': .4,
             'Suivi/oral': .3
