@@ -36,7 +36,7 @@ export async function getMarks(filters, noReport)
     const result = [];
     let averages;
 
-    for (let i = 1; i <= doc.numPages; i++) {
+    for (let i = 1; i <= doc.numPages && typeof averages?.average !== 'number'; i++) {
         if (!(averages = await parsePage(await doc.getPage(i), result, !noReport)) && !noReport) {
             return getMarks(filters, true);
         }
