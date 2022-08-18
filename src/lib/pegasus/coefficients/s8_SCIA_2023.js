@@ -7,7 +7,7 @@ export default {
             _subject: 1/7
         },
         DPES: {
-            _subject: 1/14,
+            _subject: 0.5/7,
             'DPES_NOTE_TD_COLLABORATION': 1/3,
             'DPES_NOTE_OBJECTIF': 1/3,
             'DPES_NOTE_VIDEO': 1/3
@@ -25,7 +25,26 @@ export default {
             _subject: 1/7
         },
         RE_S8: {
-            _subject: 1/14
+            _subject: 0.5/7
+        }
+    },
+    IAET8: {
+        BIDA: {
+            _subject: 2/7
+        },
+        HADSPA: {
+            _subject: 1.5/7,
+            'QCM SPARK': 1/2,
+            'PROJET': 1/2
+        },
+        IAZU: {
+            _subject: 1.5/7
+        },
+        MPDS_S8: {
+            _subject: 1/7
+        },
+        REMA1: {
+            _subject: 1/7
         }
     }
 }
