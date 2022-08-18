@@ -71,5 +71,25 @@ export default {
             'QCM SCALA': 1/2,
             'PROJET': 1/2
         }
+    },
+    IAML8: {
+        FTML_S8: {
+            _subject: 1.5/7
+        },
+        IREN: {
+            _subject: 1/7
+        },
+        MLBIO: {
+            _subject: 1/7
+        },
+        MLSECU: {
+            _subject: 1/7
+        },
+        PTML_S8: {
+            _subject: 1/7
+        },
+        VLG: {
+            _subject: 1/7
+        }
     }
 }
