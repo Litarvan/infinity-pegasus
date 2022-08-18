@@ -46,5 +46,30 @@ export default {
         REMA1: {
             _subject: 1/7
         }
+    },
+    IAOT8: {
+        AMS1: {
+            _subject: 1.5/9
+        },
+        OCVX1: {
+            _subject: 2/9,
+            'OCVX1_EXAMEN': 0.4,
+            'OCVX1_MOODLE': 0.2,
+            'OCVX1_TP': 0.4
+        },
+        PRST: {
+            _subject: 1.5/9
+        },
+        PYBD: {
+            _subject: 1/9
+        },
+        RAND: {
+            _subject: 1.5/9
+        },
+        SCALA: {
+            _subject: 1.5/9,
+            'QCM SCALA': 1/2,
+            'PROJET': 1/2
+        }
     }
 }
