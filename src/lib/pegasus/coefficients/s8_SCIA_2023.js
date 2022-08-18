@@ -92,4 +92,4 @@ export default {
             _subject: 1/7
         }
     }
-}
+};
