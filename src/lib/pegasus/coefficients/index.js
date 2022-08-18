@@ -2,9 +2,11 @@ import { SEMESTER_FILTER, YEAR_FILTER } from '../documents';
 
 const S7_2023 = Symbol('S7 (2023)');
 const S6_2024 = Symbol('S6 (2024)');
+const S8_SCIA_2023 = Symbol('S8 SCIA (2023)');
 
 const coefficients = {
-    [S6_2024]: (await import('./s6_2024')).default
+    [S6_2024]: (await import('./s6_2024')).default,
+    [S8_SCIA_2023]: (await import('./s8_SCIA_2023')).default
 };
 
 export function computeAverages(filters, marks)
@@ -113,6 +115,8 @@ function getCoefficients(filters)
                     return coefficients[S6_2024];
                 case 'SI7':
                     return coefficients[S7_2023];
+                case 'SI8':
+                    return coefficients[S8_SCIA_2023];
             }
             break;
     }
