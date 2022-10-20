@@ -1,10 +1,11 @@
 import { SEMESTER_FILTER, YEAR_FILTER } from '../documents';
 
-const S7_2023 = Symbol('S7 (2023)');
-const S6_2024 = Symbol('S6 (2024)');
+const S5_2025 = Symbol('S5 (2025)');
+const S6_2025 = Symbol('S6 (2025)');
 
 const coefficients = {
-    [S6_2024]: (await import('./s6_2024')).default
+    [S5_2025]: (await import('src/lib/pegasus/coefficients/s5_2025')).default,
+    [S6_2025]: (await import('src/lib/pegasus/coefficients/s6_2025')).default
 };
 
 export function computeAverages(filters, marks)
@@ -41,7 +42,7 @@ export function computeAverages(filters, marks)
                 }
 
                 mark.coefficient = coefficient;
-    
+
                 // 0.01 means this is a justified absence
                 if (mark.value !== 0.01) {
                     totalSubjectMarks += mark.value * coefficient;
@@ -107,12 +108,12 @@ function getCoefficients(filters)
     const semester = filters[SEMESTER_FILTER].split(' ')[0];
 
     switch (year) {
-        case '2021':
+        case '2022':
             switch (semester) {
+                case 'SI5':
+                    return coefficients[S5_2025];
                 case 'SI6':
-                    return coefficients[S6_2024];
-                case 'SI7':
-                    return coefficients[S7_2023];
+                    return coefficients[S6_2025];
             }
             break;
     }
