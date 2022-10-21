@@ -4,8 +4,8 @@ const S5_2025 = Symbol('S5 (2025)');
 const S6_2025 = Symbol('S6 (2025)');
 
 const coefficients = {
-    [S5_2025]: (await import('src/lib/pegasus/coefficients/s5_2025')).default,
-    [S6_2025]: (await import('src/lib/pegasus/coefficients/s6_2025')).default
+    [S5_2025]: (await import('./s5_2025')).default,
+    [S6_2025]: (await import('./s6_2025')).default
 };
 
 export function computeAverages(filters, marks)
