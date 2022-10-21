@@ -34,27 +34,29 @@ export default {
     },
     'Harmonisation mathématiques': {
         APXF: {
-            // TODO: Is this correct?
             _subject: 2,
-            '.* CC1': 0.4 * 0.8,
-            '.* CC2(.*)?': 0.6 * 0.8,
-            '.*': 0.2
+
+            // TODO: This is deducted from FPVA
+            '.* CC1': 1/2 * 0.2,
+            '.* CC2(.*)?': 0.4 * 0.8,
+            '.* CC3': 1/2 * 0.2,
+            '.*': 0.6 * 0.8
         },
         FPVA: {
-            // TODO: This is deducted
-            '.* CC1': 0.4 * 0.8,
-            '.* CC2(.*)?': 0.6 * 0.8,
-            '.*': 0.2
+            '.* CC1': 1/2 * 0.2,
+            '.* CC2(.*)?': 0.4 * 0.8,
+            '.* CC3': 1/2 * 0.2,
+            '.*': 0.6 * 0.8
         },
         FOLO: {
             // 50% Exam
             // 50% CC (Possiblement plusieurs notes en pratique, même coeff)
         },
         INT: {
-            // TODO: Is this correct?
+            // TODO: This should be the same as FPVA but doesn't look like it, investigate
             '.* CC1': 0.4 * 0.8,
-            '.* CC2(.*)?': 0.6 * 0.8,
-            '.*': 0.2
+            '.* CC2': 0.6 * 0.8,
+            '.*': 1/2 * 0.2
         }
     },
     MAT1: {

@@ -104,8 +104,6 @@ export function normalizeCoefficients(marks)
 
 function getCoefficients(filters)
 {
-    console.log('Getting coefficients for filters:', filters);
-
     const year = filters[YEAR_FILTER];
     const semester = filters[SEMESTER_FILTER].split(' ')[0];
 
