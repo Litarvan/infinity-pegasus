@@ -55,10 +55,8 @@
     async function load()
     {
         filters = await getMarksFilters();
-        console.log('Filters: ', filters);
-
         filtersValues = {
-            ...Object.fromEntries(filters.map(f => [f.id, (f.id === SEMESTER_FILTER ? (f.values.find(v => v.name.includes('STAGE')) || f.values.at(-2)) : f.values.at(-1)).value])), // TODO: ...
+            ...Object.fromEntries(filters.map(f => [f.id, ((f.id === SEMESTER_FILTER ? (f.values.find(v => v.name.includes('STAGE')) || f.values.at(-2)) : f.values.at(-1)) || f.values[0]).value])), // TODO: ...
             ...JSON.parse(localStorage.filters || '{}')
         };
 
