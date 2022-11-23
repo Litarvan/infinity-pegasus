@@ -131,7 +131,7 @@ function parseSubject(elements, texts, i, report)
     }
 
     let nextMarkId = 0;
-    while (i < texts.length && (texts[i].match(MARK_REGEX) || (i + 1 < texts.length && isMarkCode(elements[i + 1])))) {
+    while (i < texts.length && (texts[i].match(MARK_REGEX) || (i + 1 < texts.length && isMarkCode(elements[i + 1])) || /* Nothing but the code */ elements[i].transform[4] === 94)) {
         const mark = { id: nextMarkId++ };
         if (texts[i].match(MARK_REGEX)) {
             mark.classAverage = parseMark(texts[i++]);
