@@ -36,11 +36,10 @@ export default {
         APXF: {
             _subject: 2,
 
-            // TODO: This is deducted from FPVA
-            '.* CC1': 1/2 * 0.2,
-            '.* CC2(.*)?': 0.4 * 0.8,
-            '.* CC3': 1/2 * 0.2,
-            '.*': 0.6 * 0.8
+            // TODO: Is this correct?
+            '.* CC1': 2/20,
+            '.* DM': 6/20,
+            '.*': 12/20
         },
         FPVA: {
             '.* CC1': 1/2 * 0.2,
@@ -49,11 +48,10 @@ export default {
             '.*': 0.6 * 0.8
         },
         FOLO: {
-            // 50% Exam
-            // 50% CC (Possiblement plusieurs notes en pratique, même coeff)
+            '.* DM': 0.25,
+            '.*': 0.75
         },
         INT: {
-            // TODO: This should be the same as FPVA but doesn't look like it, investigate
             '.* CC1': 0.4 * 0.8,
             '.* CC2': 0.6 * 0.8,
             '.*': 1/2 * 0.2
