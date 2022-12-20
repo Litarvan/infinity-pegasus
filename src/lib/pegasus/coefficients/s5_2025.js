@@ -96,9 +96,10 @@ export default {
     },
     APR1: {
         CNIX: {
-            _subject: 2
-            // Exos: 50%
-            // Exams: 50% (0,3 1er exam, 0,7 second exam)
+            _subject: 2,
+            '.* 1': 0.3 * 0.4,
+            '.* 2': 0.7 * 0.4,
+            '.*': 0.6
         },
         P_42SH: {
             _subject: 2
