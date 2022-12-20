@@ -37,7 +37,7 @@ export default {
             _subject: 2,
 
             // TODO: Is this correct?
-            '.* CC1': 2/20,
+            '.* EF': 2/20,
             '.* DM': 6/20,
             '.*': 12/20
         },
@@ -54,7 +54,7 @@ export default {
         INT: {
             '.* CC1': 0.4 * 0.8,
             '.* CC2': 0.6 * 0.8,
-            '.*': 1/2 * 0.2
+            '.*': 0.2
         }
     },
     MAT1: {
