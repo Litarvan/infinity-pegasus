@@ -73,8 +73,10 @@ export default {
     IF1: {
         THL: {
             _subject: 2
+            '.* CC[1-2]': 0.25
+            '.* Examen Final': 0.5
             // 50% Exam final
-            // 50% Total des 3 exams CC (= 3 notes)
+            // 50% Total des 2 exams CC (= 2 notes)
         }
     },
     II1: {
