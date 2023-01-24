@@ -69,7 +69,6 @@ export default {
             // EF 90%
         },
         STA: {
-            '
             // 20% Evals formatives (plusieurs notes en pratique, même coeff)
             // 80% (40% Eval sommative 1, 60% Eval sommative 2)
         }
