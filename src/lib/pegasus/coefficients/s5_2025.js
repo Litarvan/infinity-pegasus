@@ -60,12 +60,16 @@ export default {
     MAT1: {
         CPXA: {
             _subject: 2
+            '.* CC[1-2]': 1/3 * 0.5,
+            '.* Examen Final': 1/3 * 0.5,
+            '.* Exo': 0.5
         },
         MASI: {
             // TP 19%
             // EF 90%
         },
         STA: {
+            '
             // 20% Evals formatives (plusieurs notes en pratique, même coeff)
             // 80% (40% Eval sommative 1, 60% Eval sommative 2)
         }
@@ -85,6 +89,8 @@ export default {
             // 75% Exercices
         },
         NET1: {
+            'Réseaux': 0.3,
+            '.*': 0.7
             // 70% TP
             // 30% QCM
         },
