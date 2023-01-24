@@ -59,7 +59,7 @@ export default {
     },
     MAT1: {
         CPXA: {
-            _subject: 2
+            _subject: 2,
             '.* CC[1-2]': 1/3 * 0.5,
             '.* Examen Final': 1/3 * 0.5,
             '.* Exo': 0.5
