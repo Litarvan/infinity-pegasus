@@ -59,7 +59,10 @@ export default {
     },
     MAT1: {
         CPXA: {
-            _subject: 2
+            _subject: 2,
+            '.* CC[1-2]': 1/3 * 0.5,
+            '.* Examen Final': 1/3 * 0.5,
+            '.* Exo': 0.5
         },
         MASI: {
             // TP 19%
@@ -85,6 +88,8 @@ export default {
             // 75% Exercices
         },
         NET1: {
+            'Réseaux': 0.3,
+            '.*': 0.7
             // 70% TP
             // 30% QCM
         },
