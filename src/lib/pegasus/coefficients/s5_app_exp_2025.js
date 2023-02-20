@@ -28,7 +28,7 @@ export default {
         }
     },
     MSH1: {
-        X_ANGL-1: {
+        'X_ANGL-1': {
             _subject: 1.5
         },
         X_DRG1: {
