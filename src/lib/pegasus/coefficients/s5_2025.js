@@ -37,7 +37,7 @@ export default {
             _subject: 2,
 
             // TODO: Is this correct?
-            '.* CC1': 2/20,
+            '.* EF': 2/20,
             '.* DM': 6/20,
             '.*': 12/20
         },
@@ -54,12 +54,15 @@ export default {
         INT: {
             '.* CC1': 0.4 * 0.8,
             '.* CC2': 0.6 * 0.8,
-            '.*': 1/2 * 0.2
+            '.*': 0.2
         }
     },
     MAT1: {
         CPXA: {
-            _subject: 2
+            _subject: 2,
+            '.* CC[1-2]': 1/3 * 0.5,
+            '.* Examen Final': 1/3 * 0.5,
+            '.* Exo': 0.5
         },
         MASI: {
             // TP 19%
@@ -72,9 +75,11 @@ export default {
     },
     IF1: {
         THL: {
-            _subject: 2
+            _subject: 2,
+            '.* CC[1-2]': 0.25,
+            '.* Examen Final': 0.5
             // 50% Exam final
-            // 50% Total des 3 exams CC (= 3 notes)
+            // 50% Total des 2 exams CC (= 2 notes)
         }
     },
     II1: {
@@ -83,6 +88,8 @@ export default {
             // 75% Exercices
         },
         NET1: {
+            'Réseaux': 0.3,
+            '.*': 0.7
             // 70% TP
             // 30% QCM
         },
@@ -96,9 +103,10 @@ export default {
     },
     APR1: {
         CNIX: {
-            _subject: 2
-            // Exos: 50%
-            // Exams: 50% (0,3 1er exam, 0,7 second exam)
+            _subject: 2,
+            '.* 1': 0.3 * 0.4,
+            '.* 2': 0.7 * 0.4,
+            '.*': 0.6
         },
         P_42SH: {
             _subject: 2
