@@ -28,7 +28,7 @@ export default {
         A_TEORA1: {
             _subject: 1.8,
         },
-        A_ANGL-1: {
+        'A_ANGL-1': {
             _subject: 1.6,
         },
         A_DRG1: {
