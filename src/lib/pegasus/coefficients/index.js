@@ -118,9 +118,9 @@ function getCoefficients(filters)
                     return coefficients[S5_2025];
                 case 'SI6':
                     return coefficients[S6_2025];
-                case 'S5_APP_ING_2025':
+                case 'SA5':
                     return coefficients[S5_APP_ING_2025];
-                case 'S5_APP_EXP_2025':
+                case 'SX5':
                     return coefficients[S5_APP_EXP_2025];
             }
             break;
