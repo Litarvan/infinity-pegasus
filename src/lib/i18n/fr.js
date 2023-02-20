@@ -103,7 +103,7 @@ Les coefficients sont manuellement entrés au fur et à mesure de l'année (sauf
             reset: 'Reset'
         },
         copyright: {
-            text: 'Copyright © 2021-2022 Adrien ‘Litarvan’ Navratil',
+            text: 'Copyright © 2021-2023 Adrien ‘Litarvan’ Navratil',
             license: {
                 prefix: 'Sous',
                 link: 'license MIT'
