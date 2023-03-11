@@ -4,12 +4,16 @@ const S5_2025 = Symbol('S5 (2025)');
 const S5_APP_ING_2025 = Symbol('S5 [APP ING] (2025)');
 const S5_APP_EXP_2025 = Symbol('S5 [APP EXP] (2025)');
 const S6_2025 = Symbol('S6 (2025)');
+const S6_APP_ING_2025 = Symbol('S6 [APP ING] (2025)');
+const S6_APP_EXP_2025 = Symbol('S6 [APP EXP] (2025)');
 
 const coefficients = {
     [S5_2025]: (await import('./s5_2025')).default,
     [S5_APP_ING_2025]: (await import('./s5_app_ing_2025')).default,
     [S5_APP_EXP_2025]: (await import('./s5_app_exp_2025')).default,
-    [S6_2025]: (await import('./s6_2025')).default
+    [S6_2025]: (await import('./s6_2025')).default,
+    [S6_APP_ING_2025]: (await import('./s6_app_ing_2025')).default,
+    [S6_APP_EXP_2025]: (await import('./s6_app_exp_2025')).default
 };
 
 export function computeAverages(filters, marks)
@@ -122,6 +126,10 @@ function getCoefficients(filters)
                     return coefficients[S5_APP_ING_2025];
                 case 'SX5':
                     return coefficients[S5_APP_EXP_2025];
+                case 'SA6':
+                    return coefficients[S6_APP_ING_2025];
+                case 'SX6':
+                    return coefficients[S6_APP_EXP_2025];
             }
             break;
     }
