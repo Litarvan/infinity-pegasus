@@ -41,6 +41,7 @@ export default {
             _subject: 3/6,
             '.* Finale': 3 / 5 * 6 / 8,
             '.* CC[1-2]': 1 / 5 * 6 / 8,
+            'Probabilités et statistiques 1': 1 / 5 * 6 / 8
             '.*': 2 / 8
         },
         CHIFR: {
@@ -57,8 +58,8 @@ export default {
     IF2: {
         LOFO: {
             _subject: 2/8,
-            '.* CC1': 0.3,
-            '.*': 0.7
+            'Logique formelle': 1/3,
+            '.* Final': 2/3
         },
         TYLA: {
             _subject: 1/8,
