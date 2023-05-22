@@ -58,8 +58,8 @@ export default {
     IF2: {
         LOFO: {
             _subject: 2/8,
-            'Logique formelle': 1 / 3,
-            '.* Final': 2 / 3
+            '.* Final': 2 / 3,
+            '.*': 1 / 3
         },
         TYLA: {
             _subject: 1/8,
