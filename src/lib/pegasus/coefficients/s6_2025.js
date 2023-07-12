@@ -46,8 +46,10 @@ export default {
         },
         CHIFR: {
             _subject: 1/6,
-            '.*DM.*': .4,
-            '.*': .6
+            '*_TP*': 0.1,
+            '*_DM*': 0.1,
+            '*_ES*': 0.3,
+            '.*': .3
         },
         CAMA: {
             _subject: 1/3,
@@ -63,8 +65,8 @@ export default {
         },
         TYLA: {
             _subject: 1/8,
-            'DM .*': .3,
-            '.*': .7
+            '*_EXAM': 0.4,
+            '*_DM': 0.6
         },
         THEG: {
             _subject: 3/8
