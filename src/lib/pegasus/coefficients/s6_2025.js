@@ -78,8 +78,8 @@ export default {
         ERO1: {
             _subject: 2/4,
             // TODO: Tentative de ma part de deviner
-            '*_PROJET': 0.75,
-            '*_DST': 0.25
+            '.*_PROJET': 0.75,
+            '.*_DST': 0.25
         },
         TIFT: {
             _subject: 1/4
