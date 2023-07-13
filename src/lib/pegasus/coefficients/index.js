@@ -6,6 +6,7 @@ const S5_APP_EXP_2025 = Symbol('S5 [APP EXP] (2025)');
 const S6_2025 = Symbol('S6 (2025)');
 const S6_APP_ING_2025 = Symbol('S6 [APP ING] (2025)');
 const S6_APP_EXP_2025 = Symbol('S6 [APP EXP] (2025)');
+const S8_GISTRE_2024 = Symbol('S8 [GISTRE] (2024)');
 
 const coefficients = {
     [S5_2025]: (await import('./s5_2025')).default,
@@ -13,7 +14,8 @@ const coefficients = {
     [S5_APP_EXP_2025]: (await import('./s5_app_exp_2025')).default,
     [S6_2025]: (await import('./s6_2025')).default,
     [S6_APP_ING_2025]: (await import('./s6_app_ing_2025')).default,
-    [S6_APP_EXP_2025]: (await import('./s6_app_exp_2025')).default
+    [S6_APP_EXP_2025]: (await import('./s6_app_exp_2025')).default,
+    [S8_GISTRE_2024]: (await import('./s8_gistre_2024')).default,
 };
 
 export function computeAverages(filters, marks)
@@ -130,6 +132,8 @@ function getCoefficients(filters)
                     return coefficients[S6_APP_ING_2025];
                 case 'SX6':
                     return coefficients[S6_APP_EXP_2025];
+                case 'SI8':
+                    return coefficients[S8_GISTRE_2024];
             }
             break;
     }
