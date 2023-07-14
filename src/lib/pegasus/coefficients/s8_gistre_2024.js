@@ -5,10 +5,9 @@ export default {
              *  QCMs => 40% de la note
              *  Chaque exam => 30%
              */
-            0: 3, // DM stats
-            1: 3, // Exam probas
-            2: 3, // Exam stats
-            3: 1, // QCMs proba (3 / 4 * 1)
+            'QCM1_QCM2_QCM3': 3, // DM proba (3 / 4 * 1)
+            'PBS2_Devoir Maison_Proba': 1, // DM stats
+            'PBS2_Examen_.*': 3, // Exam stats et proba
         },
         // TODO: ERO2: QCM 1 et 2 -> 40% de la note, 60% pour le projet
     },
