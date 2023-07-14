@@ -132,7 +132,7 @@ function getCoefficients(filters)
                     return coefficients[S6_APP_ING_2025];
                 case 'SX6':
                     return coefficients[S6_APP_EXP_2025];
-                case 'SI8':
+                case 'SI8GISTRE':
                     return coefficients[S8_GISTRE_2024];
             }
             break;
