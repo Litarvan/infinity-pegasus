@@ -12,6 +12,7 @@
 
 export default {
     'Harmonisation informatique': {
+        // TODO: Update with a grade report which includes this UE
         HDWR: {
             // 2/3 Exam moodle
             // 1/3 Exercices TP
@@ -35,104 +36,131 @@ export default {
     'Harmonisation mathématiques': {
         APXF: {
             _subject: 2,
-
-            // TODO: Is this correct?
-            '.* EF': 2/20,
-            '.* DM': 6/20,
-            '.*': 12/20
+            1: 0.4 * 0.8,   // ES1
+            2: 0.2,         // EF
+            3: 0.6 * 0.8,   // ES2
         },
         FPVA: {
-            '.* CC1': 1/2 * 0.3,
-            '.* CC2(.*)?': 0.5 * 0.7,
-            '.* CC3': 1/2 * 0.3,
-            '.*': 0.5 * 0.7
+            // TODO: Check the order of the grades when they are published
+            _subject: 1,
+            1: 0.5 * 0.7,   // ES1
+            2: 0.5 * 0.7,   // ES2
+            3: 0.3,         // EF
         },
         FOLO: {
-            '.* DM': 0.25,
-            '.*': 0.75
+            _subject: 1,
+            '.*': 0.5
         },
         INT: {
-            '.* CC1': 0.4 * 0.8,
-            '.* CC2': 0.6 * 0.8,
-            '.*': 0.2
+            _subject: 1,
+            1: 0.4 * 0.8,   // ES1
+            2: 0.2,         // EF
+            3: 0.6 * 0.8,   // ES2
         }
     },
     MAT1: {
+        // TODO: Update when the grades are published
         CPXA: {
             _subject: 2,
-            '.* CC[1-2]': 1/3 * 0.5,
-            '.* Examen Final': 1/3 * 0.5,
+            '.* CC[1-2]': 1 / 3 * 0.5,
+            '.* Examen Final': 1 / 3 * 0.5,
             '.* Exo': 0.5
         },
         MASI: {
-            // TP 19%
-            // EF 90%
+            _subject: 1,
+            // EF 0.25
+            // ES 0.75
         },
         STA: {
-            // 20% Evals formatives (plusieurs notes en pratique, même coeff)
-            // 80% (40% Eval sommative 1, 60% Eval sommative 2)
+            _subject: 1,
+            // EF 0.2
+            // ES1 0.4 * 0.6
+            // ES2 0.6 * 0.6
+            // DM 0.2
         }
     },
     IF1: {
         THL: {
             _subject: 2,
-            '.* CC[1-2]': 0.25,
-            '.* Examen Final': 0.5
-            // 50% Exam final
-            // 50% Total des 2 exams CC (= 2 notes)
+            '.*': 1
+        },
+        MOB1: {
+            _subject: 1,
+            '.*': 1
+        },
+        PFON: {
+            _subject: 1,
+            '.*': 1
         }
     },
     II1: {
+        // TODO: Update when the grades are published
         ASM: {
-            // 25% QCM Moodle
-            // 75% Exercices
+            _subject: 1,
+            // QCM Moodle 0.3
+            // Exam 1 1
+            // Exam 2 1
         },
         NET1: {
-            'Réseaux': 0.3,
-            '.*': 0.7
-            // 70% TP
-            // 30% QCM
+            _subject: 1,
+            // TP 0.7
+            // QCM 0.3
         },
         SYS1: {
-            '.* CC[1-2]': 1/2 * 0.5,
-            '.*': 0.5
-            // 67% TP
-            // 33% QCM
+            _subject: 1,
+            '.*': 1
         }
 
     },
     APR1: {
         CNIX: {
             _subject: 2,
-            '.* 1': 0.3 * 0.4,
-            '.* 2': 0.7 * 0.4,
-            '.*': 0.6
+            1: 7,    // Graph Piscine
+            2: 3,    // Exam 1
+            3: 2,    // EvalExpr
+            4: 1,    // TinyPrintf
+            5: 7,    // Exam 2
         },
         P_42SH: {
-            _subject: 2
+            // TODO: Update when the grades are published
+            _subject: 1,
+        },
+        A_SQL: {
+            // TODO: Update when the grades are published
+            _subject: 1,
+        },
+        PPEX: {
+            _subject: 2,
+            '.*': 1
         }
     },
     MSH1: {
+        // TODO: Update when the grades are published
         ODP1: {
-            _subject: 2
-            // 60% TD notés
-            // 40% Exam Moodle
+            _subject: 2,
+            '.*': 1
         },
         EQIT: {
+            _subject: 1,
             // 40% QCM
             // 50% Essai/mémoire
             // 10% CC
         },
         LV: {
+            _subject: 1,
             // Anglais:
             // 30% Exam 1
             // 40% Exam 2
             // 30% CC
 
             // Rosetta = une note
+        },
+        COMM1: {
+            _subject: 1,
         }
     },
     CCE1: {
+        // TODO: Update when the grades are published
         DDPP: {
             // 60% Etude de cas
             // 40% Exam
@@ -140,6 +168,10 @@ export default {
         RSE: {
             // 40% CC,
             // 60% Exam
+        },
+        DRG1_S5: {
+        },
+        DENT: {
         }
     }
 };
