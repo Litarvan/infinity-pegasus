@@ -1,21 +1,17 @@
 import { SEMESTER_FILTER, YEAR_FILTER } from '../documents';
 
-const S5_2025 = Symbol('S5 (2025)');
-const S5_APP_ING_2025 = Symbol('S5 [APP ING] (2025)');
-const S5_APP_EXP_2025 = Symbol('S5 [APP EXP] (2025)');
-const S6_2025 = Symbol('S6 (2025)');
-const S6_APP_ING_2025 = Symbol('S6 [APP ING] (2025)');
-const S6_APP_EXP_2025 = Symbol('S6 [APP EXP] (2025)');
-const S8_GISTRE_2024 = Symbol('S8 [GISTRE] (2024)');
+const S5_2026 = Symbol('S5 (2026)');
+const S5_APP_ING_2026 = Symbol('S5 [APP ING] (2026)');
+const S6_2026 = Symbol('S6 (2026)');
+const S6_APP_ING_2026 = Symbol('S6 [APP ING] (2026)');
+const S8_GISTRE_2025 = Symbol('S8 [GISTRE] (2025)');
 
 const coefficients = {
-    [S5_2025]: (await import('./s5_2025')).default,
-    [S5_APP_ING_2025]: (await import('./s5_app_ing_2025')).default,
-    [S5_APP_EXP_2025]: (await import('./s5_app_exp_2025')).default,
-    [S6_2025]: (await import('./s6_2025')).default,
-    [S6_APP_ING_2025]: (await import('./s6_app_ing_2025')).default,
-    [S6_APP_EXP_2025]: (await import('./s6_app_exp_2025')).default,
-    [S8_GISTRE_2024]: (await import('./s8_gistre_2024')).default,
+    [S5_2026]: (await import('./s5_2026')).default,
+    [S5_APP_ING_2026]: (await import('./s5_app_ing_2026')).default,
+    [S6_2026]: (await import('./s6_2026')).default,
+    [S6_APP_ING_2026]: (await import('./s6_app_ing_2026')).default,
+    [S8_GISTRE_2025]: (await import('./s8_gistre_2025.js')).default,
 };
 
 export function computeAverages(filters, marks)
@@ -118,22 +114,18 @@ function getCoefficients(filters)
     const semester = filters[SEMESTER_FILTER].split(' ')[0];
 
     switch (year) {
-        case '2022':
+        case '2023':
             switch (semester) {
                 case 'SI5':
-                    return coefficients[S5_2025];
+                    return coefficients[S5_2026];
                 case 'SI6':
-                    return coefficients[S6_2025];
+                    return coefficients[S6_2026];
                 case 'SA5':
-                    return coefficients[S5_APP_ING_2025];
-                case 'SX5':
-                    return coefficients[S5_APP_EXP_2025];
+                    return coefficients[S5_APP_ING_2026];
                 case 'SA6':
-                    return coefficients[S6_APP_ING_2025];
-                case 'SX6':
-                    return coefficients[S6_APP_EXP_2025];
+                    return coefficients[S6_APP_ING_2026];
                 case 'SI8GISTRE':
-                    return coefficients[S8_GISTRE_2024];
+                    return coefficients[S8_GISTRE_2025];
             }
             break;
     }

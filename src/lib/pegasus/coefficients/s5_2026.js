@@ -8,7 +8,7 @@
 // No need to specify module coefficients, since they are already retrieved from the PDF
 // Also, regex are supported for marks name :^) (which means '[' must be escaped !)
 
-// TODO: This is based on the temporary syllabus, things may have to be fixed throughout the semester
+// TODO: This was imported from past year, it will need to be updated when the syllabus is released
 
 export default {
     'Harmonisation informatique': {
