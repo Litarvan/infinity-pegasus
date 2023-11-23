@@ -36,16 +36,16 @@ export default {
     'Harmonisation mathématiques': {
         APXF: {
             _subject: 2,
-            1: 0.4 * 0.8,   // ES1
-            2: 0.2,         // EF
-            3: 0.6 * 0.8,   // ES2
+            'APXF_CC1': 0.4 * 0.8,   // ES1
+            'APXF_EF': 0.2,         // EF
+            'APXF_CC2': 0.6 * 0.8,   // ES2
         },
         FPVA: {
             // TODO: Check the order of the grades when they are published
             _subject: 1,
-            1: 0.5 * 0.7,   // ES1
-            2: 0.5 * 0.7,   // ES2
-            3: 0.3,         // EF
+            0: 0.5 * 0.7,   // ES1
+            1: 0.5 * 0.7,   // ES2
+            2: 0.3,         // EF
         },
         FOLO: {
             _subject: 1,
@@ -53,9 +53,9 @@ export default {
         },
         INT: {
             _subject: 1,
-            1: 0.4 * 0.8,   // ES1
-            2: 0.2,         // EF
-            3: 0.6 * 0.8,   // ES2
+            0: 0.4 * 0.8,   // ES1
+            1: 0.2,         // EF
+            2: 0.6 * 0.8,   // ES2
         }
     },
     MAT1: {
@@ -115,11 +115,11 @@ export default {
     APR1: {
         CNIX: {
             _subject: 2,
-            1: 7,    // Graph Piscine
-            2: 3,    // Exam 1
-            3: 2,    // EvalExpr
-            4: 1,    // TinyPrintf
-            5: 7,    // Exam 2
+            'GRAPH': 7,             // Graph Piscine
+            'EXAM 1': 3,            // Exam 1
+            'NANO PROJET': 2,       // EvalExpr
+            'PICO PROJET': 1,       // TinyPrintf
+            'EXAM 2': 7,            // Exam 2
         },
         P_42SH: {
             // TODO: Update when the grades are published
