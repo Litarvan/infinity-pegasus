@@ -59,24 +59,21 @@ export default {
         }
     },
     MAT1: {
-        // TODO: Update when the grades are published
         CPXA: {
             _subject: 2,
-            '.* CC[1-2]': 1 / 3 * 0.5,
-            '.* Examen Final': 1 / 3 * 0.5,
-            '.* Exo': 0.5
+            '.* [1-3]': 0.33,
+            'EF': 1
         },
         MASI: {
             _subject: 1,
-            // EF 0.25
-            // ES 0.75
+            '.*DM': 0.25,
+            '.*EXAM': 0.75
         },
         STA: {
             _subject: 1,
-            // EF 0.2
-            // ES1 0.4 * 0.6
-            // ES2 0.6 * 0.6
-            // DM 0.2
+            '.*EXAM 1': 0.24,
+            'EF': 0.4,
+            '.*EXAMEN 2': 0.36,
         }
     },
     IF1: {
@@ -94,15 +91,15 @@ export default {
         }
     },
     II1: {
-        // TODO: Update when the grades are published
         ASM: {
             _subject: 1,
-            // QCM Moodle 0.3
-            // Exam 1 1
-            // Exam 2 1
+            'QCM': 0.13,
+            'EXAM [1-2]': 0.435
         },
         NET1: {
             _subject: 1,
+            'TP.*': 0.7,
+            'EXAM.*': 0.3
             // TP 0.7
             // QCM 0.3
         },
@@ -162,6 +159,7 @@ export default {
     CCE1: {
         // TODO: Update when the grades are published
         DDPP: {
+            _subject: 1
             // 60% Etude de cas
             // 40% Exam
         },
@@ -170,8 +168,15 @@ export default {
             // 60% Exam
         },
         DRG1_S5: {
+            _subject: 1
         },
         DENT: {
+
+        },
+        EQIT: {
+            _subject: 1,
+            'PARTICI.*': 0.15,
+            'EXAM': 0.6
         }
     }
 };
