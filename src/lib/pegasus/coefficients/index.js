@@ -7,6 +7,9 @@ const S6_APP_ING_2026 = Symbol('S6 [APP ING] (2026)');
 const S7_APP_ING_CYB2_2025 = Symbol('S7 [CYB2] (2025)');
 const S7_APP_ING_DEV2_2025 = Symbol('S7 [DEV2] (2025)');
 const S7_APP_ING_EXP2_2025 = Symbol('S7 [EXP2] (2025)');
+const S8_APP_ING_CYB2_2025 = Symbol('S8 [CYB2] (2025)');
+const S8_APP_ING_DEV2_2025 = Symbol('S8 [DEV2] (2025)');
+const S8_APP_ING_EXP2_2025 = Symbol('S8 [EXP2] (2025)');
 const S8_GISTRE_2025 = Symbol('S8 [GISTRE] (2025)');
 
 const coefficients = {
@@ -18,6 +21,9 @@ const coefficients = {
     [S7_APP_ING_CYB2_2025]: (await import('./s7_cyb2_2025.js')).default,
     [S7_APP_ING_DEV2_2025]: (await import('./s7_dev2_2025.js')).default,
     [S7_APP_ING_EXP2_2025]: (await import('./s7_exp2_2025.js')).default,
+    [S8_APP_ING_CYB2_2025]: (await import('./s8_cyb2_2025.js')).default,
+    [S8_APP_ING_DEV2_2025]: (await import('./s8_dev2_2025.js')).default,
+    [S8_APP_ING_EXP2_2025]: (await import('./s8_exp2_2025.js')).default,
 };
 
 export function computeAverages(filters, marks)
@@ -136,6 +142,12 @@ function getCoefficients(filters)
                     return coefficients[S7_APP_ING_DEV2_2025];
                 case 'SX7':
                     return coefficients[S7_APP_ING_EXP2_2025];
+                case 'SA8':
+                    return coefficients[S8_APP_ING_CYB2_2025];
+                case 'SD8':
+                    return coefficients[S8_APP_ING_DEV2_2025];
+                case 'SX8':
+                    return coefficients[S8_APP_ING_EXP2_2025];
                 case 'SI8GISTRE':
                     return coefficients[S8_GISTRE_2025];
             }
