@@ -15,11 +15,10 @@ export default {
         PBS2: {
             /*
              *  QCMs => 40% de la note
-             *  Chaque exam => 30%
+             *  Exams: 60% de la note
              */
-            'QCM1_QCM2_QCM3': 3, // DM proba (3 / 4 * 1)
-            'PBS2_Devoir Maison_Proba': 1, // DM stats
-            'PBS2_Examen_.*': 3, // Exam stats et proba
+            'PBS2_DM*': 0.4, // DM
+            'PBS2_PARTIEL_*': 0,6, // Partiel stats
         },
         // TODO: ERO2: QCM 1 et 2 -> 40% de la note, 60% pour le projet
     },
