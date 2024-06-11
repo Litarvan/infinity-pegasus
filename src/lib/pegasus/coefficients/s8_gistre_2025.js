@@ -18,7 +18,7 @@ export default {
              *  Exams: 60% de la note
              */
             'PBS2_DM*': 0.4, // DM
-            'PBS2_PARTIEL_*': 0,6, // Partiel stats
+            'PBS2_PARTIEL_*': 0.6, // Partiel stats
         },
         // TODO: ERO2: QCM 1 et 2 -> 40% de la note, 60% pour le projet
     },
