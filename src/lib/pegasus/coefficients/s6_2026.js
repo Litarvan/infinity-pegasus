@@ -11,6 +11,25 @@
 // TODO: This was imported from past year, it will need to be updated when the syllabus is released
 
 export default {
+    II2:{
+        IDVOC: {
+            _subject: 1/4
+        },
+        TUI:{
+            _subject: 1/4,
+            'QCM': .3,
+            'nano projet': .35,
+            'projet PING': .35
+        },
+        SEDE:{
+            _subject: 1/4
+        },
+        NET2:{
+            _subject: 1/4,
+            'TP': .5,
+            'QCM final': .5
+        }
+    },
     APR2: {
         CPP: {
             _subject: 1/9, // TODO: Le syllabus marque 1/19, probablement une erreur
@@ -57,20 +76,21 @@ export default {
         }
     },
     IF2: {
-        LOFO: {
+        IAML: {
             _subject: 2/8,
-            '.* Final': 2 / 3,
-            '.*': 1 / 3
+            '.*Examen.*': 1 / 3,
+            '.*': 2 / 3
         },
         TYLA: {
             _subject: 1/8,
-            '.*_EXAM': 0.4,
-            '.*_DM': 0.6
+            '.*EXAMEN.*': 0.25,
+            '.*TP.*': 0.25,
+            '.*': 0.5
         },
         THEG: {
             _subject: 3/8
         },
-        MOB2: {
+        MOD2: {
             _subject: 2/8
         }
     },
@@ -90,17 +110,23 @@ export default {
     },
     MSH2: {
         'ANGL-1_S6': {
+            _subject:1/4,
             'Anglais-1 .*': .3,
             'QCM Moodle': .4,
             'Suivi/oral': .3
         },
-        CPT: {
-            // TODO: TBD
+        ODP2CO:{
+            _subject:1/4
         },
-        ETHIX: {
-            // TODO: 80% Travail de groupe
-            // TODO: 20% Participation
+        CPT:{
+            _subject:1/4
         },
+        LV_SI6:{
+            _subject:1/4
+        },
+        GEPRO:{
+            _subject:1/4
+        }
     },
     CCE2: {
         M_SST_SI6: {
@@ -114,11 +140,8 @@ export default {
         MARK: {
             _subject: 1/4 // TODO: Le syllabus marque 1/5, probablement une erreur
         },
-        GEPRO: {
-            _subject: 1/4,
-            // TODO: 80% QCM
-            // TODO: 20% Présence
-        },
-
+        RSE:{
+            _subject: 1/4
+        }
     }
 };
