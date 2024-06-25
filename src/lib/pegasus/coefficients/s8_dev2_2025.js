@@ -10,68 +10,53 @@
 
 // TODO: Update when available
 export default {
-  GLPS3: {
-    D_SOCRA: {
+  MAF2: {
+    D_PROD: {
       _subject: 1,
     },
-    D_PPEX3: {
+    D_FPVA: {
       _subject: 1,
     },
-    P_42SH: {
-      _subject: 2,
-    },
-    THL: {
-      _subject: 2,
-    },
-    D_BAGD1: {
-      _subject: 2,
-    },
-    D_JEE: {
+    P_PROC: {
       _subject: 2,
     }
   },
-  PWM1: {
-    D_WEB: {
-      _subject: 2,
-    },
-    D_P_WEB: {
-      _subject: 1,
-    },
-    D_IJST: {
-      _subject: 1,
-    },
-    D_UXUI: {
-      _subject: 1,
-    },
-    D_IANDO: {
-      _subject: 1,
-    }
-  },
-  MCE3: {
-    "D_LV1-3": {
+  GLSR4: {
+    D_BADG2: {
       _subject: 1.5,
     },
-    D_GPROAA: {
+    D_CLARC: {
+      _subject: 2,
+    },
+    D_DEVOPS: {
+      _subject: 1,
+    },
+    D_DOTN: {
+      _subject: 1.5,
+    }
+  },
+  PWM2: {
+    D_GAMJA: {
+      _subject: 2,
+    },
+    D_NDJS8: {
+      _subject: 2,
+    },
+    D_SEO: {
+      _subject: 1,
+    }
+  },
+  MCE4: {
+    D_M_SST: {
       _subject: 1.5,
     },
-    D_DRTR: {
-      _subject: 1,
+    "D_ANGL-4": {
+      _subject: 1.5,
     }
   },
-  MAF3: {
-    D_FUNCT: {
-      _subject: 1,
-    },
-    D_SUITE: {
-      _subject: 1,
-    },
-    D_SERIE: {
-      _subject: 1,
-    }
-  },
-  AEE3: {
-    D_EAE3: {
-      _subject: 7,
+  AEE4: {
+    D_EAE4: {
+      _subject: 9,
     }
   }
 };
