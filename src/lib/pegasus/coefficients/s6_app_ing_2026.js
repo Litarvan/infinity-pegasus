@@ -15,69 +15,72 @@ export default {
     A_EAE2: {
       _subject: 6,
     },
-    A_REX2: {
-      _subject: 2,
+    M_ANSSI: {
+      _subject: 0.5,
+    },
+    REX2: {
+      _subject: 1.5,
     }
   },
   MAF2: {
-    A_ALGA: {
+    ALSD: {
+      _subject: 2,
+    },
+    ERO: {
       _subject: 1,
     },
-    A_EROI: {
+    APFX: {
+      _subject: 2,
+    },
+    FMSI: {
       _subject: 1,
     },
-    A_APFX: {
-      _subject: 1,
-    },
-    A_FMSI: {
+    CODO_A: {
       _subject: 1,
     }
   },
   IF2: {
-    A_CODO: {
+    MOB1: {
       _subject: 1,
     },
-    A_THL: {
-      _subject: 1,
+    THL: {
+      _subject: 1.5,
     },
-    PFON: {
-      _subject: 1,
+    A_PFON: {
+      _subject: 1.5,
     },
-    A_THEG: {
+    THEG_A: {
       _subject: 1,
     }
   },
   MCE2: {
-    'A_ANGL-2': {
+    ANGLA_2: {
       _subject: 1,
     },
-    A_TEORA2: {
+    BMARK1: {
       _subject: 1,
     },
-    A_EMARK: {
+    'TEORA 2': {
       _subject: 1,
     },
-    A_GPRO1: {
+    GPRO1_A: {
     _subject: 1,
     }
   },
   GLSR2: {
-    A_A_JAVA: {
-      _subject: 2,
-    },
-    A_A_CPP: {
+    JAVA_A: {
       _subject: 1.5,
     },
-    A_NET2: {
+    JWS: {
       _subject: 1,
     },
-    A_SYS2: {
+    Js: {
       _subject: 1.5,
     },
-    A_PPEX2: {
-      _subject: 3,
+    SYS2_A: {
+      _subject: 2,
     },
-    MOB1: {
+    NET2_A: {
       _subject: 1,
     }
   }
