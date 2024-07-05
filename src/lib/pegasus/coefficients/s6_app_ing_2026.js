@@ -15,27 +15,24 @@ export default {
     A_EAE2: {
       _subject: 6,
     },
-    M_ANSSI: {
+    A_M_ANSSI: {
       _subject: 0.5,
     },
-    REX2: {
+    A_REX2: {
       _subject: 1.5,
     }
   },
   MAF2: {
-    ALSD: {
+    A_ALSD: {
       _subject: 2,
     },
-    ERO: {
+    A_ERO: {
       _subject: 1,
     },
-    APFX: {
+    A_APFX: {
       _subject: 2,
     },
-    FMSI: {
-      _subject: 1,
-    },
-    CODO_A: {
+    A_FMSI: {
       _subject: 1,
     }
   },
@@ -43,44 +40,44 @@ export default {
     MOB1: {
       _subject: 1,
     },
-    THL: {
+    A_THL: {
       _subject: 1.5,
     },
-    A_PFON: {
+    PFON: {
       _subject: 1.5,
     },
-    THEG_A: {
+    A_THEG: {
       _subject: 1,
     }
   },
   MCE2: {
-    ANGLA_2: {
+    A_ANGL-2: {
       _subject: 1,
     },
-    BMARK1: {
+    A_EMARK: {
       _subject: 1,
     },
-    'TEORA 2': {
+    A_TEORA2: {
       _subject: 1,
     },
-    GPRO1_A: {
+    A_GPRO1: {
     _subject: 1,
     }
   },
   GLSR2: {
-    JAVA_A: {
+    A_A_JAVA: {
       _subject: 1.5,
     },
-    JWS: {
+    A_JWS: {
       _subject: 1,
     },
-    Js: {
+    A_E_JS: {
       _subject: 1.5,
     },
-    SYS2_A: {
+    A_SYS2: {
       _subject: 2,
     },
-    NET2_A: {
+    A_NET2: {
       _subject: 1,
     }
   }
