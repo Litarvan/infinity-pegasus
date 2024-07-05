@@ -51,7 +51,7 @@ export default {
     }
   },
   MCE2: {
-    A_ANGL-2: {
+    'A_ANGL-2': {
       _subject: 1,
     },
     A_EMARK: {
