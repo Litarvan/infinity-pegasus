@@ -19,7 +19,7 @@ export default {
             _subject: 1,
             'EXAMEN': .3,
             'PROJET': .35,
-            'SOUT.*': .35
+            'Sout.*': .35
         },
         SEDE:{
             _subject: 1
