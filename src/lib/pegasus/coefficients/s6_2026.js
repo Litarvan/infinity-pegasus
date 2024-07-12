@@ -10,115 +10,141 @@
 
 // TODO: This was imported from past year, it will need to be updated when the syllabus is released
 
-export default {
+export default 
+{
+    II2:{
+        IDVOC: {
+            _subject: 1
+        },
+        TI:{
+            _subject: 1,
+            'EXAMEN': .3,
+            'PROJET': .35,
+            'SOUT.*': .35
+        },
+        SEDE:{
+            _subject: 1
+        },
+        NET2:{
+            _subject: 1,
+            '.*': .5,
+        }
+    },
     APR2: {
         CPP: {
-            _subject: 1/9, // TODO: Le syllabus marque 1/19, probablement une erreur
+            _subject: 1,
             'QCM CPP': .2,
             'Rush CPP': .4,
             'Exo CPP': .4
         },
         JAVA: {
-            _subject: 1/9
+            _subject: 1
         },
         JS: {
-            _subject: 1/9
-        },
-        TC: {
-            _subject: 3/9,
-            "Projet TIGER QCM": 1/5,
-            "Projet TIGER": 4/5
+            _subject: 1
         },
         JWS: {
-            _subject: 1/9
+            _subject: 1
         },
         PING: {
-            _subject: 2/9
+            _subject: 2
+        },
+        TC: {
+            _subject: 3,
+            "CMP": 0.3,
+            "TIGER": 0.7
         }
     },
     MAT2: {
         PBS1: {
-            _subject: 3/6,
-            '.* Finale': 3 / 5 * 6 / 8,
-            '.* CC[1-2]': 1 / 5 * 6 / 8,
-            'Probabilités et statistiques 1': 1 / 5 * 6 / 8,
-            '.*': 2 / 8
+            _subject: 3,
+            'TP': 0.25
+            '.* 1': 0.4 * 0.65
+            '.* 2': 0.6 * 0.65
+            'EFs': 0.1
         },
         CHIFR: {
-            _subject: 1/6,
-            '.*_TP.*': 0.1,
-            '.*_DM.*': 0.1,
-            '.*_ES.*': 0.3
+            _subject: 1,
+            '.*TP.*': 0.1,
+            'EFs': 0.1,
+            'Examen.*': 0.35
         },
         CAMA: {
-            _subject: 1/3,
-            '.* CC1': 1/2,
-            '.*': 1/4
+            _subject: 2,
+            '.*': 1
         }
     },
     IF2: {
-        LOFO: {
-            _subject: 2/8,
-            '.* Final': 2 / 3,
-            '.*': 1 / 3
+        IAML: {
+            _subject: 2,
+            'Examen': 1 / 3,
+            'Projet': 2 / 3
         },
         TYLA: {
-            _subject: 1/8,
-            '.*_EXAM': 0.4,
-            '.*_DM': 0.6
+            _subject: 1,
+            'EXAMEN': 0.25,
+            'TPs': 0.25,
+            '.*': 0.5
         },
         THEG: {
-            _subject: 3/8
+            _subject: 3
         },
-        MOB2: {
-            _subject: 2/8
+        MOD2: {
+            _subject: 2
         }
     },
     IRT1: {
         ERO1: {
-            _subject: 2/4,
-            // TODO: Tentative de ma part de deviner
-            '.*_PROJET': 0.75,
-            '.*_DST': 0.25
+            _subject: 2,
+            '.*Examen': 0.25,
+            '.*': 0.75
         },
         TIFT: {
-            _subject: 1/4
+            _subject: 1
         },
         TIFIR: {
-            _subject: 1/4
+            _subject: 1
         }
     },
     MSH2: {
-        'ANGL-1_S6': {
+        'ANGL-1_S6':
+        {
             'Anglais-1 .*': .3,
             'QCM Moodle': .4,
             'Suivi/oral': .3
         },
-        CPT: {
-            // TODO: TBD
+
+        LV_SI6:{
+            _subject:1
         },
-        ETHIX: {
-            // TODO: 80% Travail de groupe
-            // TODO: 20% Participation
+
+        ODP2CO:{
+            _subject:1
         },
+
+        CPT:{
+            _subject:1
+        },
+
+        GEPRO:{
+            _subject:1
+        }
+    
     },
     CCE2: {
         M_SST_SI6: {
-            _subject: 1/4
+            _subject: 1
         },
         REPP: {
-            _subject: 1/4,
-            // TODO: Rapport: 90%
-            // TODO: Participation: 10%
+            _subject: 1
         },
         MARK: {
-            _subject: 1/4 // TODO: Le syllabus marque 1/5, probablement une erreur
+            _subject: 1,
+            'Projet': 0.7,
+            '.*': 0.3
         },
-        GEPRO: {
-            _subject: 1/4,
-            // TODO: 80% QCM
-            // TODO: 20% Présence
-        },
-
+        RSE: {
+            _subject: 1,
+        }
     }
 };
