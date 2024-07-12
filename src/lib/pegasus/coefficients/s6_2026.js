@@ -10,8 +10,7 @@
 
 // TODO: This was imported from past year, it will need to be updated when the syllabus is released
 
-export default 
-{
+export default {
     II2:{
         IDVOC: {
             _subject: 1
@@ -51,16 +50,16 @@ export default
         },
         TC: {
             _subject: 3,
-            "CMP": 0.3,
-            "TIGER": 0.7
+            'CMP': 0.3,
+            'TIGER': 0.7
         }
     },
     MAT2: {
         PBS1: {
             _subject: 3,
-            'TP': 0.25
-            '.* 1': 0.4 * 0.65
-            '.* 2': 0.6 * 0.65
+            'TP': 0.25,
+            '.* 1': 0.4 * 0.65,
+            '.* 2': 0.6 * 0.65,
             'EFs': 0.1
         },
         CHIFR: {
@@ -107,29 +106,23 @@ export default
         }
     },
     MSH2: {
-        'ANGL-1_S6':
-        {
+        'ANGL-1_S6':{
             'Anglais-1 .*': .3,
             'QCM Moodle': .4,
             'Suivi/oral': .3
         },
-
         LV_SI6:{
             _subject:1
         },
-
         ODP2CO:{
             _subject:1
         },
-
         CPT:{
             _subject:1
         },
-
         GEPRO:{
             _subject:1
         }
-    
     },
     CCE2: {
         M_SST_SI6: {
