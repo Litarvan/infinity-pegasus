@@ -3,12 +3,14 @@ import { progress } from '../stores';
 import { computeAverages, normalizeCoefficients } from './coefficients';
 import { getDocuments, MARKS_DOCUMENT, REPORT_DOCUMENT } from './documents';
 
-// Supports :
+// Supports notably:
 // - 'ID - Module name [X ECTS]'
 // - '[ID] Module name [X ECTS]'
+// - '[ID] - Module name [X ECTS]'
+// - '[ID]-Module name [X ECTS]'
 // - 'ID Module name [X ECTS]'
 // - 'ID_Module name [X ECTS]'
-const MODULE_REGEX = /(((.*) - )|(\[(.*)] )|(([A-Z1-9]+)[_ ]))? ?(.*) \[ *(.*) ECTS]/;
+const MODULE_REGEX = /(\[?([a-zA-Z0-9]+)\]? ?-? ?_?)?(.*) *\[ *(.*) ECTS]/;
 const MARK_REGEX = /\d+,\d\d/g;
 const POSITION_THRESHOLD = 5;
 
@@ -89,7 +91,7 @@ async function parsePage(page, result, report)
         }
 
         while (i < texts.length && texts[i].match(MODULE_REGEX)) {
-            const [,,, id,, idBrackets,, idAlone, name, credits] = texts[i++].match(MODULE_REGEX);
+            const [,, id, name, credits] = texts[i++].match(MODULE_REGEX);
             const subjects = [];
             let grade, average, classAverage;
 
@@ -107,7 +109,7 @@ async function parsePage(page, result, report)
                 i = ni;
             }
 
-            result.push({ id: id || idBrackets || idAlone, name, credits: parseFloat(credits), grade, average, classAverage, subjects });
+            result.push({ id, name, credits: parseFloat(credits), grade, average, classAverage, subjects });
         }
     }
 
