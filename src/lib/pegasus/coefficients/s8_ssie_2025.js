@@ -9,13 +9,13 @@
 // Also, regex are supported for marks name :^) (which means '[' must be escaped !)
 
 export default {
-    'Sciences de base (Mathématiques)': {
+    SG8: {
         PBS2: {
             'PBS2_DM.*': 0.4, // DM
             'PBS2_PARTIEL_.*': 0.6, // Partiel stats
         },
     },
-    'Architectures et Systèmes': {
+    ARCHSYS8: {
         ELN: {
             _subject: 2.5
         },
@@ -26,7 +26,7 @@ export default {
             _subject: 1.5
         },
     },
-    'Interopérabilité': {
+    INTEROP8: {
         PRO: {
             _subject: 0.5
         },
@@ -37,7 +37,7 @@ export default {
             _subject: 1
         },
     },
-    'Robustesse': {
+    ROBUSTESSE8: {
         SUR: {
             _subject: 2.5
         },
@@ -45,7 +45,7 @@ export default {
             _subject: 2.5
         },
     },
-    'Projets': {
+    PROJETS8: {
         PFEE: {
             _subject: 1
         },
@@ -53,7 +53,7 @@ export default {
             _subject: 1
         }
     },
-    'DATA & IADATA & AI': {
+    DATA_IA8: {
         IAE: {
             _subject: 2
         },
@@ -64,7 +64,7 @@ export default {
             _subject: 2
         }
     },
-    'Management et Connaissances pour l\'Entreprisereprise': {
+    MCE8: {
         BUGA: {
             _subject: 1
         },
