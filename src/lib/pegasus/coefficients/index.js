@@ -11,6 +11,7 @@ const S8_APP_ING_CYB2_2025 = Symbol('S8 [CYB2] (2025)');
 const S8_APP_ING_DEV2_2025 = Symbol('S8 [DEV2] (2025)');
 const S8_APP_ING_EXP2_2025 = Symbol('S8 [EXP2] (2025)');
 const S8_GISTRE_2025 = Symbol('S8 [GISTRE] (2025)');
+const S8_SSIE_2025 = Symbol('S8 [SSIE] (2025)');
 
 const coefficients = {
     [S5_2026]: (await import('./s5_2026')).default,
@@ -24,6 +25,7 @@ const coefficients = {
     [S8_APP_ING_CYB2_2025]: (await import('./s8_cyb2_2025.js')).default,
     [S8_APP_ING_DEV2_2025]: (await import('./s8_dev2_2025.js')).default,
     [S8_APP_ING_EXP2_2025]: (await import('./s8_exp2_2025.js')).default,
+    [S8_SSIE_2025]: (await import('./s8_ssie_2025.js')).default,
 };
 
 export function computeAverages(filters, marks)
@@ -150,6 +152,8 @@ function getCoefficients(filters)
                     return coefficients[S8_APP_ING_EXP2_2025];
                 case 'SI8GISTRE':
                     return coefficients[S8_GISTRE_2025];
+                case 'SI8SSIE':
+                    return coefficients[S8_SSIE_2025];
             }
             break;
     }
