@@ -4,7 +4,6 @@
 <br/>
 <p align="center">
 <a href="https://app.netlify.com/sites/infinity-pegasus/deploys"><img src="https://api.netlify.com/api/v1/badges/719a3ce9-a521-4d9d-923a-6cda830b2284/deploy-status" /></a>
-<a href="https://github.com/Litarvan/infinity-pegasus/blob/master/package.json"><img src="https://img.shields.io/snyk/vulnerabilities/github/EpiMac/infinity-cast?style=flat-square" /></a>
 <a href="https://github.com/Litarvan/infinity-pegasus/blob/master/LICENSE"><img src="https://img.shields.io/github/license/EpiMac/infinity-cast?style=flat-square" /></a>
 </p>
 
@@ -15,7 +14,7 @@
 
 - Download for [Firefox](https://addons.mozilla.org/firefox/addon/infinity-pegasus/) 
 - Download for [Chrome](https://chrome.google.com/webstore/detail/infinity-pegasus/khbapaojhccoiojehmnbpikcinkbgjpf)
-- Safari support will arrive in a few days (pending Apple validation)
+- Download for [Safari](https://apps.apple.com/us/app/infinity-pegasus/id1631029478) (ARM only)
 
 After first installation, Pegasus page could need to be refreshed because of caching.
 
