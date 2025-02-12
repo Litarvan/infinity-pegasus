@@ -1,5 +1,6 @@
 import { SEMESTER_FILTER, YEAR_FILTER } from '../documents';
 
+const S5_2027 = Symbol('S5 (2027)');
 const S5_2026 = Symbol('S5 (2026)');
 const S5_APP_ING_2026 = Symbol('S5 [APP ING] (2026)');
 const S6_2026 = Symbol('S6 (2026)');
@@ -15,6 +16,7 @@ const S8_GISTRE_2025 = Symbol('S8 [GISTRE] (2025)');
 const S8_SSIE_2025 = Symbol('S8 [SSIE] (2025)');
 
 const coefficients = {
+    [S5_2027]: (await import('./s5_2027')).default,
     [S5_2026]: (await import('./s5_2026')).default,
     [S5_APP_ING_2026]: (await import('./s5_app_ing_2026')).default,
     [S6_2026]: (await import('./s6_2026')).default,
@@ -130,6 +132,12 @@ function getCoefficients(filters)
     const semester = filters[SEMESTER_FILTER].split(' ')[0];
 
     switch (year) {
+        case '2024':
+            switch (semester) {
+                case 'SI5':
+                    return coefficients[S5_2027];
+            }
+            break;
         case '2023':
             switch (semester) {
                 case 'SI5':
