@@ -10,6 +10,7 @@ const S7_APP_ING_EXP2_2025 = Symbol('S7 [EXP2] (2025)');
 const S8_APP_ING_CYB2_2025 = Symbol('S8 [CYB2] (2025)');
 const S8_APP_ING_DEV2_2025 = Symbol('S8 [DEV2] (2025)');
 const S8_APP_ING_EXP2_2025 = Symbol('S8 [EXP2] (2025)');
+const S9_APP_ING_CYB3_2025 = Symbol('S9 [CYB3] (2025)');
 const S8_GISTRE_2025 = Symbol('S8 [GISTRE] (2025)');
 const S8_SSIE_2025 = Symbol('S8 [SSIE] (2025)');
 
@@ -25,6 +26,7 @@ const coefficients = {
     [S8_APP_ING_CYB2_2025]: (await import('./s8_cyb2_2025.js')).default,
     [S8_APP_ING_DEV2_2025]: (await import('./s8_dev2_2025.js')).default,
     [S8_APP_ING_EXP2_2025]: (await import('./s8_exp2_2025.js')).default,
+    [S9_APP_ING_CYB3_2025]: (await import('./s9_cyb3_2025.js')).default,
     [S8_SSIE_2025]: (await import('./s8_ssie_2025.js')).default,
 };
 
@@ -150,6 +152,8 @@ function getCoefficients(filters)
                     return coefficients[S8_APP_ING_DEV2_2025];
                 case 'SX8':
                     return coefficients[S8_APP_ING_EXP2_2025];
+                case 'SA9':
+                    return coefficients[S9_APP_ING_CYB3_2025];
                 case 'SI8GISTRE':
                     return coefficients[S8_GISTRE_2025];
                 case 'SI8SSIE':
