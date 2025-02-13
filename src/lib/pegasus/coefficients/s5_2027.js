@@ -48,34 +48,25 @@ export default {
         },
         NET1: {
             _subject: 1.5,
-            // TODO fix the order when the grades are published
-            0: 0.8,   // TPs
-            1: 0.2    // MCQs 
+            'Exam': 0.2,      // QCM
+            '.*': 0.8 / 4     // TPs
         },
         ASM: {
-            // TODO fix the name when the grades are published
             'QCM': 0.3,
+            'Exam 1': 1,
+            '.*': 1.3     // I don't know for sure the name of the Exam 2
         }
     },
     Concevoir: {
-        ITSI: {
-            // TODO fix the names when the grades are published
-            'DM': 0.3,
-            'ES': 0.7
-        },
         CPXA: {
             _subject: 2,
-            'Examen 1': 0.6 / 3,
-            'Exam 2': 0.6 / 3,
-            // TODO fix the names when the grades are published
-            'Examen 3': 0.6 / 3,
-            'DM': 0.4
+            'Exam.*': 0.6 / 3,
+            'Exercices': 0.4
         },
         STA: {
-            // TODO fix the names when the grades are published
-            'EF': 0.1,
-            'TP': 0.4,
-            'ES': 0.5
+            'EFs': 0.1,
+            'TPs': 0.4,
+            'Examen': 0.5
         },
         THL: {
             _subject: 2
@@ -83,45 +74,32 @@ export default {
     },
     Piloter: {
         COM1: {
-            // TODO fix the names when the grades are published
-            'Note PPT écrit': 0.4,
-            'Note 42_SH oral': 0.4,
-            'participation aux TD': 0.2
+            'TD': 0.4,
+            'Coaching 42': 0.4,
+            'Presence': 0.2
         },
         DCT: {
             _subject: 2,
-            'TD1': 0.8 / 3,
-            'TD2': 0.8 / 3,
-            'TD3': 0.8 / 3,
-            // TODO fix the name when the grades are published
-            'Quiz': 0.2
+            'Quizz': 0.2,
+            '.*': 0.8 / 6
         }
     },
     Agir: {
-        'ANGL-1_S5': {
-            // TODO fix the names when the grades are published
-            'Epreuve écrite en cours': 0.4,
-            'Epreuve écrite moodle': 0.4,
-            'Présence en cours': 0.2
-        },
+        // 'ANGL-1_S5': {
+        //     // TODO fix the names when the grades are published
+        //     'Epreuve écrite en cours': 0.4,
+        //     'Epreuve écrite moodle': 0.4,
+        //     'Présence en cours': 0.2
+        // },
         ETHIX: {
-            // TODO fix the names when the grades are published
             'TD1': 0.3,
             'TD2': 0.3,
-            'Evaluation finale': 0.4,
+            'Exam': 0.4,
         },
         EQIT: {
             _subject: 0.5,
-            // TODO fix the names when the grades are published
-            'QCM': 0.8,
-            'CC': 0.2
+            'Exam 1': 0.8,
+            'Participation': 0.2
         }
     },
-    '42SH': {
-        P_42SH: {
-            // TODO fix the names when the grades are published
-            'Projet': 0.8,
-            'Coaching': 0.2
-        }
-    }
 };
