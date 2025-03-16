@@ -16,25 +16,26 @@ const S8_GISTRE_2025 = Symbol('S8 [GISTRE] (2025)');
 const S8_SSIE_2025 = Symbol('S8 [SSIE] (2025)');
 
 const coefficients = {
-    [S5_2027]: (await import('./s5_2027')).default,
-    [S5_2026]: (await import('./s5_2026')).default,
-    [S5_APP_ING_2026]: (await import('./s5_app_ing_2026')).default,
-    [S6_2026]: (await import('./s6_2026')).default,
-    [S6_APP_ING_2026]: (await import('./s6_app_ing_2026')).default,
-    [S8_GISTRE_2025]: (await import('./s8_gistre_2025.js')).default,
-    [S7_APP_ING_CYB2_2025]: (await import('./s7_cyb2_2025.js')).default,
-    [S7_APP_ING_DEV2_2025]: (await import('./s7_dev2_2025.js')).default,
-    [S7_APP_ING_EXP2_2025]: (await import('./s7_exp2_2025.js')).default,
-    [S8_APP_ING_CYB2_2025]: (await import('./s8_cyb2_2025.js')).default,
-    [S8_APP_ING_DEV2_2025]: (await import('./s8_dev2_2025.js')).default,
-    [S8_APP_ING_EXP2_2025]: (await import('./s8_exp2_2025.js')).default,
-    [S9_APP_ING_CYB3_2025]: (await import('./s9_cyb3_2025.js')).default,
-    [S8_SSIE_2025]: (await import('./s8_ssie_2025.js')).default,
+    [S5_2027]: './s5_2027',
+    [S5_2026]: './s5_2026',
+    [S5_APP_ING_2026]: './s5_app_ing_2026',
+    [S6_2026]: './s6_2026',
+    [S6_APP_ING_2026]: './s6_app_ing_2026',
+    [S8_GISTRE_2025]: './s8_gistre_2025.js',
+    [S7_APP_ING_CYB2_2025]: './s7_cyb2_2025.js',
+    [S7_APP_ING_DEV2_2025]: './s7_dev2_2025.js',
+    [S7_APP_ING_EXP2_2025]: './s7_exp2_2025.js',
+    [S8_APP_ING_CYB2_2025]: './s8_cyb2_2025.js',
+    [S8_APP_ING_DEV2_2025]: './s8_dev2_2025.js',
+    [S8_APP_ING_EXP2_2025]: './s8_exp2_2025.js',
+    [S9_APP_ING_CYB3_2025]: './s9_cyb3_2025.js',
+    [S8_SSIE_2025]: './s8_ssie_2025.js',
 };
 
-export function computeAverages(filters, marks)
+export async function computeAverages(filters, marks)
 {
-    const coefficients = getCoefficients(filters) || {};
+    const file = getCoefficients(filters);
+    const coefficients = file ? (await import(file /* @vite-ignore */)).default : {};
 
     // Code is pretty repetitive, but at least it's clear what's going on.
 

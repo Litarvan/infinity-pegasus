@@ -45,7 +45,7 @@ export async function getMarks(filters, noReport)
     }
 
     if (noReport) {
-        averages = computeAverages(filters, result);
+        averages = await computeAverages(filters, result);
     }
 
     normalizeCoefficients(result);
