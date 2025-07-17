@@ -27,9 +27,10 @@ export default
     SG8: {
     },
     INFO8: {
-        'DEPLOY_S8':
+        DEPLOY_S8: {
             'PROJECT': 8,
             '.*': 0.2
+        }
     },
     MCE8: {
         M_CRIN: {
