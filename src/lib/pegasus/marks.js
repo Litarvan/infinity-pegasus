@@ -10,7 +10,7 @@ import { getDocuments, MARKS_DOCUMENT, REPORT_DOCUMENT } from './documents';
 // - '[ID]-Module name [X ECTS]'
 // - 'ID Module name [X ECTS]'
 // - 'ID_Module name [X ECTS]'
-const MODULE_REGEX = /(\[?([a-zA-Z0-9]+)\]? ?-? ?_?)?(.*) *\[ *(.*) ECTS]/;
+const MODULE_REGEX = /(?:\[(.+)\] |(.+)_|(.+) - |\[(.+)\] - |\[(.+)\]-|([A-Z0-1]+) )?(.*) +\[ *(.*) ECTS\]/;
 const MARK_REGEX = /\d+,\d\d/g;
 const POSITION_THRESHOLD = 5;
 
@@ -91,7 +91,15 @@ async function parsePage(page, result, report)
         }
 
         while (i < texts.length && texts[i].match(MODULE_REGEX)) {
-            const [,, id, name, credits] = texts[i++].match(MODULE_REGEX);
+            let id, name, credits
+
+            const regexGroups = texts[i++].match(MODULE_REGEX).filter(s => !!s);
+
+            if (regexGroups.length == 3)
+                [, name, credits] = regexGroups;
+            else
+                [, id, name, credits] = regexGroups;
+
             const subjects = [];
             let grade, average, classAverage;
 

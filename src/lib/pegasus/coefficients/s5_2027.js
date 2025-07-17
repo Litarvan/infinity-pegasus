@@ -12,7 +12,7 @@
 
 export default {
     // même id pour harmo info et maths
-    Harmonisation: {
+    "Harmonisation Concevoir": {
         APXF: {
             _subject: 2,
             'Examen 1': 0.8 * 0.4,          // ES1
