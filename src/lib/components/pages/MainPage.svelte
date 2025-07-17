@@ -271,7 +271,7 @@
             {#each marks as module}
                 <div class="header module">
                     <div class="text">
-                        <div class="name">{module.name}</div>
+                        <div class="name">{module.name || module.id}</div>
                         <div class="point"></div>
                         <div class="bottom">
                             <span class="average" style:color={color(module.average)}>{format(module.average)}</span>

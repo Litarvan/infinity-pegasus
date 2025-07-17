@@ -48,7 +48,7 @@ export default {
             _subject: 2
         }
     },
-    G: {  // FIXME: Gérer module is badly encoded and has 'G' as identifier
+    "Gérer": {
         CHIFR: {
             _subject: 1.5,
             'Exam \\d': 0.9 / 2,

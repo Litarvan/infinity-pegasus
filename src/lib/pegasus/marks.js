@@ -10,7 +10,7 @@ import { getDocuments, MARKS_DOCUMENT, REPORT_DOCUMENT } from './documents';
 // - '[ID]-Module name [X ECTS]'
 // - 'ID Module name [X ECTS]'
 // - 'ID_Module name [X ECTS]'
-const MODULE_REGEX = /(\[?([a-zA-Z0-9]+)\]? ?-? ?_?)?(.*) *\[ *(.*) ECTS]/;
+const MODULE_REGEX = /(\[?([a-zA-Z0-9À-ɏḀ-ỿ]+)\]? ?-? ?_?)?(.*) *\[ *(.*) ECTS]/;
 const MARK_REGEX = /\d+,\d\d/g;
 const POSITION_THRESHOLD = 5;
 
