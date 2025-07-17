@@ -11,8 +11,6 @@
 export default {
     'ERO1 ': {  // SAE module names have a whitespace for some reason
         CONC_ERO1: {
-            // FIXME: should the grades for ERO1 be separate on Pegasus, apply
-            // the correct names
             'Examen': 0.25,
             'Projet': 0.75
         }
@@ -33,9 +31,8 @@ export default {
             _subject: 2
         },
         TYLA: {
-            // FIXME: fix grades names once they have been added to Pegasus
             'Exercices': 0.4,
-            'TPs': 0.4,
+            'Projet': 0.4,
             'Examen': 0.2
         },
         PBS1: {
@@ -48,7 +45,7 @@ export default {
             _subject: 2
         }
     },
-    G: {  // FIXME: Gérer module is badly encoded and has 'G' as identifier
+    G: {  // Gérer module is badly encoded and has 'G' as identifier
         CHIFR: {
             _subject: 1.5,
             'Exam \\d': 0.9 / 2,
