@@ -6,6 +6,7 @@ const S5_APP_ING_2026 = Symbol('S5 [APP ING] (2026)');
 const S6_2027 = Symbol('S6 (2027)');
 const S6_2026 = Symbol('S6 (2026)');
 const S6_APP_ING_2026 = Symbol('S6 [APP ING] (2026)');
+const S7_APP_ING_CYB2_2026 = Symbol('S7 [CYB2] (2026)');
 const S7_APP_ING_CYB2_2025 = Symbol('S7 [CYB2] (2025)');
 const S7_APP_ING_DEV2_2025 = Symbol('S7 [DEV2] (2025)');
 const S7_APP_ING_EXP2_2025 = Symbol('S7 [EXP2] (2025)');
@@ -25,6 +26,7 @@ const coefficients = {
     [S6_2026]: (await import('./s6_2026')).default,
     [S6_APP_ING_2026]: (await import('./s6_app_ing_2026')).default,
     [S8_GISTRE_2025]: (await import('./s8_gistre_2025.js')).default,
+    [S7_APP_ING_CYB2_2026]: (await import('./s7_cyb2_2026.js')).default,
     [S7_APP_ING_CYB2_2025]: (await import('./s7_cyb2_2025.js')).default,
     [S7_APP_ING_DEV2_2025]: (await import('./s7_dev2_2025.js')).default,
     [S7_APP_ING_EXP2_2025]: (await import('./s7_exp2_2025.js')).default,
@@ -140,6 +142,8 @@ function getCoefficients(filters)
             switch (semester) {
                 case 'SI5':
                     return coefficients[S5_2027];
+                case 'SA7':
+                    return coefficients[S8_APP_ING_CYB2_2026];
                 case 'SI6':
                     return coefficients[S6_2027];
             }
